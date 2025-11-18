@@ -8,3 +8,10 @@ enum class GhostType {
     INKY,    // Blue - calculates a weird combo of your position + Blinky’s position, making him unpredictable.
     CLYDE    // Orange - alternates between chasing and fleeing, chaotic but fun.
 };
+
+enum class GhostMode {
+    CHASE,      // Chase Pac-Man
+    SCATTER,    // Go to corners
+    FRIGHTENED, // Vulnérable (super pac-gomme)
+    DEAD        // Retourne à la base
+};
