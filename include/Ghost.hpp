@@ -1,3 +1,5 @@
+#include <SFML/Graphics.hpp>
+
 class Ghost {
 
     int x;
