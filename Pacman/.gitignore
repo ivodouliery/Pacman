@@ -25,3 +25,7 @@ Win32/
 *.pdb
 *.ilk
 *.lib
+*.vcxproj
+*.vcxproj.filters
+*.user
+*.sln
