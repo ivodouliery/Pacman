@@ -25,6 +25,11 @@ void Game::processEvents() {
     }
 }
 
+// Met à jour la logique du jeu
+void Game::update() {
+    // Logique du jeu à implémenter ici
+}
+
 // Affiche les éléments à l'écran
 void Game::render() {
     mWindow.clear(sf::Color::Black);
