@@ -24,3 +24,9 @@ void Game::processEvents() {
         }
     }
 }
+
+// Affiche les éléments à l'écran
+void Game::render() {
+    mWindow.clear(sf::Color::Black);
+    mWindow.display();
+}
