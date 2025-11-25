@@ -6,3 +6,12 @@ Game::Game()
 {
     mWindow.setFramerateLimit(60);
 }
+
+// Lance la boucle de jeu
+void Game::run() {
+    while (mWindow.isOpen()) {
+        processEvents();
+        update();
+        render();
+    }
+}
