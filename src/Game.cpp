@@ -15,3 +15,12 @@ void Game::run() {
         render();
     }
 }
+
+// Gère les entrées (clavier, fermeture fenêtre)
+void Game::processEvents() {
+    while (const std::optional event = mWindow.pollEvent()) {
+        if (event->is<sf::Event::Closed>()) {
+            mWindow.close();
+        }
+    }
+}
