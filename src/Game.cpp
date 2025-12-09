@@ -1,5 +1,4 @@
 #include "../include/Game.hpp"
-#include "../include/Map.hpp"
 
 // Constructeur : Initialisation de la fenêtre
 Game::Game() 
