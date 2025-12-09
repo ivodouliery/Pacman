@@ -11,11 +11,13 @@ set(SOURCES
     src/main.cpp
     src/Game.cpp
     src/Ghost.cpp
+    src/Map.cpp
 )
 
 set(HEADERS
     include/Game.hpp
     include/Ghost.hpp
+    include/Map.hpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES} ${HEADERS})
