@@ -1,7 +1,7 @@
-#include <SFML/Graphics.hpp>
-#include "../include/Ghost.hpp"
+#include "Game.hpp"
 
-int main(){
-
+int main() {
+    Game game;
+    game.run();
     return 0;
 }

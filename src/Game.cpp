@@ -2,14 +2,15 @@
 
 // Constructeur : Initialisation de la fenêtre
 Game::Game() 
-    : mWindow(sf::VideoMode({800, 600}), "Pac-Man C++ / SFML 3") 
+    : window(sf::VideoMode({480, 640}), "Pacman") 
 {
-    mWindow.setFramerateLimit(60);
+    window.setFramerateLimit(60);
+    grid = Map();
 }
 
 // Lance la boucle de jeu
 void Game::run() {
-    while (mWindow.isOpen()) {
+    while (window.isOpen()) {
         processEvents();
         update();
         render();
@@ -18,20 +19,21 @@ void Game::run() {
 
 // Gère les entrées (clavier, fermeture fenêtre)
 void Game::processEvents() {
-    while (const std::optional event = mWindow.pollEvent()) {
+    while (const std::optional event = window.pollEvent()) {
         if (event->is<sf::Event::Closed>()) {
-            mWindow.close();
+            window.close();
         }
     }
 }
 
-// Met à jour la logique du jeu
+// Met à jour la logique du jeus
 void Game::update() {
     // Logique du jeu à implémenter ici
 }
 
 // Affiche les éléments à l'écran
 void Game::render() {
-    mWindow.clear(sf::Color::Black);
-    mWindow.display();
+    window.clear();
+    grid.draw(window);
+    window.display();
 }
