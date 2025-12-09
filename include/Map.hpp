@@ -33,6 +33,6 @@ public:
     void draw(sf::RenderWindow& window);
 
 private:
-    std::vector<std::string> mGrid;
-    float mcellSize = 40.0f; // Taille d'une case (ex: 40x40 pixels)
+    std::vector<std::string> mapGrid; ///< La carte du jeu.
+    
 };
