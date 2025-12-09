@@ -38,33 +38,27 @@ Map::Map() {
 };
 
 void Map::draw(sf::RenderWindow& window) {
-    sf::Texture gridTexture("./assets/.png");
-    sf::Sprite gridSprite(gridTexture);
-    gridSprite.setPosition({0, 0});
-    window.draw(gridSprite);
-    wall.setFillColor(sf::Color::Blue);
+    sf::Texture mapTexture("./assets/map.png");
+    sf::Sprite map(mapTexture);
+    window.draw(map);
 
+    sf::Texture itemTexture("./assets/items.png");
+    sf::Sprite dot(itemTexture);
+    dot.setTextureRect(sf::IntRect({0*itemSize, 1*itemSize}, {itemSize, itemSize}));
+    sf::Sprite superDot(itemTexture);
+    superDot.setTextureRect(sf::IntRect({1*itemSize, 1*itemSize}, {itemSize, itemSize}));
 
-
-    for (size_t y = 0; y < map.size(); ++y) {
-        for (size_t x = 0; x < map[y].size(); ++x) {
-            if (map[y][x] == '.') {
-                sf::Texture texture("./graphic_assets/other/dot.png");
-                sf::Sprite sprite(texture);
-                sprite.setPosition({x * cellSize, y * cellSize});
-                window.draw(sprite);
-            }
-            else if (map[y][x] == 'P') {
-                sf::Texture texture("./graphic_assets/pacman-left/1.png");
-                sf::Sprite sprite(texture);
-                sprite.setPosition({x * cellSize, y * cellSize});
-                window.draw(sprite);
-            }
-            else if (map[y][x] == 'G') {
-                sf::Texture texture("./graphic_assets/ghosts/blinky.png");
-                sf::Sprite sprite(texture);
-                sprite.setPosition({x * cellSize, y * cellSize});
-                window.draw(sprite);
+    for (int y = 0; y < MAP_HEIGHT; ++y) {
+        for (int x = 0; x < MAP_WIDTH; ++x) {
+            switch (mapGrid[y][x]) {
+                case '.':
+                    dot.setPosition({gridOriginX + static_cast<float>(x) * static_cast<float>(itemSize), gridOriginY + static_cast<float>(y) * static_cast<float>(itemSize)});
+                    window.draw(dot);
+                    break;
+                case 'o':
+                    superDot.setPosition({gridOriginX + static_cast<float>(x) * static_cast<float>(itemSize), gridOriginY + static_cast<float>(y) * static_cast<float>(itemSize)});
+                    window.draw(superDot);
+                    break;
             }
         }
     }
