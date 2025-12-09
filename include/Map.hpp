@@ -1,3 +1,12 @@
+/**
+ * @file Map.hpp
+ * @author Ivo Douliery
+ * @brief Fichier de la classe Map.
+ * @version 0.1
+ * @date 2025-12-09
+ * 
+ * Ce fichier contient la définition de la classe Map.
+ */
 #pragma once
 #include <SFML/Graphics.hpp>
 #include <vector>
@@ -11,12 +20,33 @@
  */
 class Map {
 public:
-    static constexpr float cellSize = 16.0f; ///< Taille d'une case (16x16 pixels)
-    static constexpr int itemSize = 16; ///< Taille d'un point (16x16 pixels)
-    static constexpr float pacmanSize = 24.0f; ///< Taille de Pac-Man (16x16 pixels)
-    static constexpr int MAP_WIDTH = 28; ///< Largeur de la carte.
-    static constexpr int MAP_HEIGHT = 30; ///< Hauteur de la carte.
+    /**
+     * @brief Taille d'une case (16x16 pixels).
+     */
+    static constexpr float cellSize = 16.0f;
+    /**
+     * @brief Taille d'un point (16x16 pixels).
+     */
+    static constexpr int itemSize = 16;
+    /**
+     * @brief Taille de Pac-Man (16x16 pixels).
+     */
+    static constexpr float pacmanSize = 24.0f;
+    /**
+     * @brief Largeur de la carte.
+     */
+    static constexpr int MAP_WIDTH = 28;
+    /**
+     * @brief Hauteur de la carte.
+     */
+    static constexpr int MAP_HEIGHT = 30;
+    /**
+     * @brief Position de l'origine de la grille.
+     */
     static constexpr int gridOriginX = 16;
+    /**
+     * @brief Position de l'origine de la grille.
+     */
     static constexpr int gridOriginY = 112;
     /**
      * @brief Constructeur par défaut.
@@ -66,6 +96,9 @@ public:
     void draw(sf::RenderWindow& window);
 
 private:
-    std::vector<std::string> mapGrid; ///< La carte du jeu.
+    /**
+     * @brief La carte du jeu.
+     */
+    std::vector<std::string> mapGrid;
     
 };
