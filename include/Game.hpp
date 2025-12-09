@@ -1,17 +1,52 @@
+/**
+ * @file Game.hpp
+ * @author Ivo Douliery
+ * @brief Fichier de la classe Game.
+ * @version 0.1
+ * @date 2025-12-09
+ * 
+ * Ce fichier contient la définition de la classe Game.
+ */
+
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "Map.hpp"
 
+/**
+ * @brief Classe représentant le jeu.
+ * 
+ * Cette classe représente le jeu Pac-Man.
+ */
 class Game {
 public:
-    Game(); // Constructeur
-    void run(); // Lance la boucle de jeu
+    /**
+     * @brief Constructeur de la classe Game.
+     */
+    Game();
+    /**
+     * @brief Lance la boucle de jeu.
+     */
+    void run();
 
 private:
-    void processEvents(); // Gère les entrées (clavier, fermeture fenêtre)
-    void update();        // Met à jour la logique du jeu
-    void render();        // Affiche les éléments à l'écran
-
-    sf::RenderWindow window; // La fenêtre SFML
+    /**
+     * @brief Gère les entrées (clavier, fermeture fenêtre).
+     */
+    void processEvents();
+    /**
+     * @brief Met à jour la logique du jeu.
+     */
+    void update();
+    /**
+     * @brief Affiche les éléments à l'écran.
+     */
+    void render();
+    /**
+     * @brief La fenêtre SFML.
+     */
+    sf::RenderWindow window;
+    /**
+     * @brief La carte du jeu.
+     */
     Map grid;
 };
