@@ -1,10 +1,12 @@
 #include "../include/Game.hpp"
+#include "../include/Map.hpp"
 
 // Constructeur : Initialisation de la fenêtre
 Game::Game() 
     : window(sf::VideoMode({480, 640}), "Pacman") 
 {
     window.setFramerateLimit(60);
+    grid = Map();
 }
 
 // Lance la boucle de jeu
@@ -32,7 +34,7 @@ void Game::update() {
 
 // Affiche les éléments à l'écran
 void Game::render() {
-    window.clear(sf::Color::Black);
+    window.clear();
     grid.draw(window);
     window.display();
 }
