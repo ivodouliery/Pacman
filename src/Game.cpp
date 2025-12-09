@@ -33,5 +33,6 @@ void Game::update() {
 // Affiche les éléments à l'écran
 void Game::render() {
     mWindow.clear(sf::Color::Black);
+    mMap.draw(mWindow);
     mWindow.display();
 }
