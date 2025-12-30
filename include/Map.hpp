@@ -13,7 +13,7 @@ class Map {
 public:
     static constexpr float cellSize = 16.0f; ///< Taille d'une case (16x16 pixels)
     static constexpr int itemSize = 16; ///< Taille d'un point (16x16 pixels)
-    static constexpr float pacmanSize = 24.0f; ///< Taille de Pac-Man (16x16 pixels)
+    static constexpr float entitySize = 24.0f; ///< Taille des entités (16x16 pixels)
     static constexpr int MAP_WIDTH = 28; ///< Largeur de la carte.
     static constexpr int MAP_HEIGHT = 30; ///< Hauteur de la carte.
     static constexpr int gridOriginX = 16;
