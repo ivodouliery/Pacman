@@ -30,3 +30,26 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
     SFML::System 
     SFML::Audio
 )
+
+find_package(Catch2 3 REQUIRED)
+enable_testing()
+
+add_executable(PacmanTests 
+    tests/test.cpp
+    src/Game.cpp
+    src/Ghost.cpp
+    src/Map.cpp
+)
+
+target_link_libraries(PacmanTests PRIVATE 
+    Catch2::Catch2WithMain
+    SFML::Graphics 
+    SFML::Window 
+    SFML::System 
+    SFML::Audio
+)
+
+target_include_directories(PacmanTests PRIVATE include)
+
+include(Catch)
+catch_discover_tests(PacmanTests)
