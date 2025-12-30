@@ -31,6 +31,24 @@ public:
      * @param window La fenêtre sur laquelle la carte est dessinée.
      */
     void draw(sf::RenderWindow& window);
+    /**
+     * @brief Vérifie si une case spécifique est un mur.
+     * Utile pour la gestion des collisions.
+     * * @param x Index X de la case dans la grille (0 à MAP_WIDTH-1).
+     * @param y Index Y de la case dans la grille (0 à MAP_HEIGHT-1).
+     * @return true Si la case est un mur ou hors limites.
+     * @return false Si la case est libre (vide ou pastille).
+     */
+    bool isWall(int x, int y) const;
+
+    /**
+     * @brief Tente de manger une pastille à une position donnée.
+     * Modifie la grille si une pastille est présente.
+     * * @param x Index X de la case.
+     * @param y Index Y de la case.
+     * @return int Le score gagné (0 si vide, 10 pour une pastille, 50 pour une super-pastille).
+     */
+    int tryEat(int x, int y);
 
 private:
     std::vector<std::string> mapGrid; ///< La carte du jeu.

@@ -1,11 +1,11 @@
 #include "../include/Game.hpp"
 
 // Constructeur : Initialisation de la fenêtre
-Game::Game() 
-    : window(sf::VideoMode({480, 640}), "Pacman") 
+Game::Game()
+    : window(sf::VideoMode({480, 640}), "Pacman"),
+      grid()
 {
     window.setFramerateLimit(60);
-    grid = Map();
 }
 
 // Lance la boucle de jeu
@@ -21,19 +21,19 @@ void Game::run() {
 void Game::processEvents() {
     while (const std::optional event = window.pollEvent()) {
         if (event->is<sf::Event::Closed>()) {
-            window.close();
+         window.close();
         }
     }
 }
 
-// Met à jour la logique du jeus
+// Met à jour la logique du jeu
 void Game::update() {
     // Logique du jeu à implémenter ici
 }
 
 // Affiche les éléments à l'écran
 void Game::render() {
-    window.clear();
+    window.clear(sf::Color::Black);
     grid.draw(window);
     window.display();
 }
