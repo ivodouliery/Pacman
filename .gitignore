@@ -3,8 +3,8 @@
 ################################################################################
 
 # Visual Studio
-/.vs
-/ProjetPacman
+.vs/
+ProjetPacman/
 *.sln
 *.vcxproj
 *.vcxproj.filters
@@ -15,16 +15,16 @@
 *.VC.opendb
 
 # Build directories
-/build
-/Build
-/out
-/Out
-/x64
-/x86
-/Debug
-/Release
-/bin
-/obj
+build/
+Build/
+out/
+Out/
+x64/
+x86/
+Debug/
+Release/
+bin/
+obj/
 
 # CMake
 CMakeCache.txt
@@ -108,4 +108,4 @@ Thumbs.db
 .LSOverride
 *.txt
 !CMakeLists.txt
-
+*.json
