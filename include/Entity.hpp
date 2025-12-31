@@ -5,17 +5,6 @@ class Entity {
 public:
     Entity();
 
-    virtual ~Entity() = default;
-
-    virtual void setPosition(float x, float y);
-    sf::Vector2f getPosition() const;
-
-    void setSpeed(float speed);
-    float getSpeed() const;
-
-    void setDirection(sf::Vector2f direction);
-    sf::Vector2f getDirection() const;
-
     /**
      * @brief Taille d'une entité (32x32 pixels).
      */
@@ -31,18 +20,37 @@ public:
      */
     static constexpr int eyesSize = 16;
 
+    /**
+     * @brief Temps par image de l'animation.
+     */
+    static constexpr float animationSpeed = 0.1f;
+
+    virtual ~Entity() = default;
+
+    virtual void setPosition(float x, float y);
+    sf::Vector2f getPosition() const;
+
     virtual void draw(sf::RenderWindow& window) = 0;
 
     virtual void update(float dt);
 
+    void setSpeed(float speed);
+    float getSpeed() const;
+
+    void setDirection(sf::Vector2f direction);
+    sf::Vector2f getDirection() const;
 
 protected:
     sf::Vector2f position;
     sf::Vector2f direction;
+
     float speed;
+    
+    int currentFrame;
+    float animationTimer;
+    int nbFrames;
 
     sf::Texture texture;
     sf::Sprite sprite_body;
     sf::IntRect textureRect;
-
 };
