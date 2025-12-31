@@ -66,35 +66,3 @@ void Map::draw(sf::RenderWindow& window) {
     }
 
 }
-
-bool Map::isWall(int x, int y) const {
-    // Vérification des limites de la carte
-    if (x < 0 || x >= MAP_WIDTH || y < 0 || y >= MAP_HEIGHT) {
-        return true; // Hors limites = mur
-    }
-
-    char cell = mapGrid[y][x];
-    // '#' est un mur, tout le reste est traversable ('.', 'o', ' ', etc.)
-    // Attention : ' ' (espace) peut être un tunnel ou une zone vide traversable
-    return cell == '#';
-}
-
-int Map::tryEat(int x, int y) {
-    // Vérification des limites
-    if (x < 0 || x >= MAP_WIDTH || y < 0 || y >= MAP_HEIGHT) {
-        return 0;
-    }
-
-    char cell = mapGrid[y][x];
-
-    if (cell == '.') {
-        mapGrid[y][x] = ' '; // On vide la case
-        return 10; // Score pour une pastille normale
-    }
-    else if (cell == 'o') {
-        mapGrid[y][x] = ' '; // On vide la case
-        return 50; // Score pour une super-pastille
-    }
-
-    return 0; // Rien à manger
-}
