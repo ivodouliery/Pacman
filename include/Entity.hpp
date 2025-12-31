@@ -1,30 +1,24 @@
-#include "../include/Entity.hpp"
+#pragma once
+#include <SFML/Graphics.hpp>
 
-Entity::Entity()
-    : position(0.f, 0.f), direction(0.f, 0.f), speed(0.f) {
-}
+class Entity {
+public:
+    Entity();
 
-void Entity::setPosition(float x, float y) {
-    position = {x, y - cellSize / 2.0f};
-    sprite_body.setPosition(position);
-}
+    virtual ~Entity() = default;
 
-sf::Vector2f Entity::getPosition() const {
-    return position;
-}
+    virtual void setPosition(float x, float y);
+    sf::Vector2f getPosition() const;
 
-void Entity::setDirection(sf::Vector2f direction) {
-    this->direction = direction;
-}
+    void setSpeed(float speed);
+    float getSpeed() const;
 
-sf::Vector2f Entity::getDirection() const {
-    return direction;
-}
+    void setDirection(sf::Vector2f direction);
+    sf::Vector2f getDirection() const;
 
-void Entity::setSpeed(float speed) {
-    this->speed = speed;
-}
+protected:
+    sf::Vector2f position;
+    sf::Vector2f direction;
+    float speed;
 
-float Entity::getSpeed() const {
-    return speed;
-}
+};
