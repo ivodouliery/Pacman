@@ -54,6 +54,13 @@ public:
      */
     void draw(sf::RenderWindow& window);
 
+    /**
+     * @brief Met à jour la carte.
+     * 
+     * Met à jour la position des entités sur la carte.
+     */
+    void update();
+
 
 private:
     /**

@@ -120,3 +120,12 @@ void Map::draw(sf::RenderWindow& window) {
         }
     }
 }
+
+void Map::update() {
+    float dt = 1.0f / 60.0f; // Delta time fixe pour l'instant
+    pacman.update(dt);
+    blinky.update(dt);
+    pinky.update(dt);
+    inky.update(dt);
+    clyde.update(dt);
+}
