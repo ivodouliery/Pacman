@@ -15,5 +15,27 @@ void Pacman::draw(sf::RenderWindow& window) {
 
 void Pacman::update(float dt) {
     Entity::update(dt);
-    // Input handling will go here (or be passed in)
+    animationTimer += dt;
+    if (animationTimer >= animationSpeed) {
+        animationTimer -= animationSpeed;
+        currentFrame = (currentFrame + 1) % nbFrames;
+        sprite_body.setTextureRect(sf::IntRect({currentFrame * entitySize, 0}, {entitySize, entitySize}));
+    }
+    sprite_body.setPosition(position);
+    sprite_body.setOrigin({entitySize / 2, entitySize / 2});
+    if(direction == sf::Vector2f{1.f, 0.f}) {
+        sprite_body.setRotation(sf::degrees(0.0f));
+    } else if(direction == sf::Vector2f{-1.f, 0.f}) {
+        sprite_body.setRotation(sf::degrees(180.0f));
+    } else if(direction == sf::Vector2f{0.f, 1.f}) {
+        sprite_body.setRotation(sf::degrees(90.0f));
+    } else if(direction == sf::Vector2f{0.f, -1.f}) {
+        sprite_body.setRotation(sf::degrees(-90.0f));
+    }
 }
+
+void Pacman::setPosition(float x, float y) {
+    position = {x + cellSize, y + cellSize / 2.0f};
+    sprite_body.setPosition(position);
+}
+
