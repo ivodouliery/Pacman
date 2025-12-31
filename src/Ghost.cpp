@@ -30,7 +30,7 @@ Ghost::Ghost(GhostType type) : type(type), mode(GhostMode::SCATTER) {
 
 void Ghost::setPosition(float x, float y) {
     Entity::setPosition(x, y);
-    sprite_eyes.setPosition({x + cellSize/2, y});
+    sprite_eyes.setPosition({x + 8.0f, y});
 }
 
 void Ghost::draw(sf::RenderWindow& window) {
@@ -40,5 +40,24 @@ void Ghost::draw(sf::RenderWindow& window) {
 
 void Ghost::update(float dt) {
     Entity::update(dt);
-    // AI logic placeholder
+    animationTimer += dt;
+    if(animationTimer >= animationSpeed) {
+        animationTimer -= animationSpeed;
+        currentFrame = (currentFrame + 1) % nbFrames;
+        switch(type) {
+            case GhostType::BLINKY: 
+                sprite_body.setTextureRect(sf::IntRect({currentFrame * entitySize, 0*entitySize}, {entitySize, entitySize}));
+                break;
+            case GhostType::INKY: 
+                sprite_body.setTextureRect(sf::IntRect({currentFrame * entitySize, 1*entitySize}, {entitySize, entitySize}));
+                break;
+            case GhostType::PINKY: 
+                sprite_body.setTextureRect(sf::IntRect({currentFrame * entitySize, 2*entitySize}, {entitySize, entitySize}));
+                break;
+            case GhostType::CLYDE: 
+                sprite_body.setTextureRect(sf::IntRect({currentFrame * entitySize, 3*entitySize}, {entitySize, entitySize}));
+                break;
+        }
+    }
+    
 }
