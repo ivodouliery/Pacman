@@ -49,6 +49,54 @@ public:
 
 
 private:
-    std::vector<std::string> mapGrid; ///< La carte du jeu.
+    /**
+     * @brief La carte du jeu.
+     */
+    std::vector<std::string> mapGrid;
+    /**
+     * @brief La texture de la carte.
+     */
+    sf::Texture mapTexture;
+    /**
+     * @brief La texture de la carte de début.
+     */
+    sf::Texture mapStartTexture;
+    /**
+     * @brief Le sprite de la carte.
+     */
+    sf::Sprite mapSprite;
+    /**
+     * @brief La texture des points.
+     */
+    sf::Texture itemTexture;
+    /**
+     * @brief Le sprite des points.
+     */
+    sf::Sprite dotSprite;
+    /**
+     * @brief Le sprite des super points.
+     */
+    sf::Sprite superDotSprite;
+
+    /**
+     * @brief Pac-Man.
+     */
+    Pacman pacman;
+    /**
+     * @brief Blinky.
+     */
+    Ghost blinky;
+    /**
+     * @brief Pinky.
+     */
+    Ghost pinky;
+    /**
+     * @brief Inky.
+     */
+    Ghost inky;
+    /**
+     * @brief Clyde.
+     */
+    Ghost clyde;
     
 };
