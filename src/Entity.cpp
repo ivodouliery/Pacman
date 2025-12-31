@@ -1,7 +1,7 @@
 #include "../include/Entity.hpp"
 
 Entity::Entity()
-    : position(0.f, 0.f), direction(0.f, 0.f), speed(0.f) {
+    : position(0.f, 0.f), direction(0.f, 0.f), speed(0.f), position(0.f, 0.f), direction(0.f, 0.f), speed(0.f), sprite_body(texture) {
 }
 
 void Entity::setPosition(float x, float y) {
@@ -27,4 +27,8 @@ void Entity::setSpeed(float speed) {
 
 float Entity::getSpeed() const {
     return speed;
+}
+
+void Entity::update(float dt) {
+    position += direction * speed * dt;
 }
