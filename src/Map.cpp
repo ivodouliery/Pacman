@@ -84,29 +84,39 @@ Map::Map(): blinky(GhostType::BLINKY), pinky(GhostType::PINKY), inky(GhostType::
 }
 
 void Map::draw(sf::RenderWindow& window) {
-    sf::Texture mapTexture("./assets/map.png");
-    sf::Sprite map(mapTexture);
-    window.draw(map);
-
-    sf::Texture itemTexture("./assets/items.png");
-    sf::Sprite dot(itemTexture);
-    dot.setTextureRect(sf::IntRect({ 0 * itemSize, 1 * itemSize }, { itemSize, itemSize }));
-    sf::Sprite superDot(itemTexture);
-    superDot.setTextureRect(sf::IntRect({ 1 * itemSize, 1 * itemSize }, { itemSize, itemSize }));
-
+    window.draw(mapSprite);
+    if (!started) return;
     for (int y = 0; y < MAP_HEIGHT; ++y) {
         for (int x = 0; x < MAP_WIDTH; ++x) {
-            switch (mapGrid[y][x]) {
-            case '.':
-                dot.setPosition({ gridOriginX + static_cast<float>(x) * static_cast<float>(itemSize), gridOriginY + static_cast<float>(y) * static_cast<float>(itemSize) });
-                window.draw(dot);
-                break;
-            case 'o':
-                superDot.setPosition({ gridOriginX + static_cast<float>(x) * static_cast<float>(itemSize), gridOriginY + static_cast<float>(y) * static_cast<float>(itemSize) });
-                window.draw(superDot);
-                break;
+            float posX = gridOriginX + x * Entity::cellSize;
+            float posY = gridOriginY + y * Entity::cellSize;
+            char cell = mapGrid[y][x];
+
+            switch(cell) {
+                case '.':
+                    dotSprite.setPosition({posX, posY});
+                    window.draw(dotSprite);
+                    break;
+                case 'o':
+                    superDotSprite.setPosition({posX, posY});
+                    window.draw(superDotSprite);
+                    break;
+                case 'B':
+                    blinky.draw(window);
+                    break;
+                case 'P':
+                    pinky.draw(window);
+                    break;
+                case 'I':
+                    inky.draw(window);
+                    break;
+                case 'C':
+                    clyde.draw(window);
+                    break;
+                case 'p':
+                    pacman.draw(window);
+                    break;
             }
         }
     }
-
 }

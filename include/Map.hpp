@@ -47,6 +47,13 @@ public:
      */
     Map();
 
+    /**
+     * @brief Dessine la carte sur la fenêtre.
+     * 
+     * @param window La fenêtre sur laquelle la carte est dessinée.
+     */
+    void draw(sf::RenderWindow& window);
+
 
 private:
     /**
