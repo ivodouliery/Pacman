@@ -29,9 +29,10 @@ void Game::processEvents() {
 void Game::update() {
     grid.update();
 }
+
 // Affiche les éléments à l'écran
 void Game::render() {
-    window.clear(sf::Color::Black);
+    window.clear();
     grid.draw(window);
     window.display();
 }
