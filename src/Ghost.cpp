@@ -61,3 +61,17 @@ void Ghost::update(float dt) {
     }
     
 }
+
+void Ghost::setRotation(int direction) {
+    switch(direction) {
+        case 0:
+            sprite_eyes = sprite_eyes_up;
+            break;
+        case 1:
+            sprite_eyes = sprite_eyes_down;
+            break;
+        default:
+            sprite_eyes = sprite_eyes_left_right;
+            break;
+    }
+}
