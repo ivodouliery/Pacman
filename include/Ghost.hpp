@@ -19,13 +19,18 @@ enum class GhostMode {
 class Ghost : public Entity {
 public:
     Ghost(GhostType type);
-    void setPosition(float x, float y) override;
-    static constexpr int eyesOriginY = 10*entitySize;
-
     void update(float dt) override;
     void draw(sf::RenderWindow& window) override;
+    void setPosition(float x, float y) override;
+    void setRotation(int direction);
+
+    static constexpr int eyesOriginY = 10*entitySize;
+
 private:
     GhostType type;
     GhostMode mode;
     sf::Sprite sprite_eyes;
+    sf::Sprite sprite_eyes_up;
+    sf::Sprite sprite_eyes_down;   
+    sf::Sprite sprite_eyes_left_right;
 };

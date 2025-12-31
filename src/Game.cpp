@@ -1,9 +1,8 @@
 #include "../include/Game.hpp"
 
 // Constructeur : Initialisation de la fenêtre
-Game::Game()
-    : window(sf::VideoMode({480, 640}), "Pacman"),
-      grid()
+Game::Game() 
+    : window(sf::VideoMode({480, 640}), "Pacman") 
 {
     window.setFramerateLimit(60);
 }
@@ -28,9 +27,8 @@ void Game::processEvents() {
 
 // Met à jour la logique du jeu
 void Game::update() {
-    // Logique du jeu à implémenter ici
+    grid.update();
 }
-
 // Affiche les éléments à l'écran
 void Game::render() {
     window.clear(sf::Color::Black);
