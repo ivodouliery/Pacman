@@ -129,3 +129,28 @@ void Map::update() {
     inky.update(dt);
     clyde.update(dt);
 }
+
+void Map::handleInput(sf::Keyboard::Key key) {
+    switch (key) {
+        case sf::Keyboard::Key::Up:
+            pacman.setDirection({0.f, -1.f});
+            break;
+        case sf::Keyboard::Key::Down:
+            pacman.setDirection({0.f, 1.f});
+            break;
+        case sf::Keyboard::Key::Left:
+            pacman.setDirection({-1.f, 0.f});
+            break;
+        case sf::Keyboard::Key::Right:
+            pacman.setDirection({1.f, 0.f});
+            break;
+        default:
+            break;
+    }
+}
+
+void Map::start() {
+    started = true;
+    mapSprite = sf::Sprite(mapTexture);
+}
+

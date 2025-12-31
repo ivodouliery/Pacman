@@ -1,5 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include "Ghost.hpp"
+#include "Pacman.hpp"
 #include <vector>
 #include <string>
 
@@ -61,8 +63,23 @@ public:
      */
     void update();
 
+    /**
+     * @brief Gère les entrées du joueur.
+     * @param key La touche appuyée.
+     */
+    void handleInput(sf::Keyboard::Key key);
+
+    /**
+     * @brief Démarre le jeu.
+     */
+    void start();
+
 
 private:
+    /**
+     * @brief Indique si le jeu a commencé.
+     */
+    bool started = false;
     /**
      * @brief La carte du jeu.
      */
