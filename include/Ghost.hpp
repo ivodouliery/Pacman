@@ -20,8 +20,12 @@ class Ghost : public Entity {
 public:
     Ghost(GhostType type);
     void setPosition(float x, float y) override;
+    static constexpr int eyesOriginY = 10*entitySize;
 
+    void update(float dt) override;
+    void draw(sf::RenderWindow& window) override;
 private:
     GhostType type;
     GhostMode mode;
+    sf::Sprite sprite_eyes;
 };
