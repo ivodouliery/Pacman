@@ -1,5 +1,5 @@
 #pragma once
-#include <SFML/Graphics.hpp>
+#include "Entity.hpp"
 #include <vector>
 
 enum class GhostType {
@@ -14,4 +14,14 @@ enum class GhostMode {
     SCATTER,    // Go to corners
     FRIGHTENED, // Vulnérable (super pac-gomme)
     DEAD        // Retourne à la base
+};
+
+class Ghost : public Entity {
+public:
+    Ghost(GhostType type);
+    void setPosition(float x, float y) override;
+
+private:
+    GhostType type;
+    GhostMode mode;
 };
