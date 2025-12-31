@@ -38,5 +38,14 @@ private:
     /**
      * @brief La carte du jeu.
      */
+    enum class GameState {
+        START,
+        PLAYING
+    };
+    GameState state = GameState::START;
+
+    /**
+     * @brief La carte du jeu.
+     */
     Map grid;
 };
