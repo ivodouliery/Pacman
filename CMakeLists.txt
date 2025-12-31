@@ -1,49 +1,63 @@
-cmake_minimum_required(VERSION 3.16)
-project(PacmanSolution LANGUAGES CXX)
+cmake_minimum_required(VERSION 3.12)
 
-set(CMAKE_CXX_STANDARD 20)
+project(Pacman VERSION 1.0.0 LANGUAGES CXX)
+
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# --- Configuration SFML 3.0 ---
-find_package(SFML 3 COMPONENTS Graphics Window System Audio REQUIRED)
+find_package(SFML 3.0 COMPONENTS Graphics Window System Audio REQUIRED)
 
-# --- Détection automatique des sources ---
-# On prend tous les .cpp dans src/ (Game.cpp, Map.cpp, Ghost.cpp, etc.)
-file(GLOB SRC_FILES "src/*.cpp")
+set(SOURCES
+    src/main.cpp
+    src/Game.cpp
+    src/Ghost.cpp
+    src/Map.cpp
+)
 
-# On retire main.cpp de la liste car il ne doit pas être dans la librairie partagée
-# (sinon on aurait deux fonctions main() lors des tests)
-list(REMOVE_ITEM SRC_FILES "${CMAKE_CURRENT_SOURCE_DIR}/src/main.cpp")
+set(HEADERS
+    include/Game.hpp
+    include/Ghost.hpp
+    include/Map.hpp
+)
 
-# --- Bibliothèque Core (Logique du jeu) ---
-add_library(PacmanCore OBJECT ${SRC_FILES})
 
-target_include_directories(PacmanCore PUBLIC include)
-target_link_libraries(PacmanCore PUBLIC SFML::Graphics SFML::Window SFML::System SFML::Audio)
+add_executable(${PROJECT_NAME} 
+    ${SOURCES} 
+    ${HEADERS} 
+    include/Entity.hpp src/Entity.cpp
+    include/Pacman.hpp src/Pacman.cpp
+)
 
-# --- Exécutable Principal (Jeu) ---
-add_executable(Pacman src/main.cpp)
-target_link_libraries(Pacman PRIVATE PacmanCore)
+target_include_directories(${PROJECT_NAME} PRIVATE include)
 
-# Copie des assets
-if(EXISTS "${CMAKE_SOURCE_DIR}/assets")
-    add_custom_command(TARGET Pacman POST_BUILD
-        COMMAND ${CMAKE_COMMAND} -E copy_directory
-        ${CMAKE_SOURCE_DIR}/assets
-        $<TARGET_FILE_DIR:Pacman>/assets
-    )
-endif()
+target_link_libraries(${PROJECT_NAME} PRIVATE 
+    SFML::Graphics 
+    SFML::Window 
+    SFML::System 
+    SFML::Audio
+)
 
-# --- Exécutable de Tests (Catch2) ---
+find_package(Catch2 3 REQUIRED)
 enable_testing()
 
-set(TEST_SOURCES tests/test.cpp)
-if(EXISTS "${CMAKE_SOURCE_DIR}/vendor/catch_amalgamated.cpp")
-    list(APPEND TEST_SOURCES "vendor/catch_amalgamated.cpp")
-endif()
+add_executable(PacmanTests 
+    tests/test.cpp
+    src/Game.cpp
+    src/Ghost.cpp
+    src/Map.cpp
+    src/Entity.cpp
+    src/Pacman.cpp
+)
 
-add_executable(PacmanTests ${TEST_SOURCES})
-target_include_directories(PacmanTests PRIVATE vendor)
-target_link_libraries(PacmanTests PRIVATE PacmanCore)
+target_link_libraries(PacmanTests PRIVATE 
+    Catch2::Catch2WithMain
+    SFML::Graphics 
+    SFML::Window 
+    SFML::System 
+    SFML::Audio
+)
 
-add_test(NAME RunTests COMMAND PacmanTests)
+target_include_directories(PacmanTests PRIVATE include)
+
+include(Catch)
+catch_discover_tests(PacmanTests)
