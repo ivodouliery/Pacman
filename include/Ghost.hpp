@@ -25,6 +25,9 @@ public:
     void setRotation(int direction);
 
     static constexpr int eyesOriginY = 10*entitySize;
+    
+    // AI State
+    sf::Vector2i lastGridPos;
 
 private:
     GhostType type;
