@@ -1,5 +1,7 @@
 #pragma once
 #include <SFML/Graphics.hpp>
+#include <SFML/Graphics/Text.hpp>
+#include <SFML/Graphics/Font.hpp>
 #include "Ghost.hpp"
 #include "Pacman.hpp"
 #include <vector>
@@ -130,4 +132,13 @@ private:
      */
     Ghost clyde;
     
+    // UI Elements
+    int m_score = 0;
+    int m_highScore = 0;
+    sf::Font m_font;
+    sf::Text m_lblScore;
+    sf::Text m_txtScore;
+    sf::Text m_lblHighScore;
+    sf::Text m_txtHighScore;
+    // End of UI elements
 };
