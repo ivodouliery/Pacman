@@ -40,11 +40,16 @@ public:
     void setDirection(sf::Vector2f direction);
     sf::Vector2f getDirection() const;
 
+    void setNextDirection(sf::Vector2f direction);
+    sf::Vector2f getNextDirection() const;
+
     bool canMove(const std::vector<std::string>& map, float x, float y);
+    void alignToGrid();
 
 protected:
     sf::Vector2f position;
     sf::Vector2f direction;
+    sf::Vector2f nextDirection;
 
     float speed;
     

@@ -21,8 +21,11 @@ void Pacman::update(float dt, const std::vector<std::string>& map) {
         currentFrame = (currentFrame + 1) % nbFrames;
         sprite_body.setTextureRect(sf::IntRect({currentFrame * entitySize, 0}, {entitySize, entitySize}));
     }
-    sprite_body.setPosition(position);
-    sprite_body.setOrigin({entitySize / 2, entitySize / 2});
+    // Logic position is top-left of cell. Sprite needs to be centered.
+    // Sprite origin is center (16,16). Cell is 16x16.
+    // Entity::update now handles the body sprite positioning!
+    
+    // We only need to handle rotation here.
     if(direction == sf::Vector2f{1.f, 0.f}) {
         sprite_body.setRotation(sf::degrees(0.0f));
     } else if(direction == sf::Vector2f{-1.f, 0.f}) {
@@ -35,7 +38,6 @@ void Pacman::update(float dt, const std::vector<std::string>& map) {
 }
 
 void Pacman::setPosition(float x, float y) {
-    position = {x + cellSize, y + cellSize / 2.0f};
-    sprite_body.setPosition(position);
+    Entity::setPosition(x, y);
 }
 

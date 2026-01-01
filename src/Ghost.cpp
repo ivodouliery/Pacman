@@ -38,7 +38,6 @@ Ghost::Ghost(GhostType type) : type(type), mode(GhostMode::SCATTER), sprite_eyes
 
 void Ghost::setPosition(float x, float y) {
     Entity::setPosition(x, y);
-    sprite_eyes.setPosition({x + 8.0f, y});
 }
 
 void Ghost::draw(sf::RenderWindow& window) {
@@ -67,7 +66,16 @@ void Ghost::update(float dt, const std::vector<std::string>& map) {
                 break;
         }
     }
-    
+
+    // Align body sprite
+    // Handled by Entity::update
+    // sprite_body.setPosition(position + sf::Vector2f(cellSize / 2.0f, cellSize / 2.0f));
+    // sprite_body.setOrigin({entitySize / 2.0f, entitySize / 2.0f});
+
+    // Align eyes sprite (centered on cell)
+    sf::Vector2f center = position + sf::Vector2f(cellSize / 2.0f, cellSize / 2.0f);
+    sprite_eyes.setPosition(center);
+    sprite_eyes.setOrigin({eyesSize / 2.0f, eyesSize / 2.0f});
 }
 
 void Ghost::setRotation(int direction) {
