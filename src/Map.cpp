@@ -121,7 +121,7 @@ Map::Map(): blinky(GhostType::BLINKY), pinky(GhostType::PINKY), inky(GhostType::
     // Use the "left" facing or "neutral" frame. 
     // Pacman.cpp uses {1*entitySize, 0} as start? Or {0,0}?
     // Let's use 1st frame: {0, 0, 16, 16}
-    m_lifeSprite.setTextureRect(sf::IntRect({0, 0}, {16, 16})); 
+    m_lifeSprite.setTextureRect(sf::IntRect({1*Entity::entitySize, 0}, {Entity::entitySize, Entity::entitySize})); 
 }
 
 void Map::draw(sf::RenderWindow& window) {
@@ -165,11 +165,11 @@ void Map::draw(sf::RenderWindow& window) {
     int lives = pacman.getLives();
     // Assuming icons at bottom left, e.g. (30, MAP_HEIGHT*16 + 10)
     // Or closer to standard position
-    float startX = 30.0f;
-    float startY = MAP_HEIGHT * Entity::cellSize + 10.0f;
+    float startX = 48.0f;
+    float startY = 592.0f;
     
     for (int i = 0; i < lives; ++i) {
-        m_lifeSprite.setPosition(sf::Vector2f(startX + i * 20.0f, startY));
+        m_lifeSprite.setPosition(sf::Vector2f(startX + i * Entity::entitySize, startY));
         window.draw(m_lifeSprite);
     }
 }
