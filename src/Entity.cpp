@@ -1,5 +1,7 @@
 #include "../include/Entity.hpp"
 
+#include <cmath>
+
 Entity::Entity()
     : position(0.f, 0.f), direction(0.f, 0.f), nextDirection(0.f, 0.f), speed(0.f), animationTimer(0.0f), currentFrame(0), nbFrames(4), sprite_body(texture) {
 }
@@ -17,9 +19,9 @@ sf::Vector2f Entity::getPosition() const {
 
 
 bool Entity::canMove(const std::vector<std::string>& map, float x, float y) {
-    // Calcul de la case de la grille
-    int gridX = static_cast<int>((x - 16) / cellSize);
-    int gridY = static_cast<int>((y - 112) / cellSize);
+    // Calcul de la case de la grille avec floor pour gérer les négatifs correctement
+    int gridX = static_cast<int>(std::floor((x - 16) / cellSize));
+    int gridY = static_cast<int>(std::floor((y - 112) / cellSize));
 
     // Vérification des limites
     if (gridX < 0 || gridX >= 28 || gridY < 0 || gridY >= 30) {
@@ -77,14 +79,15 @@ void Entity::update(float dt, const std::vector<std::string>& map) {
         }
         
         // Check validity in that direction
-        float offset = cellSize / 2.0f;
-        float checkX = snapPos.x;
-        float checkY = snapPos.y;
+        // We must check the ADJACENT tile, not the current one.
+        // Current logic: snapPos is Top-Left of current cell.
+        // Center is snapPos + 8.
+        // Adjacent center is snapPos + 8 + 16 * dir.
+        float centerX = snapPos.x + cellSize / 2.0f;
+        float centerY = snapPos.y + cellSize / 2.0f;
         
-        if (nextDirection.x > 0) checkX += offset + 1.0f;
-        else if (nextDirection.x < 0) checkX -= offset - 1.0f;
-        if (nextDirection.y > 0) checkY += offset + 1.0f;
-        else if (nextDirection.y < 0) checkY -= offset - 1.0f;
+        float checkX = centerX + nextDirection.x * cellSize;
+        float checkY = centerY + nextDirection.y * cellSize;
 
         // Note: we also need to be reasonably close to the center to "snap" into the turn
         // otherwise we might snap from far away.
@@ -93,7 +96,8 @@ void Entity::update(float dt, const std::vector<std::string>& map) {
         if (std::abs(nextDirection.x) > 0) dist = std::abs(position.y - snapPos.y);
         else dist = std::abs(position.x - snapPos.x);
 
-        // Allow turn if valid AND we are close enough to center (e.g., < 4 pixels)
+        // Allow turn if valid AND we are close enough to center
+        // Relaxed tolerance to 4.0f to ensure turns are caught easily at high speed
         bool closeToCenter = dist < 4.0f;
 
         if (canMove(map, checkX, checkY) && closeToCenter) {

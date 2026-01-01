@@ -67,12 +67,6 @@ void Ghost::update(float dt, const std::vector<std::string>& map) {
         }
     }
 
-    // Align body sprite
-    // Handled by Entity::update
-    // sprite_body.setPosition(position + sf::Vector2f(cellSize / 2.0f, cellSize / 2.0f));
-    // sprite_body.setOrigin({entitySize / 2.0f, entitySize / 2.0f});
-
-    // Align eyes sprite (centered on cell)
     sf::Vector2f center = position + sf::Vector2f(cellSize / 2.0f, cellSize / 2.0f);
     sprite_eyes.setPosition(center);
     sprite_eyes.setOrigin({eyesSize / 2.0f, eyesSize / 2.0f});
