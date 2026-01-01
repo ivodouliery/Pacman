@@ -132,24 +132,18 @@ void Map::draw(sf::RenderWindow& window) {
                     superDotSprite.setPosition({posX, posY});
                     window.draw(superDotSprite);
                     break;
-                case 'B':
-                    blinky.draw(window);
-                    break;
-                case 'P':
-                    pinky.draw(window);
-                    break;
-                case 'I':
-                    inky.draw(window);
-                    break;
-                case 'C':
-                    clyde.draw(window);
-                    break;
-                case 'p':
-                    pacman.draw(window);
+                default:
                     break;
             }
         }
     }
+
+    // Draw Entities (Always on top of map elements)
+    pacman.draw(window);
+    blinky.draw(window);
+    pinky.draw(window);
+    inky.draw(window);
+    clyde.draw(window);
 
     // Draw UI
     window.draw(m_lblScore);
