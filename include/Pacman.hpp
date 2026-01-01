@@ -13,5 +13,5 @@ public:
     void resetLives() { lives = 3; }
     
 private:
-    int lives = 3;
+    int lives = 2;
 };
