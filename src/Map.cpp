@@ -2,7 +2,7 @@
 #include <filesystem>
 #include <iostream>
 
-Map::Map(): blinky(GhostType::BLINKY), pinky(GhostType::PINKY), inky(GhostType::INKY), clyde(GhostType::CLYDE), pacman(), mapSprite(mapTexture), dotSprite(itemTexture), superDotSprite(itemTexture), m_font(), m_lblScore(m_font), m_txtScore(m_font), m_lblHighScore(m_font), m_txtHighScore(m_font) {
+Map::Map(): blinky(GhostType::BLINKY), pinky(GhostType::PINKY), inky(GhostType::INKY), clyde(GhostType::CLYDE), pacman(), mapSprite(mapTexture), dotSprite(itemTexture), superDotSprite(itemTexture), m_font(), m_lblScore(m_font), m_txtScore(m_font), m_lblHighScore(m_font), m_txtHighScore(m_font), m_lifeSprite(itemTexture) {
     mapGrid = {
         "############################", 
         "#............##............#", 
@@ -109,6 +109,19 @@ Map::Map(): blinky(GhostType::BLINKY), pinky(GhostType::PINKY), inky(GhostType::
     m_txtHighScore.setCharacterSize(25);
     m_txtHighScore.setFillColor(sf::Color::White);
     m_txtHighScore.setPosition(sf::Vector2f(270.f, 55.f));
+
+    // Life Sprite Init
+    static sf::Texture pacTexture;
+    if (pacTexture.getSize().x == 0) {
+        if (!pacTexture.loadFromFile("./assets/pacman.png")) { 
+             std::cerr << "Warning: Could not load assets/pacman.png for UI" << std::endl;
+        }
+    }
+    m_lifeSprite.setTexture(pacTexture);
+    // Use the "left" facing or "neutral" frame. 
+    // Pacman.cpp uses {1*entitySize, 0} as start? Or {0,0}?
+    // Let's use 1st frame: {0, 0, 16, 16}
+    m_lifeSprite.setTextureRect(sf::IntRect({0, 0}, {16, 16})); 
 }
 
 void Map::draw(sf::RenderWindow& window) {
@@ -147,6 +160,18 @@ void Map::draw(sf::RenderWindow& window) {
     window.draw(m_txtScore);
     window.draw(m_lblHighScore);
     window.draw(m_txtHighScore);
+
+    // Draw Lives
+    int lives = pacman.getLives();
+    // Assuming icons at bottom left, e.g. (30, MAP_HEIGHT*16 + 10)
+    // Or closer to standard position
+    float startX = 30.0f;
+    float startY = MAP_HEIGHT * Entity::cellSize + 10.0f;
+    
+    for (int i = 0; i < lives; ++i) {
+        m_lifeSprite.setPosition(sf::Vector2f(startX + i * 20.0f, startY));
+        window.draw(m_lifeSprite);
+    }
 }
 
 void Map::update() {
