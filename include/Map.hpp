@@ -76,6 +76,11 @@ public:
      */
     void start();
 
+    /**
+     * @brief Réinitialise les positions des entités.
+     */
+    void resetPositions();
+
 
 private:
     /**
