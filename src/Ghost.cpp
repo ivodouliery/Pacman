@@ -46,8 +46,8 @@ void Ghost::draw(sf::RenderWindow& window) {
     window.draw(sprite_eyes);
 }
 
-void Ghost::update(float dt) {
-    Entity::update(dt);
+void Ghost::update(float dt, const std::vector<std::string>& map) {
+    Entity::update(dt, map);
     animationTimer += dt;
     if(animationTimer >= animationSpeed) {
         animationTimer -= animationSpeed;

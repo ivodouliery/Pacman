@@ -13,8 +13,8 @@ void Pacman::draw(sf::RenderWindow& window) {
     window.draw(sprite_body);
 }
 
-void Pacman::update(float dt) {
-    Entity::update(dt);
+void Pacman::update(float dt, const std::vector<std::string>& map) {
+    Entity::update(dt, map);
     animationTimer += dt;
     if (animationTimer >= animationSpeed) {
         animationTimer -= animationSpeed;

@@ -32,13 +32,15 @@ public:
 
     virtual void draw(sf::RenderWindow& window) = 0;
 
-    virtual void update(float dt);
+    virtual void update(float dt, const std::vector<std::string>& map);
 
     void setSpeed(float speed);
     float getSpeed() const;
 
     void setDirection(sf::Vector2f direction);
     sf::Vector2f getDirection() const;
+
+    bool canMove(const std::vector<std::string>& map, float x, float y);
 
 protected:
     sf::Vector2f position;
