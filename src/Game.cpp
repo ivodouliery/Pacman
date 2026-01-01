@@ -28,6 +28,7 @@ void Game::processEvents() {
             if (state == GameState::START) {
                 state = GameState::PLAYING;
                 grid.start();
+                grid.handleInput(keyEvent->code);
             } else if (state == GameState::PLAYING) {
                 grid.handleInput(keyEvent->code);
             }
