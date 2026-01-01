@@ -21,8 +21,8 @@ Map::Map(): blinky(GhostType::BLINKY), pinky(GhostType::PINKY), inky(GhostType::
         "######.## ######## ##.######",
         "     #.## ######## ##.#     ",
         "     #.##          ##.#     ",
-        "     #.##### ## #####.#     ",
-        "######.##### ## #####.######", 
+        "     #.## ######## ##.#     ",
+        "######.## ######## ##.######", 
         "#............##............#",
         "#.####.#####.##.#####.####.#",
         "#.####.#####.##.#####.####.#",
@@ -133,16 +133,16 @@ void Map::update() {
 void Map::handleInput(sf::Keyboard::Key key) {
     switch (key) {
         case sf::Keyboard::Key::Up:
-            pacman.setDirection({0.f, -1.f});
+            pacman.setNextDirection({0.f, -1.f});
             break;
         case sf::Keyboard::Key::Down:
-            pacman.setDirection({0.f, 1.f});
+            pacman.setNextDirection({0.f, 1.f});
             break;
         case sf::Keyboard::Key::Left:
-            pacman.setDirection({-1.f, 0.f});
+            pacman.setNextDirection({-1.f, 0.f});
             break;
         case sf::Keyboard::Key::Right:
-            pacman.setDirection({1.f, 0.f});
+            pacman.setNextDirection({1.f, 0.f});
             break;
         default:
             break;
