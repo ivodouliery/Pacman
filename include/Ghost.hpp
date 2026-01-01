@@ -19,7 +19,7 @@ enum class GhostMode {
 class Ghost : public Entity {
 public:
     Ghost(GhostType type);
-    void update(float dt) override;
+    void update(float dt, const std::vector<std::string>& map) override;
     void draw(sf::RenderWindow& window) override;
     void setPosition(float x, float y) override;
     void setRotation(int direction);

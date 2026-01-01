@@ -21,8 +21,8 @@ Map::Map(): blinky(GhostType::BLINKY), pinky(GhostType::PINKY), inky(GhostType::
         "######.## ######## ##.######",
         "     #.## ######## ##.#     ",
         "     #.##          ##.#     ",
-        "     #.##### ## #####.#     ",
-        "######.##### ## #####.######", 
+        "     #.## ######## ##.#     ",
+        "######.## ######## ##.######", 
         "#............##............#",
         "#.####.#####.##.#####.####.#",
         "#.####.#####.##.#####.####.#",
@@ -123,26 +123,26 @@ void Map::draw(sf::RenderWindow& window) {
 
 void Map::update() {
     float dt = 1.0f / 60.0f; // Delta time fixe pour l'instant
-    pacman.update(dt);
-    blinky.update(dt);
-    pinky.update(dt);
-    inky.update(dt);
-    clyde.update(dt);
+    pacman.update(dt, mapGrid);
+    blinky.update(dt, mapGrid);
+    pinky.update(dt, mapGrid);
+    inky.update(dt, mapGrid);
+    clyde.update(dt, mapGrid);
 }
 
 void Map::handleInput(sf::Keyboard::Key key) {
     switch (key) {
         case sf::Keyboard::Key::Up:
-            pacman.setDirection({0.f, -1.f});
+            pacman.setNextDirection({0.f, -1.f});
             break;
         case sf::Keyboard::Key::Down:
-            pacman.setDirection({0.f, 1.f});
+            pacman.setNextDirection({0.f, 1.f});
             break;
         case sf::Keyboard::Key::Left:
-            pacman.setDirection({-1.f, 0.f});
+            pacman.setNextDirection({-1.f, 0.f});
             break;
         case sf::Keyboard::Key::Right:
-            pacman.setDirection({1.f, 0.f});
+            pacman.setNextDirection({1.f, 0.f});
             break;
         default:
             break;
