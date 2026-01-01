@@ -81,37 +81,34 @@ Map::Map(): blinky(GhostType::BLINKY), pinky(GhostType::PINKY), inky(GhostType::
         }
     }
 
-    // Initialize UI
-    if (!m_font.openFromFile("assets/emulogic.ttf")) {
-        // Try fallback
-        if (!m_font.openFromFile("assets/font.ttf")) {
-             std::cerr << "Warning: No font found (assets/emulogic.ttf or assets/font.ttf)" << std::endl;
-        }
+    if (!m_font.openFromFile("assets/font.ttf")) {
+        std::cerr << "Warning: No font found (assets/font.ttf)" << std::endl;
     }
+    
 
     m_lblScore.setFont(m_font);
     m_lblScore.setString("Your Score");
-    m_lblScore.setCharacterSize(22);
+    m_lblScore.setCharacterSize(25); // Slightly smaller to match target look better? Or keep 22. User set 22.
     m_lblScore.setFillColor(sf::Color::White);
-    m_lblScore.setPosition(sf::Vector2f(35.f, 30.f));
+    m_lblScore.setPosition(sf::Vector2f(30.f, 25.f));
 
     m_txtScore.setFont(m_font);
     m_txtScore.setString("0");
-    m_txtScore.setCharacterSize(22);
+    m_txtScore.setCharacterSize(25);
     m_txtScore.setFillColor(sf::Color::White);
-    m_txtScore.setPosition(sf::Vector2f(35.f, 50.f));
+    m_txtScore.setPosition(sf::Vector2f(30.f, 55.f));
 
     m_lblHighScore.setFont(m_font);
     m_lblHighScore.setString("High Score");
-    m_lblHighScore.setCharacterSize(22);
+    m_lblHighScore.setCharacterSize(25);
     m_lblHighScore.setFillColor(sf::Color::White);
-    m_lblHighScore.setPosition(sf::Vector2f(250.f, 30.f));
+    m_lblHighScore.setPosition(sf::Vector2f(270.f, 25.f));
 
     m_txtHighScore.setFont(m_font);
     m_txtHighScore.setString("0"); 
-    m_txtHighScore.setCharacterSize(22);
+    m_txtHighScore.setCharacterSize(25);
     m_txtHighScore.setFillColor(sf::Color::White);
-    m_txtHighScore.setPosition(sf::Vector2f(250.f, 50.f));
+    m_txtHighScore.setPosition(sf::Vector2f(270.f, 55.f));
 }
 
 void Map::draw(sf::RenderWindow& window) {
