@@ -140,5 +140,9 @@ private:
     sf::Text m_txtScore;
     sf::Text m_lblHighScore;
     sf::Text m_txtHighScore;
+    sf::RectangleShape m_headerMask;
+    
+    // Life UI
+    sf::Sprite m_lifeSprite;
     // End of UI elements
 };
