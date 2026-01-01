@@ -55,6 +55,14 @@ Map::Map(): blinky(GhostType::BLINKY), pinky(GhostType::PINKY), inky(GhostType::
     superDotSprite.setTextureRect(sf::IntRect({1 * itemSize, 1 * itemSize}, {itemSize, itemSize}));
 
     // Initialisation des positions
+    resetPositions();
+
+    if (!m_font.openFromFile("assets/font.ttf")) {
+        std::cerr << "Warning: No font found (assets/font.ttf)" << std::endl;
+    }
+}
+
+void Map::resetPositions() {
     for (int y = 0; y < MAP_HEIGHT; ++y) {
         for (int x = 0; x < MAP_WIDTH; ++x) {
             float posX = gridOriginX + x * Entity::cellSize;
@@ -64,6 +72,8 @@ Map::Map(): blinky(GhostType::BLINKY), pinky(GhostType::PINKY), inky(GhostType::
             switch(cell) {
                 case 'p':
                     pacman.setPosition(posX, posY);
+                    pacman.setDirection({0.f, 0.f});
+                    pacman.setNextDirection({0.f, 0.f});
                     break;
                 case 'B':
                     blinky.setPosition(posX, posY);
@@ -79,10 +89,6 @@ Map::Map(): blinky(GhostType::BLINKY), pinky(GhostType::PINKY), inky(GhostType::
                     break;
             }
         }
-    }
-
-    if (!m_font.openFromFile("assets/font.ttf")) {
-        std::cerr << "Warning: No font found (assets/font.ttf)" << std::endl;
     }
     
 
@@ -205,6 +211,41 @@ void Map::update() {
     pinky.update(dt, mapGrid);
     inky.update(dt, mapGrid);
     clyde.update(dt, mapGrid);
+
+    // Collision Detection
+    // Check collision with ghosts
+    // Simple distance check (e.g. < 10 pixels seems generous enough for hit)
+    std::vector<Ghost*> ghosts = {&blinky, &pinky, &inky, &clyde};
+    sf::Vector2f pacPos = pacman.getPosition();
+    // Center point
+    sf::Vector2f pacCenter = pacPos + sf::Vector2f(8.f, 8.f);
+
+    for (auto* ghost : ghosts) {
+        sf::Vector2f ghostPos = ghost->getPosition();
+        sf::Vector2f ghostCenter = ghostPos + sf::Vector2f(8.f, 8.f);
+        
+        float dx = pacCenter.x - ghostCenter.x;
+        float dy = pacCenter.y - ghostCenter.y;
+        float distSq = dx*dx + dy*dy;
+        
+        // Threshold: 8 pixels radius sum? 16*16 = 256. 
+        // Let's go strict: 10*10 = 100
+        if (distSq < 100.0f) {
+            // Collision!
+            // TODO: Check for Frightened Mode
+            if (true) { // Normal mode
+                 pacman.removeLife();
+                 if (pacman.getLives() >= 0) {
+                     resetPositions();
+                     // Maybe reset game state or pause?
+                 } else {
+                     // Game Over logic (not requested yet, but stop game?)
+                     started = false; 
+                     // Or screen change
+                 }
+            }
+        }
+    }
 
 }
 
