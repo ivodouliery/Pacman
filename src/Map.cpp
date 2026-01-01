@@ -63,6 +63,7 @@ Map::Map(): blinky(GhostType::BLINKY), pinky(GhostType::PINKY), inky(GhostType::
 }
 
 void Map::resetPositions() {
+    m_ghostsActive = false;
     for (int y = 0; y < MAP_HEIGHT; ++y) {
         for (int x = 0; x < MAP_WIDTH; ++x) {
             float posX = gridOriginX + x * Entity::cellSize;
@@ -207,10 +208,20 @@ void Map::update() {
 
     float dt = 1.0f / 60.0f; // Delta time fixe pour l'instant
     pacman.update(dt, mapGrid);
-    blinky.update(dt, mapGrid);
-    pinky.update(dt, mapGrid);
-    inky.update(dt, mapGrid);
-    clyde.update(dt, mapGrid);
+
+    // Check if we should activate ghosts
+    if (!m_ghostsActive) {
+        if (pacman.getDirection() != sf::Vector2f(0.f, 0.f)) {
+            m_ghostsActive = true;
+        }
+    }
+
+    if (m_ghostsActive) {
+        blinky.update(dt, mapGrid);
+        pinky.update(dt, mapGrid);
+        inky.update(dt, mapGrid);
+        clyde.update(dt, mapGrid);
+    }
 
     // Collision Detection
     // Check collision with ghosts
