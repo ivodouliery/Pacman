@@ -141,7 +141,7 @@ void Map::resetPositions() {
     m_lblScore.setPosition(sf::Vector2f(30.f, 25.f));
 
     m_txtScore.setFont(m_font);
-    m_txtScore.setString("0");
+    m_txtScore.setString(std::to_string(m_score));
     m_txtScore.setCharacterSize(25);
     m_txtScore.setFillColor(sf::Color::White);
     m_txtScore.setPosition(sf::Vector2f(30.f, 55.f));
@@ -153,7 +153,7 @@ void Map::resetPositions() {
     m_lblHighScore.setPosition(sf::Vector2f(270.f, 25.f));
 
     m_txtHighScore.setFont(m_font);
-    m_txtHighScore.setString("0"); 
+    m_txtHighScore.setString(std::to_string(m_highScore)); 
     m_txtHighScore.setCharacterSize(25);
     m_txtHighScore.setFillColor(sf::Color::White);
     m_txtHighScore.setPosition(sf::Vector2f(270.f, 55.f));
@@ -167,10 +167,19 @@ void Map::resetPositions() {
     }
     m_lifeSprite.setTexture(pacTexture);
     m_lifeSprite.setTextureRect(sf::IntRect({1*Entity::entitySize, 0}, {Entity::entitySize, Entity::entitySize})); 
+
+    
 }
 
 void Map::draw(sf::RenderWindow& window) {
     window.draw(mapSprite);
+
+    // Draw UI (Always visible)
+    window.draw(m_lblScore);
+    window.draw(m_txtScore);
+    window.draw(m_lblHighScore);
+    window.draw(m_txtHighScore);
+
     if (!started) return;
     for (int y = 0; y < MAP_HEIGHT; ++y) {
         for (int x = 0; x < MAP_WIDTH; ++x) {
@@ -199,12 +208,6 @@ void Map::draw(sf::RenderWindow& window) {
     pinky.draw(window);
     inky.draw(window);
     clyde.draw(window);
-
-    // Draw UI
-    window.draw(m_lblScore);
-    window.draw(m_txtScore);
-    window.draw(m_lblHighScore);
-    window.draw(m_txtHighScore);
 
     // Draw Lives
     int lives = pacman.getLives();
