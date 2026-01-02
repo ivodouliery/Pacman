@@ -38,4 +38,5 @@ private:
     sf::Sprite sprite_eyes_up;
     sf::Sprite sprite_eyes_down;   
     sf::Sprite sprite_eyes_left_right;
+    sf::Sprite sprite_body_dead;
 };
