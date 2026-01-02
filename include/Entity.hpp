@@ -43,7 +43,7 @@ public:
     void setNextDirection(sf::Vector2f direction);
     sf::Vector2f getNextDirection() const;
 
-    bool canMove(const std::vector<std::string>& map, float x, float y);
+    virtual bool canMove(const std::vector<std::string>& map, float x, float y);
     void alignToGrid();
 
 protected:

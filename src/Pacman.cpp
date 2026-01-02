@@ -1,4 +1,5 @@
 #include "../include/Pacman.hpp"
+#include <cmath>
 
 Pacman::Pacman() {
     speed = 100.0f; // Default speed
@@ -36,5 +37,14 @@ void Pacman::update(float dt, const std::vector<std::string>& map) {
 
 void Pacman::setPosition(float x, float y) {
     Entity::setPosition(x, y);
+}
+
+bool Pacman::canMove(const std::vector<std::string>& map, float x, float y) {
+    if (!Entity::canMove(map, x, y)) return false;
+
+    int gridX = static_cast<int>(std::floor((x - 16) / cellSize));
+    int gridY = static_cast<int>(std::floor((y - 112) / cellSize));
+    
+    return map[gridY][gridX] != '-';
 }
 

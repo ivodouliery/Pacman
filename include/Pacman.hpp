@@ -7,6 +7,7 @@ public:
     void draw(sf::RenderWindow& window) override;
     void update(float dt, const std::vector<std::string>& map) override;
     void setPosition(float x, float y) override;
+    bool canMove(const std::vector<std::string>& map, float x, float y) override;
     
     void removeLife() { lives--; }
     int getLives() const { return lives; }
