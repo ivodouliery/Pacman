@@ -80,6 +80,11 @@ public:
      * @brief Réinitialise les positions des entités.
      */
     void resetPositions();
+    
+    /**
+     * @brief Resets the level (dots, positions) but keeps score/lives.
+     */
+    void resetLevel();
 
 
 private:
@@ -153,5 +158,6 @@ private:
     // Logic state
     bool m_ghostsActive = false;
     float m_frightenedTimer = 0.0f;
+    int m_remainingDots = 0;
     // End of UI elements
 };

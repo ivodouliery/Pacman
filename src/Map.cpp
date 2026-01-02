@@ -55,6 +55,13 @@ Map::Map(): blinky(GhostType::BLINKY), pinky(GhostType::PINKY), inky(GhostType::
     superDotSprite.setTextureRect(sf::IntRect({1 * itemSize, 1 * itemSize}, {itemSize, itemSize}));
 
     // Initialisation des positions
+    // Initialisation des positions & count dots
+    m_remainingDots = 0;
+    for (const auto& row : mapGrid) {
+        for (char c : row) {
+             if (c == '.' || c == 'o') m_remainingDots++;
+        }
+    }
     resetPositions();
 
     if (!m_font.openFromFile("assets/font.ttf")) {
@@ -229,16 +236,22 @@ void Map::update() {
             mapGrid[gridY][gridX] = ' ';
             m_score += 10;
             m_txtScore.setString(std::to_string(m_score));
+            m_remainingDots--;
         } else if (cell == 'o') {
             mapGrid[gridY][gridX] = ' ';
             m_score += 50;
             m_txtScore.setString(std::to_string(m_score));
+            m_remainingDots--;
             // Trigger frightened mode
             m_frightenedTimer = 10.0f; // 10 seconds of power
             blinky.setMode(GhostMode::FRIGHTENED);
             pinky.setMode(GhostMode::FRIGHTENED);
             inky.setMode(GhostMode::FRIGHTENED);
             clyde.setMode(GhostMode::FRIGHTENED);
+        }
+        
+        if (m_remainingDots <= 0) {
+            resetLevel();
         }
     }
 
@@ -338,3 +351,56 @@ void Map::start() {
     mapSprite = sf::Sprite(mapTexture);
 }
 
+void Map::resetLevel() {
+    // Restore original map layout (dots and all)
+    mapGrid = {
+        "############################", 
+        "#............##............#", 
+        "#.####.#####.##.#####.####.#", 
+        "#o####.#####.##.#####.####o#", 
+        "#..........................#",
+        "#.####.##.########.##.####.#", 
+        "#.####.##.########.##.####.#",
+        "#......##....##....##......#", 
+        "######.##### ## #####.######", 
+        "     #.##### ## #####.#     ",
+        "     #.##    B     ##.#     ",
+        "     #.## ###--### ##.#     ",
+        "######.## ###--### ##.######",
+        "      .   #I P C #   .      ",
+        "######.## ######## ##.######",
+        "     #.## ######## ##.#     ",
+        "     #.##          ##.#     ",
+        "     #.## ######## ##.#     ",
+        "######.## ######## ##.######", 
+        "#............##............#",
+        "#.####.#####.##.#####.####.#",
+        "#.####.#####.##.#####.####.#",
+        "#o..##.......p .......##..o#",
+        "###.##.##.########.##.##.###",
+        "###.##.##.########.##.##.###",
+        "#......##....##....##......#",
+        "#.##########.##.##########.#",
+        "#.##########.##.##########.#",
+        "#..........................#",
+        "############################"
+    };
+
+    m_remainingDots = 0;
+    for (const auto& row : mapGrid) {
+        for (char c : row) {
+             if (c == '.' || c == 'o') m_remainingDots++;
+        }
+    }
+    
+    // Reset entities
+    resetPositions();
+    
+    // Reset ghosts behavior if needed (e.g. they might be frightened)
+    blinky.setMode(GhostMode::CHASE);
+    pinky.setMode(GhostMode::CHASE);
+    inky.setMode(GhostMode::CHASE);
+    clyde.setMode(GhostMode::CHASE);
+    m_frightenedTimer = 0.0f;
+    m_ghostsActive = false; // Reset ghosts wait for pacman move
+}
