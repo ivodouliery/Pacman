@@ -1,0 +1,27 @@
+var class_entity =
+[
+    [ "Entity", "class_entity.html#a980f368aa07ce358583982821533a54a", null ],
+    [ "~Entity", "class_entity.html#ac479d009ddde62dfb378ca0a70d81307", null ],
+    [ "alignToGrid", "class_entity.html#a4ad38d09d2481d77fb300dd1c7da5bc4", null ],
+    [ "canMove", "class_entity.html#ab178b1e6ba538fd44f6cf8c2699ad8d9", null ],
+    [ "draw", "class_entity.html#adf9715beac862471e5af417605e1241d", null ],
+    [ "getDirection", "class_entity.html#a294c4c3ba64ece9c2a03fa8309e111c8", null ],
+    [ "getNextDirection", "class_entity.html#aad393ed46cb85db00d0ff473246afd73", null ],
+    [ "getPosition", "class_entity.html#a11d7f8fde1e714c76a20b69793fa157c", null ],
+    [ "getSpeed", "class_entity.html#ad577b2c5aeea6d34d6c4e3c28b3cfc47", null ],
+    [ "setDirection", "class_entity.html#af4351fdbb6519813ceaa2f60899af932", null ],
+    [ "setNextDirection", "class_entity.html#ab8ef5dd5c533428b03a95dba77a1d0ab", null ],
+    [ "setPosition", "class_entity.html#a93306ecdce9446da37560f5f2b5307c0", null ],
+    [ "setSpeed", "class_entity.html#a389ca5283af8c88edfd4c5d3cc67ecf7", null ],
+    [ "update", "class_entity.html#a484d8593928d4c4ad7f28d45ae4ac75b", null ],
+    [ "animationTimer", "class_entity.html#aad1dd7c59281ed552e7ca57f6e701cc6", null ],
+    [ "currentFrame", "class_entity.html#a1c826bef4907b26da47fb618726a39c9", null ],
+    [ "direction", "class_entity.html#a0d5a432f448230f9f04cea3597ecd39e", null ],
+    [ "nbFrames", "class_entity.html#adbe193127b9f38b7498a8f3f7c1f6440", null ],
+    [ "nextDirection", "class_entity.html#af45b89d52fa753fe3134d0eed2564d33", null ],
+    [ "position", "class_entity.html#afc349ec89c2bffef70bf6a1d95603154", null ],
+    [ "speed", "class_entity.html#a1de3d8d9ab8088f61e6726069b26fa60", null ],
+    [ "sprite_body", "class_entity.html#ae986d50a98c74603d7aff5d98dd1c419", null ],
+    [ "texture", "class_entity.html#ad64dd6d282432a68475f30f7c7bbdc88", null ],
+    [ "textureRect", "class_entity.html#a153a342a808a8ac6f3c0bd13596f7c4a", null ]
+];

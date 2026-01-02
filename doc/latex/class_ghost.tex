@@ -1,0 +1,260 @@
+\doxysection{Ghost Class Reference}
+\hypertarget{class_ghost}{}\label{class_ghost}\index{Ghost@{Ghost}}
+
+
+Classe représentant un fantôme ennemi.  
+
+
+
+
+{\ttfamily \#include $<$Ghost.\+hpp$>$}
+
+Inheritance diagram for Ghost\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_ghost}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_ghost_a4864553d167e76985d36ec71c448b9ed}{Ghost}} (\mbox{\hyperlink{_ghost_8hpp_a19c48855930abe71014f6f21514b3925}{Ghost\+Type}} type)
+\begin{DoxyCompactList}\small\item\em Constructeur de \doxylink{class_ghost}{Ghost}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ghost_a03f280329a77e8fdbeb64720e8c43e79}{update}} (float dt, const std\+::vector$<$ std\+::string $>$ \&map, sf\+::\+Vector2f pacman\+Pos)
+\begin{DoxyCompactList}\small\item\em Met à jour l\textquotesingle{}IA et le mouvement du fantôme. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ghost_ad441391508442f231445efd4b6557069}{draw}} (sf\+::\+Render\+Window \&window) override
+\begin{DoxyCompactList}\small\item\em Dessine le fantôme sur la fenêtre. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ghost_a5de4fb0b81df9109af6fc711464d66c3}{set\+Position}} (float x, float y) override
+\begin{DoxyCompactList}\small\item\em Définit la position du fantôme. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ghost_a072a8bdb03554b34f12124a58c025adb}{set\+Rotation}} (int \mbox{\hyperlink{class_entity_a0d5a432f448230f9f04cea3597ecd39e}{direction}})
+\begin{DoxyCompactList}\small\item\em Oriente le regard du fantôme. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_ghost_a37af899046bcf6c905bffe70289379d4}{set\+Mode}} (\mbox{\hyperlink{_ghost_8hpp_ac1c5b6f654cc52ab515d251ff988f753}{Ghost\+Mode}} m)
+\begin{DoxyCompactList}\small\item\em Change le mode comportemental du fantôme. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_ghost_8hpp_ac1c5b6f654cc52ab515d251ff988f753}{Ghost\+Mode}} \mbox{\hyperlink{class_ghost_ab795187572d16c031c2747616f54d248}{get\+Mode}} () const
+\begin{DoxyCompactList}\small\item\em Récupère le mode actuel du fantôme. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_entity}{Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_entity_a980f368aa07ce358583982821533a54a}{Entity}} ()
+\begin{DoxyCompactList}\small\item\em Constructeur par défaut. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Entity} ()=default
+\begin{DoxyCompactList}\small\item\em Destructeur virtuel par défaut. \end{DoxyCompactList}\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_entity_a11d7f8fde1e714c76a20b69793fa157c}{get\+Position}} () const
+\begin{DoxyCompactList}\small\item\em Récupère la position actuelle de l\textquotesingle{}entité. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_entity_a484d8593928d4c4ad7f28d45ae4ac75b}{update}} (float dt, const std\+::vector$<$ std\+::string $>$ \&map)
+\begin{DoxyCompactList}\small\item\em Met à jour l\textquotesingle{}état de l\textquotesingle{}entité. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_a389ca5283af8c88edfd4c5d3cc67ecf7}{set\+Speed}} (float \mbox{\hyperlink{class_entity_a1de3d8d9ab8088f61e6726069b26fa60}{speed}})
+\begin{DoxyCompactList}\small\item\em Définit la vitesse de déplacement. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_entity_ad577b2c5aeea6d34d6c4e3c28b3cfc47}{get\+Speed}} () const
+\begin{DoxyCompactList}\small\item\em Récupère la vitesse actuelle. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_af4351fdbb6519813ceaa2f60899af932}{set\+Direction}} (sf\+::\+Vector2f \mbox{\hyperlink{class_entity_a0d5a432f448230f9f04cea3597ecd39e}{direction}})
+\begin{DoxyCompactList}\small\item\em Définit la direction actuelle du mouvement. \end{DoxyCompactList}\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_entity_a294c4c3ba64ece9c2a03fa8309e111c8}{get\+Direction}} () const
+\begin{DoxyCompactList}\small\item\em Récupère la direction actuelle. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_ab8ef5dd5c533428b03a95dba77a1d0ab}{set\+Next\+Direction}} (sf\+::\+Vector2f \mbox{\hyperlink{class_entity_a0d5a432f448230f9f04cea3597ecd39e}{direction}})
+\begin{DoxyCompactList}\small\item\em Définit la prochaine direction souhaitée (buffer input). \end{DoxyCompactList}\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_entity_aad393ed46cb85db00d0ff473246afd73}{get\+Next\+Direction}} () const
+\begin{DoxyCompactList}\small\item\em Récupère la prochaine direction souhaitée. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_entity_ab178b1e6ba538fd44f6cf8c2699ad8d9}{can\+Move}} (const std\+::vector$<$ std\+::string $>$ \&map, float x, float y)
+\begin{DoxyCompactList}\small\item\em Vérifie si un mouvement est possible vers une position donnée. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_a4ad38d09d2481d77fb300dd1c7da5bc4}{align\+To\+Grid}} ()
+\begin{DoxyCompactList}\small\item\em Aligne la position de l\textquotesingle{}entité sur la grille. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_ghost_a19d3792ec591051cbfa82b575318bb30}\label{class_ghost_a19d3792ec591051cbfa82b575318bb30} 
+sf\+::\+Vector2i {\bfseries last\+Grid\+Pos}
+\begin{DoxyCompactList}\small\item\em Dernière position grille visitée (pour éviter les demi-\/tours immédiats). \end{DoxyCompactList}\item 
+\Hypertarget{class_ghost_a2aec5bc8664e5281e540db3a44d37922}\label{class_ghost_a2aec5bc8664e5281e540db3a44d37922} 
+float {\bfseries strategy\+Timer} = 0.\+0f
+\begin{DoxyCompactList}\small\item\em Timer pour gérer l\textquotesingle{}alternance des stratégies (Chase/\+Scatter). \end{DoxyCompactList}\item 
+\Hypertarget{class_ghost_a5e064df5bf825be47649a389b39b2798}\label{class_ghost_a5e064df5bf825be47649a389b39b2798} 
+bool {\bfseries is\+Chasing} = true
+\begin{DoxyCompactList}\small\item\em Indique si le fantôme est en mode poursuite (true) ou dispersion (false). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_ghost_aab87656929905e560c20f67b52fde2b5}\label{class_ghost_aab87656929905e560c20f67b52fde2b5} 
+static constexpr int {\bfseries eyes\+OriginY} = 10\texorpdfstring{$\ast$}{*}\mbox{\hyperlink{class_entity_a3ae73f0ab9972b909c86c7950a1dc86e}{entity\+Size}}
+\begin{DoxyCompactList}\small\item\em Position Y dans la texture pour les yeux. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{class_entity}{Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr int {\bfseries entity\+Size} = 32
+\begin{DoxyCompactList}\small\item\em Taille d\textquotesingle{}une entité dans la texture (32x32 pixels). \end{DoxyCompactList}\item 
+static constexpr float {\bfseries cell\+Size} = 16.\+0f
+\begin{DoxyCompactList}\small\item\em Taille d\textquotesingle{}une case de la grille (16x16 pixels). \end{DoxyCompactList}\item 
+static constexpr int {\bfseries eyes\+Size} = 16
+\begin{DoxyCompactList}\small\item\em Taille des yeux des fantômes (16x16 pixels). \end{DoxyCompactList}\item 
+static constexpr float {\bfseries animation\+Speed} = 0.\+1f
+\begin{DoxyCompactList}\small\item\em Durée d\textquotesingle{}affichage de chaque frame d\textquotesingle{}animation (en secondes). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_entity}{Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Vector2f {\bfseries position}
+\begin{DoxyCompactList}\small\item\em Position actuelle de l\textquotesingle{}entité (coin haut-\/gauche). \end{DoxyCompactList}\item 
+sf\+::\+Vector2f {\bfseries direction}
+\begin{DoxyCompactList}\small\item\em Direction actuelle du mouvement. \end{DoxyCompactList}\item 
+sf\+::\+Vector2f {\bfseries next\+Direction}
+\begin{DoxyCompactList}\small\item\em Prochaine direction demandée par l\textquotesingle{}utilisateur ou l\textquotesingle{}IA. \end{DoxyCompactList}\item 
+float {\bfseries speed}
+\begin{DoxyCompactList}\small\item\em Vitesse de déplacement en pixels/seconde. \end{DoxyCompactList}\item 
+int {\bfseries current\+Frame}
+\begin{DoxyCompactList}\small\item\em Index de la frame d\textquotesingle{}animation actuelle. \end{DoxyCompactList}\item 
+float {\bfseries animation\+Timer}
+\begin{DoxyCompactList}\small\item\em Timer accumulant le temps pour gérer le changement de frame. \end{DoxyCompactList}\item 
+int {\bfseries nb\+Frames}
+\begin{DoxyCompactList}\small\item\em Nombre total de frames dans l\textquotesingle{}animation. \end{DoxyCompactList}\item 
+sf\+::\+Texture {\bfseries texture}
+\begin{DoxyCompactList}\small\item\em Texture partagée ou spécifique de l\textquotesingle{}entité. \end{DoxyCompactList}\item 
+sf\+::\+Sprite {\bfseries sprite\+\_\+body}
+\begin{DoxyCompactList}\small\item\em Sprite principal représentant le corps de l\textquotesingle{}entité. \end{DoxyCompactList}\item 
+sf\+::\+Int\+Rect {\bfseries texture\+Rect}
+\begin{DoxyCompactList}\small\item\em Rectangle de texture définissant la zone à afficher. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe représentant un fantôme ennemi. 
+
+Gère l\textquotesingle{}intelligence artificielle, les changements d\textquotesingle{}état (Chasse, Fuite, Mort) et l\textquotesingle{}affichage des différentes parties du sprite (corps, yeux). 
+
+\label{doc-constructors}
+\Hypertarget{class_ghost_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_ghost_a4864553d167e76985d36ec71c448b9ed}\index{Ghost@{Ghost}!Ghost@{Ghost}}
+\index{Ghost@{Ghost}!Ghost@{Ghost}}
+\doxysubsubsection{\texorpdfstring{Ghost()}{Ghost()}}
+{\footnotesize\ttfamily \label{class_ghost_a4864553d167e76985d36ec71c448b9ed} 
+Ghost\+::\+Ghost (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_ghost_8hpp_a19c48855930abe71014f6f21514b3925}{Ghost\+Type}}}]{type}{}\end{DoxyParamCaption})}
+
+
+
+Constructeur de \doxylink{class_ghost}{Ghost}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & Le type de fantôme (Blinky, Pinky, Inky, Clyde) déterminant son apparence et son IA. \\
+\hline
+\end{DoxyParams}
+
+
+\label{doc-func-members}
+\Hypertarget{class_ghost_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_ghost_ad441391508442f231445efd4b6557069}\index{Ghost@{Ghost}!draw@{draw}}
+\index{draw@{draw}!Ghost@{Ghost}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily \label{class_ghost_ad441391508442f231445efd4b6557069} 
+void Ghost\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Dessine le fantôme sur la fenêtre. 
+
+Affiche le corps (ou les yeux seuls si mort) et gère l\textquotesingle{}animation.
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & La fenêtre de rendu SFML. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_entity_adf9715beac862471e5af417605e1241d}{Entity}}.
+
+\Hypertarget{class_ghost_ab795187572d16c031c2747616f54d248}\index{Ghost@{Ghost}!getMode@{getMode}}
+\index{getMode@{getMode}!Ghost@{Ghost}}
+\doxysubsubsection{\texorpdfstring{getMode()}{getMode()}}
+{\footnotesize\ttfamily \label{class_ghost_ab795187572d16c031c2747616f54d248} 
+\mbox{\hyperlink{_ghost_8hpp_ac1c5b6f654cc52ab515d251ff988f753}{Ghost\+Mode}} Ghost\+::get\+Mode (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Récupère le mode actuel du fantôme. 
+
+\begin{DoxyReturn}{Returns}
+Le mode actuel. 
+\end{DoxyReturn}
+\Hypertarget{class_ghost_a37af899046bcf6c905bffe70289379d4}\index{Ghost@{Ghost}!setMode@{setMode}}
+\index{setMode@{setMode}!Ghost@{Ghost}}
+\doxysubsubsection{\texorpdfstring{setMode()}{setMode()}}
+{\footnotesize\ttfamily \label{class_ghost_a37af899046bcf6c905bffe70289379d4} 
+void Ghost\+::set\+Mode (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_ghost_8hpp_ac1c5b6f654cc52ab515d251ff988f753}{Ghost\+Mode}}}]{m}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Change le mode comportemental du fantôme. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m} & Le nouveau mode (CHASE, SCATTER, FRIGHTENED, DEAD). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_ghost_a5de4fb0b81df9109af6fc711464d66c3}\index{Ghost@{Ghost}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!Ghost@{Ghost}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
+{\footnotesize\ttfamily \label{class_ghost_a5de4fb0b81df9109af6fc711464d66c3} 
+void Ghost\+::set\+Position (\begin{DoxyParamCaption}\item[{float}]{x}{, }\item[{float}]{y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Définit la position du fantôme. 
+
+Met également à jour la position des sprites secondaires (yeux).
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Coordonnée X. \\
+\hline
+{\em y} & Coordonnée Y. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_entity_a93306ecdce9446da37560f5f2b5307c0}{Entity}}.
+
+\Hypertarget{class_ghost_a072a8bdb03554b34f12124a58c025adb}\index{Ghost@{Ghost}!setRotation@{setRotation}}
+\index{setRotation@{setRotation}!Ghost@{Ghost}}
+\doxysubsubsection{\texorpdfstring{setRotation()}{setRotation()}}
+{\footnotesize\ttfamily \label{class_ghost_a072a8bdb03554b34f12124a58c025adb} 
+void Ghost\+::set\+Rotation (\begin{DoxyParamCaption}\item[{int}]{direction}{}\end{DoxyParamCaption})}
+
+
+
+Oriente le regard du fantôme. 
+
+Change le sprite des yeux en fonction de la direction.
+
+
+\begin{DoxyParams}{Parameters}
+{\em direction} & Entier représentant la direction (0\+: Haut, 1\+: Bas, 2\+: Gauche, 3\+: Droite). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_ghost_a03f280329a77e8fdbeb64720e8c43e79}\index{Ghost@{Ghost}!update@{update}}
+\index{update@{update}!Ghost@{Ghost}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{class_ghost_a03f280329a77e8fdbeb64720e8c43e79} 
+void Ghost\+::update (\begin{DoxyParamCaption}\item[{float}]{dt}{, }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{map}{, }\item[{sf\+::\+Vector2f}]{pacman\+Pos}{}\end{DoxyParamCaption})}
+
+
+
+Met à jour l\textquotesingle{}IA et le mouvement du fantôme. 
+
+Calcule la prochaine direction en fonction du mode actuel et de la position de Pac-\/\+Man.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & Temps écoulé depuis la dernière frame. \\
+\hline
+{\em map} & La grille du niveau. \\
+\hline
+{\em pacman\+Pos} & La position actuelle de Pac-\/\+Man (cible). \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_ghost_8hpp}{Ghost.\+hpp}}\item 
+src/Ghost.\+cpp\end{DoxyCompactItemize}

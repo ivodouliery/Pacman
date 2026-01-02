@@ -1,0 +1,182 @@
+\doxysection{Map Class Reference}
+\hypertarget{class_map}{}\label{class_map}\index{Map@{Map}}
+
+
+Classe principale gérant la logique et l\textquotesingle{}affichage du niveau.  
+
+
+
+
+{\ttfamily \#include $<$Map.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_map_a0f5ad0fd4563497b4214038cbca8b582}{Map}} ()
+\begin{DoxyCompactList}\small\item\em Constructeur par défaut. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_ab9e768d51062f069be46203e4e06643e}{draw}} (sf\+::\+Render\+Window \&window)
+\begin{DoxyCompactList}\small\item\em Dessine l\textquotesingle{}ensemble du niveau sur la fenêtre. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_ab12643cc3a8d5e48f566c1abb571e9bf}{update}} ()
+\begin{DoxyCompactList}\small\item\em Met à jour la logique du niveau. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_a41c4626890f1137aa413a10e764ad489}{handle\+Input}} (sf\+::\+Keyboard\+::\+Key key)
+\begin{DoxyCompactList}\small\item\em Gère les entrées du joueur pour contrôler \doxylink{class_pacman}{Pacman}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_acb55c5346f6e0948635a72d7071004ef}{start}} ()
+\begin{DoxyCompactList}\small\item\em Démarre la partie. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_a26c8b2dd6c993289da5f4595498b3996}{reset\+Positions}} ()
+\begin{DoxyCompactList}\small\item\em Réinitialise les positions des entités (\doxylink{class_pacman}{Pacman} et Fantômes). \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_map_a932da0f2caabdf40f2a1225b3efce3a2}{reset\+Level}} ()
+\begin{DoxyCompactList}\small\item\em Réinitialise le niveau complet. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_map_a35bfaf7f02ce5c0f998b26cce7310616}{get\+Score}} () const
+\begin{DoxyCompactList}\small\item\em Récupère le score actuel du joueur. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_map_ac0394ba96dd4c736e2c4c289a24fbeaa}{get\+High\+Score}} () const
+\begin{DoxyCompactList}\small\item\em Récupère le meilleur score enregistré. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_map_aea6de25f559ae346aba3a674fd1ab7db}\label{class_map_aea6de25f559ae346aba3a674fd1ab7db} 
+static constexpr int {\bfseries item\+Size} = 16
+\begin{DoxyCompactList}\small\item\em Taille d\textquotesingle{}une case/item (16x16 pixels). \end{DoxyCompactList}\item 
+\Hypertarget{class_map_a486fa783f88b55da7bd0c9670f3c9236}\label{class_map_a486fa783f88b55da7bd0c9670f3c9236} 
+static constexpr float {\bfseries pacman\+Size} = 24.\+0f
+\begin{DoxyCompactList}\small\item\em Taille visuelle de Pac-\/\+Man (24.\+0f pixels). \end{DoxyCompactList}\item 
+\Hypertarget{class_map_ac3ba9233ac86cd70e2bd6b556edbdb88}\label{class_map_ac3ba9233ac86cd70e2bd6b556edbdb88} 
+static constexpr int {\bfseries MAP\+\_\+\+WIDTH} = 28
+\begin{DoxyCompactList}\small\item\em Largeur de la carte en nombre de cases. \end{DoxyCompactList}\item 
+\Hypertarget{class_map_aa72f1eb56e895ad10c94ba53e8058447}\label{class_map_aa72f1eb56e895ad10c94ba53e8058447} 
+static constexpr int {\bfseries MAP\+\_\+\+HEIGHT} = 30
+\begin{DoxyCompactList}\small\item\em Hauteur de la carte en nombre de cases. \end{DoxyCompactList}\item 
+\Hypertarget{class_map_a21ad605d428e3df9415d4b8be5b7ed49}\label{class_map_a21ad605d428e3df9415d4b8be5b7ed49} 
+static constexpr int {\bfseries grid\+OriginX} = 16
+\begin{DoxyCompactList}\small\item\em Position X de l\textquotesingle{}origine de la grille à l\textquotesingle{}écran. \end{DoxyCompactList}\item 
+\Hypertarget{class_map_a04ad0be1783ffe4d5c24d0cb42786ce2}\label{class_map_a04ad0be1783ffe4d5c24d0cb42786ce2} 
+static constexpr int {\bfseries grid\+OriginY} = 112
+\begin{DoxyCompactList}\small\item\em Position Y de l\textquotesingle{}origine de la grille à l\textquotesingle{}écran. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe principale gérant la logique et l\textquotesingle{}affichage du niveau. 
+
+La classe \doxylink{class_map}{Map} charge la configuration du niveau, gère les interactions entre \doxylink{class_pacman}{Pacman}, les fantômes et les éléments du décor (pac-\/gommes, murs). Elle gère également le score et l\textquotesingle{}affichage global du jeu. 
+
+\label{doc-constructors}
+\Hypertarget{class_map_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_map_a0f5ad0fd4563497b4214038cbca8b582}\index{Map@{Map}!Map@{Map}}
+\index{Map@{Map}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{Map()}{Map()}}
+{\footnotesize\ttfamily \label{class_map_a0f5ad0fd4563497b4214038cbca8b582} 
+Map\+::\+Map (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Constructeur par défaut. 
+
+Initialise la carte, charge les textures, configure les sprites et place les entités à leurs positions initiales. 
+
+\label{doc-func-members}
+\Hypertarget{class_map_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_map_ab9e768d51062f069be46203e4e06643e}\index{Map@{Map}!draw@{draw}}
+\index{draw@{draw}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily \label{class_map_ab9e768d51062f069be46203e4e06643e} 
+void Map\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window}{}\end{DoxyParamCaption})}
+
+
+
+Dessine l\textquotesingle{}ensemble du niveau sur la fenêtre. 
+
+Affiche la carte, les pac-\/gommes, les entités (\doxylink{class_pacman}{Pacman}, Fantômes) et l\textquotesingle{}interface utilisateur (Score, Vies).
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & La fenêtre de rendu SFML. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_map_ac0394ba96dd4c736e2c4c289a24fbeaa}\index{Map@{Map}!getHighScore@{getHighScore}}
+\index{getHighScore@{getHighScore}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{getHighScore()}{getHighScore()}}
+{\footnotesize\ttfamily \label{class_map_ac0394ba96dd4c736e2c4c289a24fbeaa} 
+int Map\+::get\+High\+Score (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Récupère le meilleur score enregistré. 
+
+\begin{DoxyReturn}{Returns}
+Le high score. 
+\end{DoxyReturn}
+\Hypertarget{class_map_a35bfaf7f02ce5c0f998b26cce7310616}\index{Map@{Map}!getScore@{getScore}}
+\index{getScore@{getScore}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{getScore()}{getScore()}}
+{\footnotesize\ttfamily \label{class_map_a35bfaf7f02ce5c0f998b26cce7310616} 
+int Map\+::get\+Score (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Récupère le score actuel du joueur. 
+
+\begin{DoxyReturn}{Returns}
+Le score courant. 
+\end{DoxyReturn}
+\Hypertarget{class_map_a41c4626890f1137aa413a10e764ad489}\index{Map@{Map}!handleInput@{handleInput}}
+\index{handleInput@{handleInput}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{handleInput()}{handleInput()}}
+{\footnotesize\ttfamily \label{class_map_a41c4626890f1137aa413a10e764ad489} 
+void Map\+::handle\+Input (\begin{DoxyParamCaption}\item[{sf\+::\+Keyboard\+::\+Key}]{key}{}\end{DoxyParamCaption})}
+
+
+
+Gère les entrées du joueur pour contrôler \doxylink{class_pacman}{Pacman}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em key} & La touche du clavier appuyée. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_map_a932da0f2caabdf40f2a1225b3efce3a2}\index{Map@{Map}!resetLevel@{resetLevel}}
+\index{resetLevel@{resetLevel}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{resetLevel()}{resetLevel()}}
+{\footnotesize\ttfamily \label{class_map_a932da0f2caabdf40f2a1225b3efce3a2} 
+void Map\+::reset\+Level (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Réinitialise le niveau complet. 
+
+Remet les pac-\/gommes, réinitialise les positions, mais conserve le score et les vies (sauf en cas de \doxylink{class_game}{Game} Over où tout est reset). \Hypertarget{class_map_a26c8b2dd6c993289da5f4595498b3996}\index{Map@{Map}!resetPositions@{resetPositions}}
+\index{resetPositions@{resetPositions}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{resetPositions()}{resetPositions()}}
+{\footnotesize\ttfamily \label{class_map_a26c8b2dd6c993289da5f4595498b3996} 
+void Map\+::reset\+Positions (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Réinitialise les positions des entités (\doxylink{class_pacman}{Pacman} et Fantômes). 
+
+Utilisé après la perte d\textquotesingle{}une vie ou au début d\textquotesingle{}un niveau. \Hypertarget{class_map_acb55c5346f6e0948635a72d7071004ef}\index{Map@{Map}!start@{start}}
+\index{start@{start}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{start()}{start()}}
+{\footnotesize\ttfamily \label{class_map_acb55c5346f6e0948635a72d7071004ef} 
+void Map\+::start (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Démarre la partie. 
+
+Passe l\textquotesingle{}état du jeu à "{}démarré"{} et change l\textquotesingle{}affichage si nécessaire. \Hypertarget{class_map_ab12643cc3a8d5e48f566c1abb571e9bf}\index{Map@{Map}!update@{update}}
+\index{update@{update}!Map@{Map}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{class_map_ab12643cc3a8d5e48f566c1abb571e9bf} 
+void Map\+::update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Met à jour la logique du niveau. 
+
+Gère les déplacements, les collisions, la collecte des pac-\/gommes, les modes des fantômes et les conditions de victoire/défaite. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_map_8hpp}{Map.\+hpp}}\item 
+src/Map.\+cpp\end{DoxyCompactItemize}

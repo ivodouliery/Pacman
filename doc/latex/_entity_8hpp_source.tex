@@ -1,0 +1,69 @@
+\doxysection{Entity.\+hpp}
+\hypertarget{_entity_8hpp_source}{}\label{_entity_8hpp_source}\index{include/Entity.hpp@{include/Entity.hpp}}
+\mbox{\hyperlink{_entity_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ <SFML/Graphics.hpp>}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_entity_a980f368aa07ce358583982821533a54a}{Entity}}\ \{}
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{class_entity_a980f368aa07ce358583982821533a54a}{Entity}}();}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_entity_a3ae73f0ab9972b909c86c7950a1dc86e}{entitySize}}\ =\ 32;}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_entity_a4d0f338426d19d53d4bcc9744debac87}{cellSize}}\ =\ 16.0f;}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_entity_aa7631a36543bc4eeae534fc7c3e63d96}{eyesSize}}\ =\ 16;}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_entity_a4e5e7336a0b9cb78aa74d30e3578b776}{animationSpeed}}\ =\ 0.1f;}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{class_entity_ac479d009ddde62dfb378ca0a70d81307}{\string~Entity}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_entity_a93306ecdce9446da37560f5f2b5307c0}{setPosition}}(\textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00065\ \ \ \ \ sf::Vector2f\ \mbox{\hyperlink{class_entity_a11d7f8fde1e714c76a20b69793fa157c}{getPosition}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_entity_adf9715beac862471e5af417605e1241d}{draw}}(sf::RenderWindow\&\ window)\ =\ 0;}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_entity_a484d8593928d4c4ad7f28d45ae4ac75b}{update}}(\textcolor{keywordtype}{float}\ dt,\ \textcolor{keyword}{const}\ std::vector<std::string>\&\ map);}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_entity_a389ca5283af8c88edfd4c5d3cc67ecf7}{setSpeed}}(\textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_entity_a1de3d8d9ab8088f61e6726069b26fa60}{speed}});}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_entity_ad577b2c5aeea6d34d6c4e3c28b3cfc47}{getSpeed}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_entity_af4351fdbb6519813ceaa2f60899af932}{setDirection}}(sf::Vector2f\ \mbox{\hyperlink{class_entity_a0d5a432f448230f9f04cea3597ecd39e}{direction}});}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00106\ \ \ \ \ sf::Vector2f\ \mbox{\hyperlink{class_entity_a294c4c3ba64ece9c2a03fa8309e111c8}{getDirection}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00107\ }
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_entity_ab8ef5dd5c533428b03a95dba77a1d0ab}{setNextDirection}}(sf::Vector2f\ \mbox{\hyperlink{class_entity_a0d5a432f448230f9f04cea3597ecd39e}{direction}});}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00118\ \ \ \ \ sf::Vector2f\ \mbox{\hyperlink{class_entity_aad393ed46cb85db00d0ff473246afd73}{getNextDirection}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00119\ }
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_entity_ab178b1e6ba538fd44f6cf8c2699ad8d9}{canMove}}(\textcolor{keyword}{const}\ std::vector<std::string>\&\ map,\ \textcolor{keywordtype}{float}\ x,\ \textcolor{keywordtype}{float}\ y);}
+\DoxyCodeLine{00129\ }
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_entity_a4ad38d09d2481d77fb300dd1c7da5bc4}{alignToGrid}}();}
+\DoxyCodeLine{00137\ }
+\DoxyCodeLine{00138\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00142\ \ \ \ \ sf::Vector2f\ \mbox{\hyperlink{class_entity_afc349ec89c2bffef70bf6a1d95603154}{position}};}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00147\ \ \ \ \ sf::Vector2f\ \mbox{\hyperlink{class_entity_a0d5a432f448230f9f04cea3597ecd39e}{direction}};}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00152\ \ \ \ \ sf::Vector2f\ \mbox{\hyperlink{class_entity_af45b89d52fa753fe3134d0eed2564d33}{nextDirection}};}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_entity_a1de3d8d9ab8088f61e6726069b26fa60}{speed}};}
+\DoxyCodeLine{00158\ \ \ \ \ }
+\DoxyCodeLine{00162\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_entity_a1c826bef4907b26da47fb618726a39c9}{currentFrame}};}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{keywordtype}{float}\ \mbox{\hyperlink{class_entity_aad1dd7c59281ed552e7ca57f6e701cc6}{animationTimer}};}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00172\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_entity_adbe193127b9f38b7498a8f3f7c1f6440}{nbFrames}};}
+\DoxyCodeLine{00173\ }
+\DoxyCodeLine{00177\ \ \ \ \ sf::Texture\ \mbox{\hyperlink{class_entity_ad64dd6d282432a68475f30f7c7bbdc88}{texture}};}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00182\ \ \ \ \ sf::Sprite\ \mbox{\hyperlink{class_entity_ae986d50a98c74603d7aff5d98dd1c419}{sprite\_body}};}
+\DoxyCodeLine{00183\ }
+\DoxyCodeLine{00187\ \ \ \ \ sf::IntRect\ \mbox{\hyperlink{class_entity_a153a342a808a8ac6f3c0bd13596f7c4a}{textureRect}};}
+\DoxyCodeLine{00188\ \};}
+
+\end{DoxyCode}

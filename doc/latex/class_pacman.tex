@@ -1,0 +1,231 @@
+\doxysection{Pacman Class Reference}
+\hypertarget{class_pacman}{}\label{class_pacman}\index{Pacman@{Pacman}}
+
+
+Classe représentant le personnage du joueur.  
+
+
+
+
+{\ttfamily \#include $<$Pacman.\+hpp$>$}
+
+Inheritance diagram for Pacman\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_pacman}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_pacman_a499408baab38f119ebd4f41e90fbe3fe}{Pacman}} ()
+\begin{DoxyCompactList}\small\item\em Constructeur de \doxylink{class_pacman}{Pacman}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pacman_ac3d4b745da71eea6ec69b1105fa81f13}{draw}} (sf\+::\+Render\+Window \&window) override
+\begin{DoxyCompactList}\small\item\em Dessine \doxylink{class_pacman}{Pacman} sur la fenêtre. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pacman_a3e7b8c7db8958bd87c1cd34081536864}{update}} (float dt, const std\+::vector$<$ std\+::string $>$ \&map) override
+\begin{DoxyCompactList}\small\item\em Met à jour l\textquotesingle{}état de \doxylink{class_pacman}{Pacman}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_pacman_a15730815e4962dec039d916426e7185e}{set\+Position}} (float x, float y) override
+\begin{DoxyCompactList}\small\item\em Définit la position de \doxylink{class_pacman}{Pacman}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_pacman_ac0d4fb3dd9b031c8d2475c4b9210de4a}{can\+Move}} (const std\+::vector$<$ std\+::string $>$ \&map, float x, float y) override
+\begin{DoxyCompactList}\small\item\em Vérifie si \doxylink{class_pacman}{Pacman} peut se déplacer vers une position. \end{DoxyCompactList}\item 
+\Hypertarget{class_pacman_aaf4bd44f1699782d0f6e665efc394f41}\label{class_pacman_aaf4bd44f1699782d0f6e665efc394f41} 
+void {\bfseries remove\+Life} ()
+\begin{DoxyCompactList}\small\item\em Décrémente le nombre de vies de \doxylink{class_pacman}{Pacman}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_pacman_aca6931bada7a4dfa7771c73923554d95}{get\+Lives}} () const
+\begin{DoxyCompactList}\small\item\em Récupère le nombre de vies restantes. \end{DoxyCompactList}\item 
+\Hypertarget{class_pacman_a6a130d8fe91d9cb155f43076c9eade00}\label{class_pacman_a6a130d8fe91d9cb155f43076c9eade00} 
+void {\bfseries reset\+Lives} ()
+\begin{DoxyCompactList}\small\item\em Réinitialise le nombre de vies à sa valeur par défaut (2). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_entity}{Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_entity_a980f368aa07ce358583982821533a54a}{Entity}} ()
+\begin{DoxyCompactList}\small\item\em Constructeur par défaut. \end{DoxyCompactList}\item 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Entity} ()=default
+\begin{DoxyCompactList}\small\item\em Destructeur virtuel par défaut. \end{DoxyCompactList}\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_entity_a11d7f8fde1e714c76a20b69793fa157c}{get\+Position}} () const
+\begin{DoxyCompactList}\small\item\em Récupère la position actuelle de l\textquotesingle{}entité. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_a389ca5283af8c88edfd4c5d3cc67ecf7}{set\+Speed}} (float \mbox{\hyperlink{class_entity_a1de3d8d9ab8088f61e6726069b26fa60}{speed}})
+\begin{DoxyCompactList}\small\item\em Définit la vitesse de déplacement. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_entity_ad577b2c5aeea6d34d6c4e3c28b3cfc47}{get\+Speed}} () const
+\begin{DoxyCompactList}\small\item\em Récupère la vitesse actuelle. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_af4351fdbb6519813ceaa2f60899af932}{set\+Direction}} (sf\+::\+Vector2f \mbox{\hyperlink{class_entity_a0d5a432f448230f9f04cea3597ecd39e}{direction}})
+\begin{DoxyCompactList}\small\item\em Définit la direction actuelle du mouvement. \end{DoxyCompactList}\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_entity_a294c4c3ba64ece9c2a03fa8309e111c8}{get\+Direction}} () const
+\begin{DoxyCompactList}\small\item\em Récupère la direction actuelle. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_ab8ef5dd5c533428b03a95dba77a1d0ab}{set\+Next\+Direction}} (sf\+::\+Vector2f \mbox{\hyperlink{class_entity_a0d5a432f448230f9f04cea3597ecd39e}{direction}})
+\begin{DoxyCompactList}\small\item\em Définit la prochaine direction souhaitée (buffer input). \end{DoxyCompactList}\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_entity_aad393ed46cb85db00d0ff473246afd73}{get\+Next\+Direction}} () const
+\begin{DoxyCompactList}\small\item\em Récupère la prochaine direction souhaitée. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_a4ad38d09d2481d77fb300dd1c7da5bc4}{align\+To\+Grid}} ()
+\begin{DoxyCompactList}\small\item\em Aligne la position de l\textquotesingle{}entité sur la grille. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{class_entity}{Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr int {\bfseries entity\+Size} = 32
+\begin{DoxyCompactList}\small\item\em Taille d\textquotesingle{}une entité dans la texture (32x32 pixels). \end{DoxyCompactList}\item 
+static constexpr float {\bfseries cell\+Size} = 16.\+0f
+\begin{DoxyCompactList}\small\item\em Taille d\textquotesingle{}une case de la grille (16x16 pixels). \end{DoxyCompactList}\item 
+static constexpr int {\bfseries eyes\+Size} = 16
+\begin{DoxyCompactList}\small\item\em Taille des yeux des fantômes (16x16 pixels). \end{DoxyCompactList}\item 
+static constexpr float {\bfseries animation\+Speed} = 0.\+1f
+\begin{DoxyCompactList}\small\item\em Durée d\textquotesingle{}affichage de chaque frame d\textquotesingle{}animation (en secondes). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_entity}{Entity}}}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Vector2f {\bfseries position}
+\begin{DoxyCompactList}\small\item\em Position actuelle de l\textquotesingle{}entité (coin haut-\/gauche). \end{DoxyCompactList}\item 
+sf\+::\+Vector2f {\bfseries direction}
+\begin{DoxyCompactList}\small\item\em Direction actuelle du mouvement. \end{DoxyCompactList}\item 
+sf\+::\+Vector2f {\bfseries next\+Direction}
+\begin{DoxyCompactList}\small\item\em Prochaine direction demandée par l\textquotesingle{}utilisateur ou l\textquotesingle{}IA. \end{DoxyCompactList}\item 
+float {\bfseries speed}
+\begin{DoxyCompactList}\small\item\em Vitesse de déplacement en pixels/seconde. \end{DoxyCompactList}\item 
+int {\bfseries current\+Frame}
+\begin{DoxyCompactList}\small\item\em Index de la frame d\textquotesingle{}animation actuelle. \end{DoxyCompactList}\item 
+float {\bfseries animation\+Timer}
+\begin{DoxyCompactList}\small\item\em Timer accumulant le temps pour gérer le changement de frame. \end{DoxyCompactList}\item 
+int {\bfseries nb\+Frames}
+\begin{DoxyCompactList}\small\item\em Nombre total de frames dans l\textquotesingle{}animation. \end{DoxyCompactList}\item 
+sf\+::\+Texture {\bfseries texture}
+\begin{DoxyCompactList}\small\item\em Texture partagée ou spécifique de l\textquotesingle{}entité. \end{DoxyCompactList}\item 
+sf\+::\+Sprite {\bfseries sprite\+\_\+body}
+\begin{DoxyCompactList}\small\item\em Sprite principal représentant le corps de l\textquotesingle{}entité. \end{DoxyCompactList}\item 
+sf\+::\+Int\+Rect {\bfseries texture\+Rect}
+\begin{DoxyCompactList}\small\item\em Rectangle de texture définissant la zone à afficher. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe représentant le personnage du joueur. 
+
+\doxylink{class_pacman}{Pacman} est une entité qui se déplace sur la grille, mange des pac-\/gommes et possède un nombre limité de vies. 
+
+\label{doc-constructors}
+\Hypertarget{class_pacman_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_pacman_a499408baab38f119ebd4f41e90fbe3fe}\index{Pacman@{Pacman}!Pacman@{Pacman}}
+\index{Pacman@{Pacman}!Pacman@{Pacman}}
+\doxysubsubsection{\texorpdfstring{Pacman()}{Pacman()}}
+{\footnotesize\ttfamily \label{class_pacman_a499408baab38f119ebd4f41e90fbe3fe} 
+Pacman\+::\+Pacman (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Constructeur de \doxylink{class_pacman}{Pacman}. 
+
+Initialise la texture, la vitesse et les paramètres d\textquotesingle{}animation de \doxylink{class_pacman}{Pacman}. 
+
+\label{doc-func-members}
+\Hypertarget{class_pacman_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_pacman_ac0d4fb3dd9b031c8d2475c4b9210de4a}\index{Pacman@{Pacman}!canMove@{canMove}}
+\index{canMove@{canMove}!Pacman@{Pacman}}
+\doxysubsubsection{\texorpdfstring{canMove()}{canMove()}}
+{\footnotesize\ttfamily \label{class_pacman_ac0d4fb3dd9b031c8d2475c4b9210de4a} 
+bool Pacman\+::can\+Move (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{map}{, }\item[{float}]{x}{, }\item[{float}]{y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Vérifie si \doxylink{class_pacman}{Pacman} peut se déplacer vers une position. 
+
+Surcharge la méthode de base pour interdire l\textquotesingle{}accès à la maison des fantômes (portes \textquotesingle{}-\/\textquotesingle{}).
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & La grille du niveau. \\
+\hline
+{\em x} & Coordonnée X cible. \\
+\hline
+{\em y} & Coordonnée Y cible. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si le mouvement est autorisé, false sinon. 
+\end{DoxyReturn}
+
+
+Reimplemented from \mbox{\hyperlink{class_entity_ab178b1e6ba538fd44f6cf8c2699ad8d9}{Entity}}.
+
+\Hypertarget{class_pacman_ac3d4b745da71eea6ec69b1105fa81f13}\index{Pacman@{Pacman}!draw@{draw}}
+\index{draw@{draw}!Pacman@{Pacman}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily \label{class_pacman_ac3d4b745da71eea6ec69b1105fa81f13} 
+void Pacman\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Dessine \doxylink{class_pacman}{Pacman} sur la fenêtre. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em window} & La fenêtre de rendu SFML. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{class_entity_adf9715beac862471e5af417605e1241d}{Entity}}.
+
+\Hypertarget{class_pacman_aca6931bada7a4dfa7771c73923554d95}\index{Pacman@{Pacman}!getLives@{getLives}}
+\index{getLives@{getLives}!Pacman@{Pacman}}
+\doxysubsubsection{\texorpdfstring{getLives()}{getLives()}}
+{\footnotesize\ttfamily \label{class_pacman_aca6931bada7a4dfa7771c73923554d95} 
+int Pacman\+::get\+Lives (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Récupère le nombre de vies restantes. 
+
+\begin{DoxyReturn}{Returns}
+Le nombre de vies. 
+\end{DoxyReturn}
+\Hypertarget{class_pacman_a15730815e4962dec039d916426e7185e}\index{Pacman@{Pacman}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!Pacman@{Pacman}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
+{\footnotesize\ttfamily \label{class_pacman_a15730815e4962dec039d916426e7185e} 
+void Pacman\+::set\+Position (\begin{DoxyParamCaption}\item[{float}]{x}{, }\item[{float}]{y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Définit la position de \doxylink{class_pacman}{Pacman}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Coordonnée X. \\
+\hline
+{\em y} & Coordonnée Y. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_entity_a93306ecdce9446da37560f5f2b5307c0}{Entity}}.
+
+\Hypertarget{class_pacman_a3e7b8c7db8958bd87c1cd34081536864}\index{Pacman@{Pacman}!update@{update}}
+\index{update@{update}!Pacman@{Pacman}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{class_pacman_a3e7b8c7db8958bd87c1cd34081536864} 
+void Pacman\+::update (\begin{DoxyParamCaption}\item[{float}]{dt}{, }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{map}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Met à jour l\textquotesingle{}état de \doxylink{class_pacman}{Pacman}. 
+
+Gère le mouvement, l\textquotesingle{}animation (bouche qui s\textquotesingle{}ouvre/ferme) et la rotation du sprite en fonction de la direction.
+
+
+\begin{DoxyParams}{Parameters}
+{\em dt} & Temps écoulé depuis la dernière frame. \\
+\hline
+{\em map} & La grille du niveau. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{class_entity_a484d8593928d4c4ad7f28d45ae4ac75b}{Entity}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_pacman_8hpp}{Pacman.\+hpp}}\item 
+src/Pacman.\+cpp\end{DoxyCompactItemize}

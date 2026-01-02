@@ -1,0 +1,322 @@
+\doxysection{Entity Class Reference}
+\hypertarget{class_entity}{}\label{class_entity}\index{Entity@{Entity}}
+
+
+Classe de base abstraite pour toutes les entités mouvantes du jeu.  
+
+
+
+
+{\ttfamily \#include $<$Entity.\+hpp$>$}
+
+Inheritance diagram for Entity\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_entity}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_entity_a980f368aa07ce358583982821533a54a}{Entity}} ()
+\begin{DoxyCompactList}\small\item\em Constructeur par défaut. \end{DoxyCompactList}\item 
+\Hypertarget{class_entity_ac479d009ddde62dfb378ca0a70d81307}\label{class_entity_ac479d009ddde62dfb378ca0a70d81307} 
+virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Entity} ()=default
+\begin{DoxyCompactList}\small\item\em Destructeur virtuel par défaut. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_entity_a93306ecdce9446da37560f5f2b5307c0}{set\+Position}} (float x, float y)
+\begin{DoxyCompactList}\small\item\em Définit la position de l\textquotesingle{}entité. \end{DoxyCompactList}\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_entity_a11d7f8fde1e714c76a20b69793fa157c}{get\+Position}} () const
+\begin{DoxyCompactList}\small\item\em Récupère la position actuelle de l\textquotesingle{}entité. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_entity_adf9715beac862471e5af417605e1241d}{draw}} (sf\+::\+Render\+Window \&window)=0
+\begin{DoxyCompactList}\small\item\em Méthode virtuelle pure pour dessiner l\textquotesingle{}entité. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_entity_a484d8593928d4c4ad7f28d45ae4ac75b}{update}} (float dt, const std\+::vector$<$ std\+::string $>$ \&map)
+\begin{DoxyCompactList}\small\item\em Met à jour l\textquotesingle{}état de l\textquotesingle{}entité. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_a389ca5283af8c88edfd4c5d3cc67ecf7}{set\+Speed}} (float \mbox{\hyperlink{class_entity_a1de3d8d9ab8088f61e6726069b26fa60}{speed}})
+\begin{DoxyCompactList}\small\item\em Définit la vitesse de déplacement. \end{DoxyCompactList}\item 
+float \mbox{\hyperlink{class_entity_ad577b2c5aeea6d34d6c4e3c28b3cfc47}{get\+Speed}} () const
+\begin{DoxyCompactList}\small\item\em Récupère la vitesse actuelle. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_af4351fdbb6519813ceaa2f60899af932}{set\+Direction}} (sf\+::\+Vector2f \mbox{\hyperlink{class_entity_a0d5a432f448230f9f04cea3597ecd39e}{direction}})
+\begin{DoxyCompactList}\small\item\em Définit la direction actuelle du mouvement. \end{DoxyCompactList}\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_entity_a294c4c3ba64ece9c2a03fa8309e111c8}{get\+Direction}} () const
+\begin{DoxyCompactList}\small\item\em Récupère la direction actuelle. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_ab8ef5dd5c533428b03a95dba77a1d0ab}{set\+Next\+Direction}} (sf\+::\+Vector2f \mbox{\hyperlink{class_entity_a0d5a432f448230f9f04cea3597ecd39e}{direction}})
+\begin{DoxyCompactList}\small\item\em Définit la prochaine direction souhaitée (buffer input). \end{DoxyCompactList}\item 
+sf\+::\+Vector2f \mbox{\hyperlink{class_entity_aad393ed46cb85db00d0ff473246afd73}{get\+Next\+Direction}} () const
+\begin{DoxyCompactList}\small\item\em Récupère la prochaine direction souhaitée. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{class_entity_ab178b1e6ba538fd44f6cf8c2699ad8d9}{can\+Move}} (const std\+::vector$<$ std\+::string $>$ \&map, float x, float y)
+\begin{DoxyCompactList}\small\item\em Vérifie si un mouvement est possible vers une position donnée. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_entity_a4ad38d09d2481d77fb300dd1c7da5bc4}{align\+To\+Grid}} ()
+\begin{DoxyCompactList}\small\item\em Aligne la position de l\textquotesingle{}entité sur la grille. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_entity_a3ae73f0ab9972b909c86c7950a1dc86e}\label{class_entity_a3ae73f0ab9972b909c86c7950a1dc86e} 
+static constexpr int {\bfseries entity\+Size} = 32
+\begin{DoxyCompactList}\small\item\em Taille d\textquotesingle{}une entité dans la texture (32x32 pixels). \end{DoxyCompactList}\item 
+\Hypertarget{class_entity_a4d0f338426d19d53d4bcc9744debac87}\label{class_entity_a4d0f338426d19d53d4bcc9744debac87} 
+static constexpr float {\bfseries cell\+Size} = 16.\+0f
+\begin{DoxyCompactList}\small\item\em Taille d\textquotesingle{}une case de la grille (16x16 pixels). \end{DoxyCompactList}\item 
+\Hypertarget{class_entity_aa7631a36543bc4eeae534fc7c3e63d96}\label{class_entity_aa7631a36543bc4eeae534fc7c3e63d96} 
+static constexpr int {\bfseries eyes\+Size} = 16
+\begin{DoxyCompactList}\small\item\em Taille des yeux des fantômes (16x16 pixels). \end{DoxyCompactList}\item 
+\Hypertarget{class_entity_a4e5e7336a0b9cb78aa74d30e3578b776}\label{class_entity_a4e5e7336a0b9cb78aa74d30e3578b776} 
+static constexpr float {\bfseries animation\+Speed} = 0.\+1f
+\begin{DoxyCompactList}\small\item\em Durée d\textquotesingle{}affichage de chaque frame d\textquotesingle{}animation (en secondes). \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_entity_afc349ec89c2bffef70bf6a1d95603154}\label{class_entity_afc349ec89c2bffef70bf6a1d95603154} 
+sf\+::\+Vector2f {\bfseries position}
+\begin{DoxyCompactList}\small\item\em Position actuelle de l\textquotesingle{}entité (coin haut-\/gauche). \end{DoxyCompactList}\item 
+\Hypertarget{class_entity_a0d5a432f448230f9f04cea3597ecd39e}\label{class_entity_a0d5a432f448230f9f04cea3597ecd39e} 
+sf\+::\+Vector2f {\bfseries direction}
+\begin{DoxyCompactList}\small\item\em Direction actuelle du mouvement. \end{DoxyCompactList}\item 
+\Hypertarget{class_entity_af45b89d52fa753fe3134d0eed2564d33}\label{class_entity_af45b89d52fa753fe3134d0eed2564d33} 
+sf\+::\+Vector2f {\bfseries next\+Direction}
+\begin{DoxyCompactList}\small\item\em Prochaine direction demandée par l\textquotesingle{}utilisateur ou l\textquotesingle{}IA. \end{DoxyCompactList}\item 
+\Hypertarget{class_entity_a1de3d8d9ab8088f61e6726069b26fa60}\label{class_entity_a1de3d8d9ab8088f61e6726069b26fa60} 
+float {\bfseries speed}
+\begin{DoxyCompactList}\small\item\em Vitesse de déplacement en pixels/seconde. \end{DoxyCompactList}\item 
+\Hypertarget{class_entity_a1c826bef4907b26da47fb618726a39c9}\label{class_entity_a1c826bef4907b26da47fb618726a39c9} 
+int {\bfseries current\+Frame}
+\begin{DoxyCompactList}\small\item\em Index de la frame d\textquotesingle{}animation actuelle. \end{DoxyCompactList}\item 
+\Hypertarget{class_entity_aad1dd7c59281ed552e7ca57f6e701cc6}\label{class_entity_aad1dd7c59281ed552e7ca57f6e701cc6} 
+float {\bfseries animation\+Timer}
+\begin{DoxyCompactList}\small\item\em Timer accumulant le temps pour gérer le changement de frame. \end{DoxyCompactList}\item 
+\Hypertarget{class_entity_adbe193127b9f38b7498a8f3f7c1f6440}\label{class_entity_adbe193127b9f38b7498a8f3f7c1f6440} 
+int {\bfseries nb\+Frames}
+\begin{DoxyCompactList}\small\item\em Nombre total de frames dans l\textquotesingle{}animation. \end{DoxyCompactList}\item 
+\Hypertarget{class_entity_ad64dd6d282432a68475f30f7c7bbdc88}\label{class_entity_ad64dd6d282432a68475f30f7c7bbdc88} 
+sf\+::\+Texture {\bfseries texture}
+\begin{DoxyCompactList}\small\item\em Texture partagée ou spécifique de l\textquotesingle{}entité. \end{DoxyCompactList}\item 
+\Hypertarget{class_entity_ae986d50a98c74603d7aff5d98dd1c419}\label{class_entity_ae986d50a98c74603d7aff5d98dd1c419} 
+sf\+::\+Sprite {\bfseries sprite\+\_\+body}
+\begin{DoxyCompactList}\small\item\em Sprite principal représentant le corps de l\textquotesingle{}entité. \end{DoxyCompactList}\item 
+\Hypertarget{class_entity_a153a342a808a8ac6f3c0bd13596f7c4a}\label{class_entity_a153a342a808a8ac6f3c0bd13596f7c4a} 
+sf\+::\+Int\+Rect {\bfseries texture\+Rect}
+\begin{DoxyCompactList}\small\item\em Rectangle de texture définissant la zone à afficher. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe de base abstraite pour toutes les entités mouvantes du jeu. 
+
+La classe \doxylink{class_entity}{Entity} fournit les fonctionnalités de base pour le mouvement, la gestion des collisions avec la grille, et l\textquotesingle{}affichage des sprites animés. 
+
+\label{doc-constructors}
+\Hypertarget{class_entity_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_entity_a980f368aa07ce358583982821533a54a}\index{Entity@{Entity}!Entity@{Entity}}
+\index{Entity@{Entity}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{Entity()}{Entity()}}
+{\footnotesize\ttfamily \label{class_entity_a980f368aa07ce358583982821533a54a} 
+Entity\+::\+Entity (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Constructeur par défaut. 
+
+Initialise les variables membres (position, vitesse, direction) à zéro. 
+
+\label{doc-func-members}
+\Hypertarget{class_entity_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_entity_a4ad38d09d2481d77fb300dd1c7da5bc4}\index{Entity@{Entity}!alignToGrid@{alignToGrid}}
+\index{alignToGrid@{alignToGrid}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{alignToGrid()}{alignToGrid()}}
+{\footnotesize\ttfamily \label{class_entity_a4ad38d09d2481d77fb300dd1c7da5bc4} 
+void Entity\+::align\+To\+Grid (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Aligne la position de l\textquotesingle{}entité sur la grille. 
+
+Permet de corriger les légers décalages lors des changements de direction pour que l\textquotesingle{}entité reste parfaitement centrée dans les couloirs. \Hypertarget{class_entity_ab178b1e6ba538fd44f6cf8c2699ad8d9}\index{Entity@{Entity}!canMove@{canMove}}
+\index{canMove@{canMove}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{canMove()}{canMove()}}
+{\footnotesize\ttfamily \label{class_entity_ab178b1e6ba538fd44f6cf8c2699ad8d9} 
+bool Entity\+::can\+Move (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ std\+::string $>$ \&}]{map}{, }\item[{float}]{x}{, }\item[{float}]{y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Vérifie si un mouvement est possible vers une position donnée. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em map} & La grille du niveau. \\
+\hline
+{\em x} & Coordonnée X cible. \\
+\hline
+{\em y} & Coordonnée Y cible. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true si la case est libre (pas un mur), false sinon. 
+\end{DoxyReturn}
+
+
+Reimplemented in \mbox{\hyperlink{class_pacman_ac0d4fb3dd9b031c8d2475c4b9210de4a}{Pacman}}.
+
+\Hypertarget{class_entity_adf9715beac862471e5af417605e1241d}\index{Entity@{Entity}!draw@{draw}}
+\index{draw@{draw}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{draw()}{draw()}}
+{\footnotesize\ttfamily \label{class_entity_adf9715beac862471e5af417605e1241d} 
+virtual void Entity\+::draw (\begin{DoxyParamCaption}\item[{sf\+::\+Render\+Window \&}]{window}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Méthode virtuelle pure pour dessiner l\textquotesingle{}entité. 
+
+Doit être implémentée par les classes dérivées (\doxylink{class_pacman}{Pacman}, \doxylink{class_ghost}{Ghost}). 
+\begin{DoxyParams}{Parameters}
+{\em window} & La fenêtre de rendu SFML. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{class_ghost_ad441391508442f231445efd4b6557069}{Ghost}}, and \mbox{\hyperlink{class_pacman_ac3d4b745da71eea6ec69b1105fa81f13}{Pacman}}.
+
+\Hypertarget{class_entity_a294c4c3ba64ece9c2a03fa8309e111c8}\index{Entity@{Entity}!getDirection@{getDirection}}
+\index{getDirection@{getDirection}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{getDirection()}{getDirection()}}
+{\footnotesize\ttfamily \label{class_entity_a294c4c3ba64ece9c2a03fa8309e111c8} 
+sf\+::\+Vector2f Entity\+::get\+Direction (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Récupère la direction actuelle. 
+
+\begin{DoxyReturn}{Returns}
+Le vecteur de direction. 
+\end{DoxyReturn}
+\Hypertarget{class_entity_aad393ed46cb85db00d0ff473246afd73}\index{Entity@{Entity}!getNextDirection@{getNextDirection}}
+\index{getNextDirection@{getNextDirection}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{getNextDirection()}{getNextDirection()}}
+{\footnotesize\ttfamily \label{class_entity_aad393ed46cb85db00d0ff473246afd73} 
+sf\+::\+Vector2f Entity\+::get\+Next\+Direction (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Récupère la prochaine direction souhaitée. 
+
+\begin{DoxyReturn}{Returns}
+Le vecteur de la prochaine direction. 
+\end{DoxyReturn}
+\Hypertarget{class_entity_a11d7f8fde1e714c76a20b69793fa157c}\index{Entity@{Entity}!getPosition@{getPosition}}
+\index{getPosition@{getPosition}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{getPosition()}{getPosition()}}
+{\footnotesize\ttfamily \label{class_entity_a11d7f8fde1e714c76a20b69793fa157c} 
+sf\+::\+Vector2f Entity\+::get\+Position (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Récupère la position actuelle de l\textquotesingle{}entité. 
+
+\begin{DoxyReturn}{Returns}
+Un vecteur 2D contenant les coordonnées (x, y). 
+\end{DoxyReturn}
+\Hypertarget{class_entity_ad577b2c5aeea6d34d6c4e3c28b3cfc47}\index{Entity@{Entity}!getSpeed@{getSpeed}}
+\index{getSpeed@{getSpeed}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{getSpeed()}{getSpeed()}}
+{\footnotesize\ttfamily \label{class_entity_ad577b2c5aeea6d34d6c4e3c28b3cfc47} 
+float Entity\+::get\+Speed (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Récupère la vitesse actuelle. 
+
+\begin{DoxyReturn}{Returns}
+La vitesse en pixels par seconde. 
+\end{DoxyReturn}
+\Hypertarget{class_entity_af4351fdbb6519813ceaa2f60899af932}\index{Entity@{Entity}!setDirection@{setDirection}}
+\index{setDirection@{setDirection}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{setDirection()}{setDirection()}}
+{\footnotesize\ttfamily \label{class_entity_af4351fdbb6519813ceaa2f60899af932} 
+void Entity\+::set\+Direction (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{direction}{}\end{DoxyParamCaption})}
+
+
+
+Définit la direction actuelle du mouvement. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em direction} & Vecteur unitaire de direction (ex\+: \{1, 0\} pour droite). \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_entity_ab8ef5dd5c533428b03a95dba77a1d0ab}\index{Entity@{Entity}!setNextDirection@{setNextDirection}}
+\index{setNextDirection@{setNextDirection}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{setNextDirection()}{setNextDirection()}}
+{\footnotesize\ttfamily \label{class_entity_ab8ef5dd5c533428b03a95dba77a1d0ab} 
+void Entity\+::set\+Next\+Direction (\begin{DoxyParamCaption}\item[{sf\+::\+Vector2f}]{direction}{}\end{DoxyParamCaption})}
+
+
+
+Définit la prochaine direction souhaitée (buffer input). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em direction} & Vecteur unitaire de la prochaine direction. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_entity_a93306ecdce9446da37560f5f2b5307c0}\index{Entity@{Entity}!setPosition@{setPosition}}
+\index{setPosition@{setPosition}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
+{\footnotesize\ttfamily \label{class_entity_a93306ecdce9446da37560f5f2b5307c0} 
+void Entity\+::set\+Position (\begin{DoxyParamCaption}\item[{float}]{x}{, }\item[{float}]{y}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Définit la position de l\textquotesingle{}entité. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & Coordonnée X en pixels. \\
+\hline
+{\em y} & Coordonnée Y en pixels. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{class_ghost_a5de4fb0b81df9109af6fc711464d66c3}{Ghost}}, and \mbox{\hyperlink{class_pacman_a15730815e4962dec039d916426e7185e}{Pacman}}.
+
+\Hypertarget{class_entity_a389ca5283af8c88edfd4c5d3cc67ecf7}\index{Entity@{Entity}!setSpeed@{setSpeed}}
+\index{setSpeed@{setSpeed}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{setSpeed()}{setSpeed()}}
+{\footnotesize\ttfamily \label{class_entity_a389ca5283af8c88edfd4c5d3cc67ecf7} 
+void Entity\+::set\+Speed (\begin{DoxyParamCaption}\item[{float}]{speed}{}\end{DoxyParamCaption})}
+
+
+
+Définit la vitesse de déplacement. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em speed} & Vitesse en pixels par seconde. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_entity_a484d8593928d4c4ad7f28d45ae4ac75b}\index{Entity@{Entity}!update@{update}}
+\index{update@{update}!Entity@{Entity}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{class_entity_a484d8593928d4c4ad7f28d45ae4ac75b} 
+void Entity\+::update (\begin{DoxyParamCaption}\item[{float}]{dt}{, }\item[{const std\+::vector$<$ std\+::string $>$ \&}]{map}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Met à jour l\textquotesingle{}état de l\textquotesingle{}entité. 
+
+Gère le mouvement basé sur la vitesse et la direction, ainsi que l\textquotesingle{}animation. 
+\begin{DoxyParams}{Parameters}
+{\em dt} & Temps écoulé depuis la dernière frame (Delta Time). \\
+\hline
+{\em map} & Référence à la grille du niveau pour les collisions. \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{class_pacman_a3e7b8c7db8958bd87c1cd34081536864}{Pacman}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_entity_8hpp}{Entity.\+hpp}}\item 
+src/Entity.\+cpp\end{DoxyCompactItemize}

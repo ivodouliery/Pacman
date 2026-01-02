@@ -1,0 +1,95 @@
+\doxysection{include/\+Ghost.hpp File Reference}
+\hypertarget{_ghost_8hpp}{}\label{_ghost_8hpp}\index{include/Ghost.hpp@{include/Ghost.hpp}}
+
+
+Définition de la classe \doxylink{class_ghost}{Ghost} et des énumérations associées.  
+
+
+{\ttfamily \#include "{}Entity.\+hpp"{}}\newline
+{\ttfamily \#include $<$vector$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_ghost}{Ghost}}
+\begin{DoxyCompactList}\small\item\em Classe représentant un fantôme ennemi. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{_ghost_8hpp_a19c48855930abe71014f6f21514b3925}{Ghost\+Type}} \{ \mbox{\hyperlink{_ghost_8hpp_a19c48855930abe71014f6f21514b3925adec0198dd0f18b233339de93ee59b64b}{BLINKY}}
+, \mbox{\hyperlink{_ghost_8hpp_a19c48855930abe71014f6f21514b3925a33257d86a4b1866bc300ca2c369eb098}{PINKY}}
+, \mbox{\hyperlink{_ghost_8hpp_a19c48855930abe71014f6f21514b3925ab4c6e605875a527843ffd9a939d1a668}{INKY}}
+, \mbox{\hyperlink{_ghost_8hpp_a19c48855930abe71014f6f21514b3925a28026022e0c447baf5e5e9606c0976f0}{CLYDE}}
+ \}
+\begin{DoxyCompactList}\small\item\em Identifie les différents fantômes du jeu. \end{DoxyCompactList}\item 
+enum class \mbox{\hyperlink{_ghost_8hpp_ac1c5b6f654cc52ab515d251ff988f753}{Ghost\+Mode}} \{ \mbox{\hyperlink{_ghost_8hpp_ac1c5b6f654cc52ab515d251ff988f753a2f0492938095f67d986cf0fb13f02385}{CHASE}}
+, \mbox{\hyperlink{_ghost_8hpp_ac1c5b6f654cc52ab515d251ff988f753a1afadca3fdb1134c5aad86dd1104e7f3}{SCATTER}}
+, \mbox{\hyperlink{_ghost_8hpp_ac1c5b6f654cc52ab515d251ff988f753a96973e305544bd55d493cc425d4dfe3c}{FRIGHTENED}}
+, \mbox{\hyperlink{_ghost_8hpp_ac1c5b6f654cc52ab515d251ff988f753abb4784231ff45108ee20bad16e4a2e8c}{DEAD}}
+ \}
+\begin{DoxyCompactList}\small\item\em Définit l\textquotesingle{}état comportemental actuel d\textquotesingle{}un fantôme. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Définition de la classe \doxylink{class_ghost}{Ghost} et des énumérations associées. 
+
+Ce fichier contient la classe \doxylink{class_ghost}{Ghost} qui gère le comportement des ennemis (IA, états, affichage). 
+
+\label{doc-enum-members}
+\Hypertarget{_ghost_8hpp_doc-enum-members}
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{_ghost_8hpp_ac1c5b6f654cc52ab515d251ff988f753}\index{Ghost.hpp@{Ghost.hpp}!GhostMode@{GhostMode}}
+\index{GhostMode@{GhostMode}!Ghost.hpp@{Ghost.hpp}}
+\doxysubsubsection{\texorpdfstring{GhostMode}{GhostMode}}
+{\footnotesize\ttfamily \label{_ghost_8hpp_ac1c5b6f654cc52ab515d251ff988f753} 
+enum class \mbox{\hyperlink{_ghost_8hpp_ac1c5b6f654cc52ab515d251ff988f753}{Ghost\+Mode}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Définit l\textquotesingle{}état comportemental actuel d\textquotesingle{}un fantôme. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CHASE@{CHASE}!Ghost.hpp@{Ghost.hpp}}\index{Ghost.hpp@{Ghost.hpp}!CHASE@{CHASE}}}\Hypertarget{_ghost_8hpp_ac1c5b6f654cc52ab515d251ff988f753a2f0492938095f67d986cf0fb13f02385}\label{_ghost_8hpp_ac1c5b6f654cc52ab515d251ff988f753a2f0492938095f67d986cf0fb13f02385} 
+CHASE&Poursuit Pac-\/\+Man selon sa stratégie propre. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SCATTER@{SCATTER}!Ghost.hpp@{Ghost.hpp}}\index{Ghost.hpp@{Ghost.hpp}!SCATTER@{SCATTER}}}\Hypertarget{_ghost_8hpp_ac1c5b6f654cc52ab515d251ff988f753a1afadca3fdb1134c5aad86dd1104e7f3}\label{_ghost_8hpp_ac1c5b6f654cc52ab515d251ff988f753a1afadca3fdb1134c5aad86dd1104e7f3} 
+SCATTER&Se dirige vers son coin assigné (mode dispersion). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{FRIGHTENED@{FRIGHTENED}!Ghost.hpp@{Ghost.hpp}}\index{Ghost.hpp@{Ghost.hpp}!FRIGHTENED@{FRIGHTENED}}}\Hypertarget{_ghost_8hpp_ac1c5b6f654cc52ab515d251ff988f753a96973e305544bd55d493cc425d4dfe3c}\label{_ghost_8hpp_ac1c5b6f654cc52ab515d251ff988f753a96973e305544bd55d493cc425d4dfe3c} 
+FRIGHTENED&Vulnérable (bleu foncé), se déplace lentement et aléatoirement. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DEAD@{DEAD}!Ghost.hpp@{Ghost.hpp}}\index{Ghost.hpp@{Ghost.hpp}!DEAD@{DEAD}}}\Hypertarget{_ghost_8hpp_ac1c5b6f654cc52ab515d251ff988f753abb4784231ff45108ee20bad16e4a2e8c}\label{_ghost_8hpp_ac1c5b6f654cc52ab515d251ff988f753abb4784231ff45108ee20bad16e4a2e8c} 
+DEAD&Yeux seuls, retourne rapidement à la maison des fantômes pour revivre. \\
+\hline
+
+\end{DoxyEnumFields}
+\Hypertarget{_ghost_8hpp_a19c48855930abe71014f6f21514b3925}\index{Ghost.hpp@{Ghost.hpp}!GhostType@{GhostType}}
+\index{GhostType@{GhostType}!Ghost.hpp@{Ghost.hpp}}
+\doxysubsubsection{\texorpdfstring{GhostType}{GhostType}}
+{\footnotesize\ttfamily \label{_ghost_8hpp_a19c48855930abe71014f6f21514b3925} 
+enum class \mbox{\hyperlink{_ghost_8hpp_a19c48855930abe71014f6f21514b3925}{Ghost\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Identifie les différents fantômes du jeu. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BLINKY@{BLINKY}!Ghost.hpp@{Ghost.hpp}}\index{Ghost.hpp@{Ghost.hpp}!BLINKY@{BLINKY}}}\Hypertarget{_ghost_8hpp_a19c48855930abe71014f6f21514b3925adec0198dd0f18b233339de93ee59b64b}\label{_ghost_8hpp_a19c48855930abe71014f6f21514b3925adec0198dd0f18b233339de93ee59b64b} 
+BLINKY&Rouge -\/ Le plus agressif, chasse directement Pac-\/\+Man (Shadow). \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PINKY@{PINKY}!Ghost.hpp@{Ghost.hpp}}\index{Ghost.hpp@{Ghost.hpp}!PINKY@{PINKY}}}\Hypertarget{_ghost_8hpp_a19c48855930abe71014f6f21514b3925a33257d86a4b1866bc300ca2c369eb098}\label{_ghost_8hpp_a19c48855930abe71014f6f21514b3925a33257d86a4b1866bc300ca2c369eb098} 
+PINKY&Rose -\/ Pathing aléatoire \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INKY@{INKY}!Ghost.hpp@{Ghost.hpp}}\index{Ghost.hpp@{Ghost.hpp}!INKY@{INKY}}}\Hypertarget{_ghost_8hpp_a19c48855930abe71014f6f21514b3925ab4c6e605875a527843ffd9a939d1a668}\label{_ghost_8hpp_a19c48855930abe71014f6f21514b3925ab4c6e605875a527843ffd9a939d1a668} 
+INKY&Bleu -\/ Alterne entre CHASE (20 sec) et SCATTER (7 sec) \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{CLYDE@{CLYDE}!Ghost.hpp@{Ghost.hpp}}\index{Ghost.hpp@{Ghost.hpp}!CLYDE@{CLYDE}}}\Hypertarget{_ghost_8hpp_a19c48855930abe71014f6f21514b3925a28026022e0c447baf5e5e9606c0976f0}\label{_ghost_8hpp_a19c48855930abe71014f6f21514b3925a28026022e0c447baf5e5e9606c0976f0} 
+CLYDE&Orange -\/ Alterne entre CHASE (10 sec) et SCATTER (3 sec) \\
+\hline
+
+\end{DoxyEnumFields}

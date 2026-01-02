@@ -1,0 +1,59 @@
+\doxysection{Game Class Reference}
+\hypertarget{class_game}{}\label{class_game}\index{Game@{Game}}
+
+
+Classe principale gérant le cycle de vie du jeu.  
+
+
+
+
+{\ttfamily \#include $<$Game.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_game_ad59df6562a58a614fda24622d3715b65}{Game}} ()
+\begin{DoxyCompactList}\small\item\em Constructeur de la classe \doxylink{class_game}{Game}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a1ab78f5ed0d5ea879157357cf2fb2afa}{run}} ()
+\begin{DoxyCompactList}\small\item\em Lance la boucle principale du jeu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe principale gérant le cycle de vie du jeu. 
+
+La classe \doxylink{class_game}{Game} encapsule la fenêtre SFML, la boucle de jeu principale et délègue la logique spécifique à la carte (\doxylink{class_map}{Map}) et aux entités. 
+
+\label{doc-constructors}
+\Hypertarget{class_game_doc-constructors}
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_game_ad59df6562a58a614fda24622d3715b65}\index{Game@{Game}!Game@{Game}}
+\index{Game@{Game}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{Game()}{Game()}}
+{\footnotesize\ttfamily \label{class_game_ad59df6562a58a614fda24622d3715b65} 
+Game\+::\+Game (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Constructeur de la classe \doxylink{class_game}{Game}. 
+
+Initialise la fenêtre de jeu avec les paramètres par défaut (taille, titre, framerate). 
+
+\label{doc-func-members}
+\Hypertarget{class_game_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_game_a1ab78f5ed0d5ea879157357cf2fb2afa}\index{Game@{Game}!run@{run}}
+\index{run@{run}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily \label{class_game_a1ab78f5ed0d5ea879157357cf2fb2afa} 
+void Game\+::run (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Lance la boucle principale du jeu. 
+
+Cette méthode contient la boucle while(window.\+is\+Open()) qui appelle successivement process\+Events(), update() et render() à chaque frame. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/\mbox{\hyperlink{_game_8hpp}{Game.\+hpp}}\item 
+src/Game.\+cpp\end{DoxyCompactItemize}

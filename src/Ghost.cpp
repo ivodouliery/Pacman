@@ -4,16 +4,7 @@
 #include <queue>
 #include <vector>
 
-/**
- * @brief Constructeur de Ghost.
- * 
- * Initialise le fantôme selon son type (Blinky, Pinky, Inky, Clyde).
- * Configure les sprites (corps, yeux) et les textures correspondantes.
- * Définit la vitesse initiale et le mode par défaut (CHASE).
- * 
- * @param type Le type de fantôme à créer.
- * @throws std::runtime_error Si la texture "ghosts.png" ne peut pas être chargée.
- */
+
 Ghost::Ghost(GhostType type) : type(type), mode(GhostMode::CHASE), sprite_eyes(texture), sprite_eyes_left_right(texture), sprite_eyes_up(texture), sprite_eyes_down(texture), sprite_body_dead(texture), lastGridPos(-1, -1) {
     speed = 90.0f; 
     if(!texture.loadFromFile("./assets/ghosts.png")) {
@@ -54,15 +45,7 @@ Ghost::Ghost(GhostType type) : type(type), mode(GhostMode::CHASE), sprite_eyes(t
 }
 
 
-/**
- * @brief Définit la position du fantôme.
- * 
- * Met à jour la position de l'entité de base.
- * Centre les sprites des yeux et du corps "mort" sur la nouvelle position.
- * 
- * @param x Coordonnée X.
- * @param y Coordonnée Y.
- */
+
 void Ghost::setPosition(float x, float y) {
     Entity::setPosition(x, y);
     sf::Vector2f center = position + sf::Vector2f(cellSize / 2.0f, cellSize / 2.0f);
@@ -72,14 +55,7 @@ void Ghost::setPosition(float x, float y) {
     sprite_body_dead.setOrigin({eyesSize / 2.0f, eyesSize / 2.0f});
 }
 
-/**
- * @brief Dessine le fantôme.
- * 
- * Si le fantôme est mort, dessine uniquement les yeux (ou le sprite de mort).
- * Sinon, dessine le corps puis les yeux par-dessus.
- * 
- * @param window La fenêtre de rendu.
- */
+
 void Ghost::draw(sf::RenderWindow& window) {
     if (mode == GhostMode::DEAD) {
         window.draw(sprite_body_dead);
@@ -89,24 +65,7 @@ void Ghost::draw(sf::RenderWindow& window) {
     }
 }
 
-/**
- * @brief Met à jour l'IA et le mouvement du fantôme.
- * 
- * Gère :
- * 1. La vitesse en fonction du mode (Chase, Frightened, Dead).
- * 2. La détection de la case courante.
- * 3. Le retour à la base en mode DEAD (résurrection si atteint).
- * 4. La prise de décision aux intersections (choix de direction).
- *    - Utilise un algorithme BFS (via getBestDirectionForTarget) pour trouver le chemin le plus court vers la cible.
- *    - La cible dépend du type de fantôme et du mode (Chase/Scatter).
- *    - En mode Frightened, le mouvement est aléatoire.
- * 5. L'animation du sprite (mouvement des jambes/fantôme).
- * 6. L'orientation des yeux.
- * 
- * @param dt Temps écoulé.
- * @param map La grille du niveau.
- * @param pacmanPos La position de Pacman.
- */
+
 void Ghost::update(float dt, const std::vector<std::string>& map, sf::Vector2f pacmanPos) {
     if (mode == GhostMode::DEAD) {
         speed = 200.0f;
@@ -271,13 +230,7 @@ void Ghost::update(float dt, const std::vector<std::string>& map, sf::Vector2f p
     else if (direction.y > 0) setRotation(1); 
 }
 
-/**
- * @brief Définit l'orientation des yeux du fantôme.
- * 
- * Change le rectangle de texture des yeux en fonction de la direction.
- * 
- * @param direction Entier représentant la direction (0: Haut, 1: Bas, 2: Gauche, 3: Droite).
- */
+
 void Ghost::setRotation(int direction) {
     switch(direction) {
         case 0:
@@ -292,19 +245,7 @@ void Ghost::setRotation(int direction) {
     }
 }
 
-/**
- * @brief Calcule la meilleure direction pour atteindre une cible.
- * 
- * Utilise un algorithme BFS (Breadth-First Search) inversé partant de la cible
- * pour calculer la distance de chaque case à la cible.
- * Ensuite, choisit parmi les directions possibles celle qui mène à la case
- * ayant la plus petite distance vers la cible.
- * 
- * @param target La position cible (en pixels).
- * @param possibleDirs Liste des directions valides depuis la position actuelle.
- * @param map La grille du niveau.
- * @return sf::Vector2f La direction optimale (vecteur unitaire).
- */
+
 sf::Vector2f Ghost::getBestDirectionForTarget(sf::Vector2f target, const std::vector<sf::Vector2f>& possibleDirs, const std::vector<std::string>& map) {
     if (possibleDirs.empty()) return {0,0};
 

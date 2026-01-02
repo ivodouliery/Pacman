@@ -81,3 +81,18 @@ Le projet inclut une suite de tests unitaires utilisant le framework Catch2. Pou
 *   `assets/` : Ressources graphiques (images, polices).
 *   `tests/` : Tests unitaires.
 *   `CMakeLists.txt` : Configuration de build CMake.
+
+## Documentation
+
+La documentation du projet est générée automatiquement avec Doxygen.
+
+### Consulter la documentation
+Vous pouvez consulter la documentation hors ligne directement depuis le projet :
+*   Ouvrez le fichier `doc/html/index.html` dans votre navigateur web.
+
+### Régénérer la documentation
+Si vous modifiez le code, vous pouvez mettre à jour la documentation en exécutant la commande suivante à la racine du projet (nécessite d'avoir [Doxygen](https://www.doxygen.nl/) installé) :
+
+```bash
+doxygen doxygenfile
+```

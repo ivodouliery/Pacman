@@ -2,25 +2,12 @@
 
 #include <cmath>
 
-/**
- * @brief Constructeur par défaut.
- * 
- * Initialise les variables membres à zéro ou aux valeurs par défaut.
- * Configure le sprite de base.
- */
+
 Entity::Entity()
     : position(0.f, 0.f), direction(0.f, 0.f), nextDirection(0.f, 0.f), speed(0.f), animationTimer(0.0f), currentFrame(0), nbFrames(4), sprite_body(texture) {
 }
 
-/**
- * @brief Définit la position de l'entité.
- * 
- * Met à jour la position logique et la position du sprite.
- * Centre l'origine du sprite pour faciliter les rotations et le positionnement.
- * 
- * @param x Coordonnée X.
- * @param y Coordonnée Y.
- */
+
 void Entity::setPosition(float x, float y) {
     position = {x, y};
     // Align visual sprite to center of cell immediately
@@ -33,18 +20,7 @@ sf::Vector2f Entity::getPosition() const {
 }
 
 
-/**
- * @brief Vérifie si un mouvement est possible.
- * 
- * Convertit les coordonnées en indices de grille et vérifie :
- * 1. Si les indices sont dans les limites de la carte.
- * 2. Si la case cible n'est pas un mur ('#').
- * 
- * @param map La grille du niveau.
- * @param x Coordonnée X cible.
- * @param y Coordonnée Y cible.
- * @return true si le mouvement est valide.
- */
+
 bool Entity::canMove(const std::vector<std::string>& map, float x, float y) {
     // Calcul de la case de la grille avec floor pour gérer les négatifs correctement
     int gridX = static_cast<int>(std::floor((x - 16) / cellSize));
@@ -59,13 +35,7 @@ bool Entity::canMove(const std::vector<std::string>& map, float x, float y) {
     return map[gridY][gridX] != '#';
 }
 
-/**
- * @brief Aligne l'entité sur la grille.
- * 
- * Si l'entité se déplace horizontalement, aligne sa position Y sur le centre de la ligne.
- * Si l'entité se déplace verticalement, aligne sa position X sur le centre de la colonne.
- * Cela évite que l'entité ne "frotte" les murs ou ne se décale.
- */
+
 void Entity::alignToGrid() {
     
     // Constant grid origin
@@ -83,18 +53,7 @@ void Entity::alignToGrid() {
     }
 }
 
-/**
- * @brief Met à jour l'état de l'entité.
- * 
- * Gère :
- * 1. Le changement de direction (si nextDirection est défini et valide).
- * 2. L'alignement sur la grille.
- * 3. Le passage dans le tunnel (téléportation gauche/droite).
- * 4. Le déplacement continu selon la direction et la vitesse.
- * 
- * @param dt Temps écoulé.
- * @param map La grille du niveau.
- */
+
 void Entity::update(float dt, const std::vector<std::string>& map) {
     // 1. Try to apply nextDirection if available
     if (nextDirection != sf::Vector2f(0.f, 0.f)) {
