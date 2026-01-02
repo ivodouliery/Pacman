@@ -1,8 +1,10 @@
 #include "../include/Ghost.hpp"
 #include <cmath>
 #include <cstdlib> // For rand()
+#include <queue>
+#include <vector>
 
-Ghost::Ghost(GhostType type) : type(type), mode(GhostMode::SCATTER), sprite_eyes(texture), sprite_eyes_left_right(texture), sprite_eyes_up(texture), sprite_eyes_down(texture), sprite_body_dead(texture), lastGridPos(-1, -1) {
+Ghost::Ghost(GhostType type) : type(type), mode(GhostMode::CHASE), sprite_eyes(texture), sprite_eyes_left_right(texture), sprite_eyes_up(texture), sprite_eyes_down(texture), sprite_body_dead(texture), lastGridPos(-1, -1) {
     speed = 90.0f; // Slightly slower than Pacman
     if(!texture.loadFromFile("./assets/ghosts.png")) {
         throw std::runtime_error("Failed to load texture");
@@ -60,7 +62,7 @@ void Ghost::draw(sf::RenderWindow& window) {
     }
 }
 
-void Ghost::update(float dt, const std::vector<std::string>& map) {
+void Ghost::update(float dt, const std::vector<std::string>& map, sf::Vector2f pacmanPos) {
     // Speed Handling
     if (mode == GhostMode::DEAD) {
         speed = 200.0f;
@@ -119,13 +121,67 @@ void Ghost::update(float dt, const std::vector<std::string>& map) {
                  float homeY = 112 + 14 * cellSize; 
                  sf::Vector2f target = {homeX, homeY};
                  
-                 sf::Vector2f bestDir = getBestDirectionForTarget(target, possibleDirs);
+                 sf::Vector2f bestDir = getBestDirectionForTarget(target, possibleDirs, map);
 
                  if (direction == sf::Vector2f(0.f, 0.f)) setDirection(bestDir);
                  else setNextDirection(bestDir);
 
+            } else if (mode == GhostMode::CHASE) {
+                sf::Vector2f bestDir = {0,0};
+                bool useRandom = false;
+
+                if (type == GhostType::BLINKY) {
+                    // Blinky: Always Chase using BFS
+                    bestDir = getBestDirectionForTarget(pacmanPos, possibleDirs, map);
+
+                } else if (type == GhostType::PINKY) {
+                    // Pinky: Random
+                    useRandom = true;
+
+                } else if (type == GhostType::INKY) {
+                    // Inky: Alternate Chase (20s) / Scatter-Random (7s)
+                    strategyTimer += dt;
+                    if (isChasing && strategyTimer > 20.0f) {
+                        isChasing = false; 
+                        strategyTimer = 0;
+                    } else if (!isChasing && strategyTimer > 7.0f) {
+                        isChasing = true; 
+                        strategyTimer = 0;
+                    }
+
+                    if (isChasing) {
+                        bestDir = getBestDirectionForTarget(pacmanPos, possibleDirs, map);
+                    } else {
+                        useRandom = true;
+                    }
+                } else if (type == GhostType::CLYDE) {
+                    // Clyde: Alternate Chase (10s) / Scatter-Random (3s)
+                    strategyTimer += dt;
+                    if (isChasing && strategyTimer > 10.0f) {
+                        isChasing = false; 
+                        strategyTimer = 0;
+                    } else if (!isChasing && strategyTimer > 3.0f) {
+                        isChasing = true; 
+                        strategyTimer = 0;
+                    }
+
+                    if (isChasing) {
+                        bestDir = getBestDirectionForTarget(pacmanPos, possibleDirs, map);
+                    } else {
+                        useRandom = true;
+                    }
+                }
+
+                if (useRandom) {
+                     int idx = rand() % possibleDirs.size();
+                     bestDir = possibleDirs[idx];
+                }
+                
+                if (direction == sf::Vector2f(0.f, 0.f)) setDirection(bestDir);
+                else setNextDirection(bestDir);
+
             } else {
-                // Random (or Chase later)
+                // SCATTER (random for now) or FRIGHTENED (random)
                 int idx = rand() % possibleDirs.size();
                 if (direction == sf::Vector2f(0.f, 0.f)) {
                     setDirection(possibleDirs[idx]);
@@ -193,20 +249,66 @@ void Ghost::setRotation(int direction) {
     }
 }
 
-sf::Vector2f Ghost::getBestDirectionForTarget(sf::Vector2f target, const std::vector<sf::Vector2f>& possibleDirs) {
+sf::Vector2f Ghost::getBestDirectionForTarget(sf::Vector2f target, const std::vector<sf::Vector2f>& possibleDirs, const std::vector<std::string>& map) {
     if (possibleDirs.empty()) return {0,0};
+
+    // BFS setup
+    int targetGridX = static_cast<int>(std::floor((target.x - 16) / cellSize));
+    int targetGridY = static_cast<int>(std::floor((target.y - 112) / cellSize));
     
-    sf::Vector2f bestDir = possibleDirs[0];
-    float minDistSq = 999999999.f;
+    // Bounds check
+    if (targetGridX < 0) targetGridX = 0;
+    if (targetGridX >= 28) targetGridX = 27;
+    if (targetGridY < 0) targetGridY = 0;
+    if (targetGridY >= 31) targetGridY = 30;
+
+    // Distance map (initialized to -1)
+    std::vector<std::vector<int>> distMap(35, std::vector<int>(30, -1));
+    std::queue<sf::Vector2i> q;
+
+    q.push({targetGridX, targetGridY});
+    distMap[targetGridY][targetGridX] = 0;
     
-    for(const auto& d : possibleDirs) {
-        sf::Vector2f nextTilePos = position + d * cellSize; // Approx
-        // Manhattan Distance: |x1 - x2| + |y1 - y2|
-        float dist = std::abs(nextTilePos.x - target.x) + std::abs(nextTilePos.y - target.y);
-        if (dist < minDistSq) {
-            minDistSq = dist;
-            bestDir = d;
+    // Run BFS backwards from Target to everywhere
+    while(!q.empty()) {
+        sf::Vector2i curr = q.front();
+        q.pop();
+        
+        sf::Vector2i dirs[] = {{0,1}, {0,-1}, {1,0}, {-1,0}};
+        for(auto d : dirs) {
+            int nx = curr.x + d.x;
+            int ny = curr.y + d.y;
+            
+            // Check bounds (0-27, 0-30)
+            if (nx >= 0 && nx < 28 && ny >= 0 && ny < 31) {
+                // Check wall
+                if (map[ny][nx] != '#' && distMap[ny][nx] == -1) {
+                    distMap[ny][nx] = distMap[curr.y][curr.x] + 1;
+                    q.push({nx, ny});
+                }
+            }
         }
     }
+
+    // Now check which neighbor has the smallest distance
+    sf::Vector2f bestDir = possibleDirs[0];
+    int minDist = 999999;
+    
+    int currentGridX = static_cast<int>(std::floor((position.x - 16) / cellSize));
+    int currentGridY = static_cast<int>(std::floor((position.y - 112) / cellSize));
+
+    for(const auto& d : possibleDirs) {
+        int nx = currentGridX + static_cast<int>(d.x);
+        int ny = currentGridY + static_cast<int>(d.y);
+        
+        if (nx >= 0 && nx < 28 && ny >= 0 && ny < 31) {
+             int dVal = distMap[ny][nx];
+             if (dVal != -1 && dVal < minDist) {
+                 minDist = dVal;
+                 bestDir = d;
+             }
+        }
+    }
+    
     return bestDir;
 }

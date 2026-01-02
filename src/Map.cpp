@@ -2,6 +2,14 @@
 #include <filesystem>
 #include <iostream>
 
+/**
+ * @brief Constructeur de la classe Map.
+ * 
+ * Initialise les fantômes, Pacman, les textures et la grille du niveau.
+ * Charge les ressources graphiques (textures) et la police d'écriture.
+ * Configure les sprites pour l'affichage.
+ * Compte le nombre de pac-gommes initiales.
+ */
 Map::Map(): blinky(GhostType::BLINKY), pinky(GhostType::PINKY), inky(GhostType::INKY), clyde(GhostType::CLYDE), pacman(), mapSprite(mapTexture), dotSprite(itemTexture), superDotSprite(itemTexture), m_font(), m_lblScore(m_font), m_txtScore(m_font), m_lblHighScore(m_font), m_txtHighScore(m_font), m_lifeSprite(itemTexture) {
     mapGrid = {
         "############################", 
@@ -55,6 +63,13 @@ Map::Map(): blinky(GhostType::BLINKY), pinky(GhostType::PINKY), inky(GhostType::
     superDotSprite.setTextureRect(sf::IntRect({1 * itemSize, 1 * itemSize}, {itemSize, itemSize}));
 
     // Initialisation des positions
+    // Initialisation des positions & count dots
+    m_remainingDots = 0;
+    for (const auto& row : mapGrid) {
+        for (char c : row) {
+             if (c == '.' || c == 'o') m_remainingDots++;
+        }
+    }
     resetPositions();
 
     if (!m_font.openFromFile("assets/font.ttf")) {
@@ -62,6 +77,12 @@ Map::Map(): blinky(GhostType::BLINKY), pinky(GhostType::PINKY), inky(GhostType::
     }
 }
 
+/**
+ * @brief Réinitialise les positions des entités.
+ * 
+ * Replace Pacman et les fantômes à leurs positions de départ définies dans la grille initiale.
+ * Réinitialise également l'interface utilisateur (Score, High Score, Vies).
+ */
 void Map::resetPositions() {
     m_ghostsActive = false;
     
@@ -129,12 +150,12 @@ void Map::resetPositions() {
 
     m_lblScore.setFont(m_font);
     m_lblScore.setString("Your Score");
-    m_lblScore.setCharacterSize(25); // Slightly smaller to match target look better? Or keep 22. User set 22.
+    m_lblScore.setCharacterSize(25); 
     m_lblScore.setFillColor(sf::Color::White);
     m_lblScore.setPosition(sf::Vector2f(30.f, 25.f));
 
     m_txtScore.setFont(m_font);
-    m_txtScore.setString("0");
+    m_txtScore.setString(std::to_string(m_score));
     m_txtScore.setCharacterSize(25);
     m_txtScore.setFillColor(sf::Color::White);
     m_txtScore.setPosition(sf::Vector2f(30.f, 55.f));
@@ -146,7 +167,7 @@ void Map::resetPositions() {
     m_lblHighScore.setPosition(sf::Vector2f(270.f, 25.f));
 
     m_txtHighScore.setFont(m_font);
-    m_txtHighScore.setString("0"); 
+    m_txtHighScore.setString(std::to_string(m_highScore)); 
     m_txtHighScore.setCharacterSize(25);
     m_txtHighScore.setFillColor(sf::Color::White);
     m_txtHighScore.setPosition(sf::Vector2f(270.f, 55.f));
@@ -159,14 +180,32 @@ void Map::resetPositions() {
         }
     }
     m_lifeSprite.setTexture(pacTexture);
-    // Use the "left" facing or "neutral" frame. 
-    // Pacman.cpp uses {1*entitySize, 0} as start? Or {0,0}?
-    // Let's use 1st frame: {0, 0, 16, 16}
     m_lifeSprite.setTextureRect(sf::IntRect({1*Entity::entitySize, 0}, {Entity::entitySize, Entity::entitySize})); 
+
+    
 }
 
+/**
+ * @brief Dessine la carte sur la fenêtre.
+ * 
+ * Affiche dans l'ordre :
+ * 1. Le fond de la carte (mapSprite).
+ * 2. L'interface utilisateur (Score, High Score).
+ * 3. Les pac-gommes et super pac-gommes (si le jeu a commencé).
+ * 4. Les entités (Pacman et Fantômes).
+ * 5. Les vies restantes en bas de l'écran.
+ * 
+ * @param window La fenêtre de rendu SFML.
+ */
 void Map::draw(sf::RenderWindow& window) {
     window.draw(mapSprite);
+
+    // Draw UI (Always visible)
+    window.draw(m_lblScore);
+    window.draw(m_txtScore);
+    window.draw(m_lblHighScore);
+    window.draw(m_txtHighScore);
+
     if (!started) return;
     for (int y = 0; y < MAP_HEIGHT; ++y) {
         for (int x = 0; x < MAP_WIDTH; ++x) {
@@ -196,12 +235,6 @@ void Map::draw(sf::RenderWindow& window) {
     inky.draw(window);
     clyde.draw(window);
 
-    // Draw UI
-    window.draw(m_lblScore);
-    window.draw(m_txtScore);
-    window.draw(m_lblHighScore);
-    window.draw(m_txtHighScore);
-
     // Draw Lives
     int lives = pacman.getLives();
     // Assuming icons at bottom left, e.g. (30, MAP_HEIGHT*16 + 10)
@@ -215,6 +248,17 @@ void Map::draw(sf::RenderWindow& window) {
     }
 }
 
+/**
+ * @brief Met à jour la carte.
+ * 
+ * Gère la logique principale du jeu à chaque frame :
+ * - Interaction Pacman / Pac-gommes (score, mode frightened).
+ * - Mise à jour des entités (Pacman, Fantômes).
+ * - Gestion du timer "Frightened".
+ * - Activation des fantômes au premier mouvement.
+ * - Collisions Pacman / Fantômes (mort ou manger fantôme).
+ * - Conditions de victoire (plus de pac-gommes) ou défaite (plus de vies).
+ */
 void Map::update() {
 
     // Pellet Interaction
@@ -232,16 +276,22 @@ void Map::update() {
             mapGrid[gridY][gridX] = ' ';
             m_score += 10;
             m_txtScore.setString(std::to_string(m_score));
+            m_remainingDots--;
         } else if (cell == 'o') {
             mapGrid[gridY][gridX] = ' ';
             m_score += 50;
             m_txtScore.setString(std::to_string(m_score));
+            m_remainingDots--;
             // Trigger frightened mode
             m_frightenedTimer = 10.0f; // 10 seconds of power
             blinky.setMode(GhostMode::FRIGHTENED);
             pinky.setMode(GhostMode::FRIGHTENED);
             inky.setMode(GhostMode::FRIGHTENED);
             clyde.setMode(GhostMode::FRIGHTENED);
+        }
+        
+        if (m_remainingDots <= 0) {
+            resetLevel();
         }
     }
 
@@ -269,10 +319,11 @@ void Map::update() {
     }
 
     if (m_ghostsActive) {
-        blinky.update(dt, mapGrid);
-        pinky.update(dt, mapGrid);
-        inky.update(dt, mapGrid);
-        clyde.update(dt, mapGrid);
+        sf::Vector2f pacPos = pacman.getPosition();
+        blinky.update(dt, mapGrid, pacPos);
+        pinky.update(dt, mapGrid, pacPos);
+        inky.update(dt, mapGrid, pacPos);
+        clyde.update(dt, mapGrid, pacPos);
     }
 
 
@@ -308,7 +359,14 @@ void Map::update() {
                      inky.setMode(GhostMode::CHASE);
                      clyde.setMode(GhostMode::CHASE);
                  } else {
-                     started = false; 
+                     if (m_score > m_highScore) {
+                         m_highScore = m_score;
+                         m_txtHighScore.setString(std::to_string(m_highScore));
+                     }
+                     m_score = 0;
+                     m_txtScore.setString(std::to_string(m_score));
+                     resetLevel();
+                     pacman.resetLives();
                  }
             }
         }
@@ -316,6 +374,14 @@ void Map::update() {
 
 }
 
+/**
+ * @brief Gère les entrées du joueur.
+ * 
+ * Convertit les touches fléchées en vecteurs de direction pour Pacman.
+ * Utilise setNextDirection pour permettre le "buffering" des commandes.
+ * 
+ * @param key La touche appuyée.
+ */
 void Map::handleInput(sf::Keyboard::Key key) {
     switch (key) {
         case sf::Keyboard::Key::Up:
@@ -335,8 +401,83 @@ void Map::handleInput(sf::Keyboard::Key key) {
     }
 }
 
+/**
+ * @brief Démarre le jeu.
+ * 
+ * Active le flag `started` et change le sprite de fond pour afficher le niveau de jeu
+ * au lieu de l'écran titre.
+ */
 void Map::start() {
     started = true;
     mapSprite = sf::Sprite(mapTexture);
 }
 
+/**
+ * @brief Réinitialise le niveau complet.
+ * 
+ * Restaure la grille initiale (murs, pac-gommes).
+ * Réinitialise le compteur de pac-gommes.
+ * Replace les entités à leurs positions de départ.
+ * Réinitialise l'état des fantômes (mode Chase, timer frightened).
+ */
+void Map::resetLevel() {
+    // Restore original map layout (dots and all)
+    mapGrid = {
+        "############################", 
+        "#............##............#", 
+        "#.####.#####.##.#####.####.#", 
+        "#o####.#####.##.#####.####o#", 
+        "#..........................#",
+        "#.####.##.########.##.####.#", 
+        "#.####.##.########.##.####.#",
+        "#......##....##....##......#", 
+        "######.##### ## #####.######", 
+        "     #.##### ## #####.#     ",
+        "     #.##    B     ##.#     ",
+        "     #.## ###--### ##.#     ",
+        "######.## ###--### ##.######",
+        "      .   #I P C #   .      ",
+        "######.## ######## ##.######",
+        "     #.## ######## ##.#     ",
+        "     #.##          ##.#     ",
+        "     #.## ######## ##.#     ",
+        "######.## ######## ##.######", 
+        "#............##............#",
+        "#.####.#####.##.#####.####.#",
+        "#.####.#####.##.#####.####.#",
+        "#o..##.......p .......##..o#",
+        "###.##.##.########.##.##.###",
+        "###.##.##.########.##.##.###",
+        "#......##....##....##......#",
+        "#.##########.##.##########.#",
+        "#.##########.##.##########.#",
+        "#..........................#",
+        "############################"
+    };
+
+    m_remainingDots = 0;
+    for (const auto& row : mapGrid) {
+        for (char c : row) {
+             if (c == '.' || c == 'o') m_remainingDots++;
+        }
+    }
+    
+    // Reset entities
+    resetPositions();
+    
+    // Reset ghosts behavior if needed (e.g. they might be frightened)
+    blinky.setMode(GhostMode::CHASE);
+    pinky.setMode(GhostMode::CHASE);
+    inky.setMode(GhostMode::CHASE);
+    clyde.setMode(GhostMode::CHASE);
+    m_frightenedTimer = 0.0f;
+    m_ghostsActive = false; // Reset ghosts wait for pacman move
+}
+
+int Map::getScore() const {
+    return m_score;
+}
+
+int Map::getHighScore() const {
+    return m_highScore;
+}
