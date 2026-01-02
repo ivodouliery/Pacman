@@ -139,6 +139,7 @@ void Entity::update(float dt, const std::vector<std::string>& map) {
         position = nextPos;
     } else {
         alignToGrid();
+        direction = {0.f, 0.f};
     }
     
     // Sync visual
