@@ -1,6 +1,6 @@
 # Pacman
 
-Un clone classique de Pacman écrit en C++ moderne (C++17) utilisant la bibliothèque SFML.
+Pacman écrit en C++ moderne (C++17) utilisant la bibliothèque SFML.
 
 ## Prérequis
 
