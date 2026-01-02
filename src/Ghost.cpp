@@ -1,6 +1,6 @@
 #include "../include/Ghost.hpp"
 #include <cmath>
-#include <cstdlib> // For rand()
+#include <cstdlib>
 #include <queue>
 #include <vector>
 
@@ -15,7 +15,7 @@
  * @throws std::runtime_error Si la texture "ghosts.png" ne peut pas être chargée.
  */
 Ghost::Ghost(GhostType type) : type(type), mode(GhostMode::CHASE), sprite_eyes(texture), sprite_eyes_left_right(texture), sprite_eyes_up(texture), sprite_eyes_down(texture), sprite_body_dead(texture), lastGridPos(-1, -1) {
-    speed = 90.0f; // Slightly slower than Pacman
+    speed = 90.0f; 
     if(!texture.loadFromFile("./assets/ghosts.png")) {
         throw std::runtime_error("Failed to load texture");
     }
@@ -108,38 +108,34 @@ void Ghost::draw(sf::RenderWindow& window) {
  * @param pacmanPos La position de Pacman.
  */
 void Ghost::update(float dt, const std::vector<std::string>& map, sf::Vector2f pacmanPos) {
-    // Speed Handling
     if (mode == GhostMode::DEAD) {
         speed = 200.0f;
     } else if (mode == GhostMode::FRIGHTENED) {
-        speed = 50.0f; // Slower when frightened
+        speed = 50.0f;
     } else {
-        speed = 90.0f; // Normal
+        speed = 90.0f; 
     }
 
-    // Determine current grid cell
     int gridX = static_cast<int>(std::floor((position.x - 16) / cellSize));
     int gridY = static_cast<int>(std::floor((position.y - 112) / cellSize));
 
-    // Check if reached home (DEAD mode)
     if (mode == GhostMode::DEAD) {
         float homeX = 16 + 13 * cellSize + 8.0f;
         float homeY = 112 + 10 * cellSize;
         
         float dx = position.x - homeX;
         float dy = position.y - homeY;
-        if (dx*dx + dy*dy < 100.0f) { // Close enough
-            mode = GhostMode::CHASE; // Revived!
+        if (dx*dx + dy*dy < 100.0f) { 
+            mode = GhostMode::CHASE; 
             speed = 90.0f;
         }
     }
 
-    // Decision making: only when entering a new tile or stopped
     if (gridX != lastGridPos.x || gridY != lastGridPos.y || direction == sf::Vector2f(0.f, 0.f)) {
         lastGridPos = {gridX, gridY};
 
         std::vector<sf::Vector2f> possibleDirs;
-        sf::Vector2f dirs[] = { {0, -1}, {0, 1}, {-1, 0}, {1, 0} }; // Up, Down, Left, Right
+        sf::Vector2f dirs[] = { {0, -1}, {0, 1}, {-1, 0}, {1, 0} }; // Haut, bas, gauche, droite
 
         for (const auto& d : dirs) {
             float centerX = (gridX * cellSize + 16) + cellSize / 2.0f;
@@ -148,7 +144,6 @@ void Ghost::update(float dt, const std::vector<std::string>& map, sf::Vector2f p
             float checkY = centerY + d.y * cellSize;
 
             if (canMove(map, checkX, checkY)) {
-                // Don't reverse direction (unless it's the only option or we are stopped)
                 if (direction != sf::Vector2f(0.f, 0.f) && d == -direction) {
                     continue; 
                 }
@@ -226,7 +221,6 @@ void Ghost::update(float dt, const std::vector<std::string>& map, sf::Vector2f p
                 else setNextDirection(bestDir);
 
             } else {
-                // SCATTER (random for now) or FRIGHTENED (random)
                 int idx = rand() % possibleDirs.size();
                 if (direction == sf::Vector2f(0.f, 0.f)) {
                     setDirection(possibleDirs[idx]);
@@ -239,7 +233,6 @@ void Ghost::update(float dt, const std::vector<std::string>& map, sf::Vector2f p
 
     Entity::update(dt, map);
     
-    // Animation Update
     animationTimer += dt;
     if(animationTimer >= animationSpeed) {
         animationTimer -= animationSpeed;
@@ -265,7 +258,6 @@ void Ghost::update(float dt, const std::vector<std::string>& map, sf::Vector2f p
         }
     }
 
-    // Align visual elements
     sf::Vector2f center = position + sf::Vector2f(cellSize / 2.0f, cellSize / 2.0f);
     sprite_eyes.setPosition(center);
     sprite_eyes.setOrigin({eyesSize / 2.0f, eyesSize / 2.0f});
@@ -273,10 +265,10 @@ void Ghost::update(float dt, const std::vector<std::string>& map, sf::Vector2f p
     sprite_body_dead.setOrigin({eyesSize / 2.0f, eyesSize / 2.0f});
     
 
-    if (direction.x > 0) setRotation(3); // Right
-    else if (direction.x < 0) setRotation(2); // Left
-    else if (direction.y < 0) setRotation(0); // Up
-    else if (direction.y > 0) setRotation(1); // Down
+    if (direction.x > 0) setRotation(3);
+    else if (direction.x < 0) setRotation(2);
+    else if (direction.y < 0) setRotation(0);
+    else if (direction.y > 0) setRotation(1); 
 }
 
 /**
@@ -287,15 +279,14 @@ void Ghost::update(float dt, const std::vector<std::string>& map, sf::Vector2f p
  * @param direction Entier représentant la direction (0: Haut, 1: Bas, 2: Gauche, 3: Droite).
  */
 void Ghost::setRotation(int direction) {
-    // 0: Up, 1: Down, 2: Left, 3: Right
     switch(direction) {
-        case 0: // Up
+        case 0:
             sprite_eyes.setTextureRect(sprite_eyes_up.getTextureRect());
             break;
-        case 1: // Down
+        case 1:
             sprite_eyes.setTextureRect(sprite_eyes_down.getTextureRect());
             break;
-        default: // Left/Right/Neutral
+        default:
             sprite_eyes.setTextureRect(sprite_eyes_left_right.getTextureRect());
             break;
     }
@@ -317,24 +308,20 @@ void Ghost::setRotation(int direction) {
 sf::Vector2f Ghost::getBestDirectionForTarget(sf::Vector2f target, const std::vector<sf::Vector2f>& possibleDirs, const std::vector<std::string>& map) {
     if (possibleDirs.empty()) return {0,0};
 
-    // BFS setup
     int targetGridX = static_cast<int>(std::floor((target.x - 16) / cellSize));
     int targetGridY = static_cast<int>(std::floor((target.y - 112) / cellSize));
     
-    // Bounds check
     if (targetGridX < 0) targetGridX = 0;
     if (targetGridX >= 28) targetGridX = 27;
     if (targetGridY < 0) targetGridY = 0;
     if (targetGridY >= 31) targetGridY = 30;
 
-    // Distance map (initialized to -1)
     std::vector<std::vector<int>> distMap(35, std::vector<int>(30, -1));
     std::queue<sf::Vector2i> q;
 
     q.push({targetGridX, targetGridY});
     distMap[targetGridY][targetGridX] = 0;
-    
-    // Run BFS backwards from Target to everywhere
+
     while(!q.empty()) {
         sf::Vector2i curr = q.front();
         q.pop();
@@ -343,8 +330,7 @@ sf::Vector2f Ghost::getBestDirectionForTarget(sf::Vector2f target, const std::ve
         for(auto d : dirs) {
             int nx = curr.x + d.x;
             int ny = curr.y + d.y;
-            
-            // Check bounds (0-27, 0-30)
+
             if (nx >= 0 && nx < 28 && ny >= 0 && ny < 31) {
                 // Check wall
                 if (map[ny][nx] != '#' && distMap[ny][nx] == -1) {
@@ -355,7 +341,6 @@ sf::Vector2f Ghost::getBestDirectionForTarget(sf::Vector2f target, const std::ve
         }
     }
 
-    // Now check which neighbor has the smallest distance
     sf::Vector2f bestDir = possibleDirs[0];
     int minDist = 999999;
     
