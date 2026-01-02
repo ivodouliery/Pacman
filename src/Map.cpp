@@ -1,156 +1,342 @@
-#pragma once
-#include <SFML/Graphics.hpp>
-#include <SFML/Graphics/Text.hpp>
-#include <SFML/Graphics/Font.hpp>
-#include "Ghost.hpp"
-#include "Pacman.hpp"
-#include <vector>
-#include <string>
+#include "../include/Map.hpp"
+#include <filesystem>
+#include <iostream>
 
-/**
- * @brief Classe représentant la carte du jeu.
- * 
- * La classe Map gère la représentation visuelle de la carte du jeu.
- * Elle charge une carte depuis un fichier texte et la dessine sur la fenêtre.
- */
-class Map {
-public:
-    /**
-     * @brief Taille d'un point (16x16 pixels).
-     */
-    static constexpr int itemSize = 16;
+Map::Map(): blinky(GhostType::BLINKY), pinky(GhostType::PINKY), inky(GhostType::INKY), clyde(GhostType::CLYDE), pacman(), mapSprite(mapTexture), dotSprite(itemTexture), superDotSprite(itemTexture), m_font(), m_lblScore(m_font), m_txtScore(m_font), m_lblHighScore(m_font), m_txtHighScore(m_font), m_lifeSprite(itemTexture) {
+    mapGrid = {
+        "############################", 
+        "#............##............#", 
+        "#.####.#####.##.#####.####.#", 
+        "#o####.#####.##.#####.####o#", 
+        "#..........................#",
+        "#.####.##.########.##.####.#", 
+        "#.####.##.########.##.####.#",
+        "#......##....##....##......#", 
+        "######.##### ## #####.######", 
+        "     #.##### ## #####.#     ",
+        "     #.##    B     ##.#     ",
+        "     #.## ###--### ##.#     ",
+        "######.## ###--### ##.######",
+        "      .   #I P C #   .      ",
+        "######.## ######## ##.######",
+        "     #.## ######## ##.#     ",
+        "     #.##          ##.#     ",
+        "     #.## ######## ##.#     ",
+        "######.## ######## ##.######", 
+        "#............##............#",
+        "#.####.#####.##.#####.####.#",
+        "#.####.#####.##.#####.####.#",
+        "#o..##.......p .......##..o#",
+        "###.##.##.########.##.##.###",
+        "###.##.##.########.##.##.###",
+        "#......##....##....##......#",
+        "#.##########.##.##########.#",
+        "#.##########.##.##########.#",
+        "#..........................#",
+        "############################"
+    };
+
+    if (!itemTexture.loadFromFile("./assets/items.png")) {
+        std::cerr << "Erreur: Impossible de charger assets/items.png" << std::endl;
+    }
+
+    if (!mapStartTexture.loadFromFile("./assets/map_start.png")) {
+        std::cerr << "Erreur: Impossible de charger assets/map_start.png" << std::endl;
+    }
+
+    if (!mapTexture.loadFromFile("./assets/map.png")) {
+        std::cerr << "Erreur: Impossible de charger assets/map.png" << std::endl;
+    }
+
+    mapSprite = sf::Sprite(mapStartTexture);
+
+    dotSprite.setTextureRect(sf::IntRect({0 * itemSize, 1 * itemSize}, {itemSize, itemSize}));
+
+    superDotSprite.setTextureRect(sf::IntRect({1 * itemSize, 1 * itemSize}, {itemSize, itemSize}));
+
+    // Initialisation des positions
+    resetPositions();
+
+    if (!m_font.openFromFile("assets/font.ttf")) {
+        std::cerr << "Warning: No font found (assets/font.ttf)" << std::endl;
+    }
+}
+
+void Map::resetPositions() {
+    m_ghostsActive = false;
     
-    /**
-     * @brief Taille de Pac-Man (16x16 pixels).
-     */
-    static constexpr float pacmanSize = 24.0f;
+    static const std::vector<std::string> initialMap = {
+        "############################", 
+        "#............##............#", 
+        "#.####.#####.##.#####.####.#", 
+        "#o####.#####.##.#####.####o#", 
+        "#..........................#",
+        "#.####.##.########.##.####.#", 
+        "#.####.##.########.##.####.#",
+        "#......##....##....##......#", 
+        "######.##### ## #####.######", 
+        "     #.##### ## #####.#     ",
+        "     #.##    B     ##.#     ",
+        "     #.## ###--### ##.#     ",
+        "######.## ###--### ##.######",
+        "      .   #I P C #   .      ",
+        "######.## ######## ##.######",
+        "     #.## ######## ##.#     ",
+        "     #.##          ##.#     ",
+        "     #.## ######## ##.#     ",
+        "######.## ######## ##.######", 
+        "#............##............#",
+        "#.####.#####.##.#####.####.#",
+        "#.####.#####.##.#####.####.#",
+        "#o..##.......p .......##..o#",
+        "###.##.##.########.##.##.###",
+        "###.##.##.########.##.##.###",
+        "#......##....##....##......#",
+        "#.##########.##.##########.#",
+        "#.##########.##.##########.#",
+        "#..........................#",
+        "############################"
+    };
 
-    /**
-     * @brief Largeur de la carte.
-     */
-    static constexpr int MAP_WIDTH = 28;
-
-    /**
-     * @brief Hauteur de la carte.
-     */
-    static constexpr int MAP_HEIGHT = 30;
-
-    /**
-     * @brief Position de l'origine de la grille.
-     */
-    static constexpr int gridOriginX = 16;
-
-    /**
-     * @brief Position de l'origine de la grille.
-     */
-    static constexpr int gridOriginY = 112;
-    /**
-     * @brief Constructeur par défaut.
-     * 
-     * Charge la carte depuis un fichier texte.
-     */
-    Map();
-
-    /**
-     * @brief Dessine la carte sur la fenêtre.
-     * 
-     * @param window La fenêtre sur laquelle la carte est dessinée.
-     */
-    void draw(sf::RenderWindow& window);
-
-    /**
-     * @brief Met à jour la carte.
-     * 
-     * Met à jour la position des entités sur la carte.
-     */
-    void update();
-
-    /**
-     * @brief Gère les entrées du joueur.
-     * @param key La touche appuyée.
-     */
-    void handleInput(sf::Keyboard::Key key);
-
-    /**
-     * @brief Démarre le jeu.
-     */
-    void start();
-
-    /**
-     * @brief Réinitialise les positions des entités.
-     */
-    void resetPositions();
-
-
-private:
-    /**
-     * @brief Indique si le jeu a commencé.
-     */
-    bool started = false;
-    /**
-     * @brief La carte du jeu.
-     */
-    std::vector<std::string> mapGrid;
-    /**
-     * @brief La texture de la carte.
-     */
-    sf::Texture mapTexture;
-    /**
-     * @brief La texture de la carte de début.
-     */
-    sf::Texture mapStartTexture;
-    /**
-     * @brief Le sprite de la carte.
-     */
-    sf::Sprite mapSprite;
-    /**
-     * @brief La texture des points.
-     */
-    sf::Texture itemTexture;
-    /**
-     * @brief Le sprite des points.
-     */
-    sf::Sprite dotSprite;
-    /**
-     * @brief Le sprite des super points.
-     */
-    sf::Sprite superDotSprite;
-
-    /**
-     * @brief Pac-Man.
-     */
-    Pacman pacman;
-    /**
-     * @brief Blinky.
-     */
-    Ghost blinky;
-    /**
-     * @brief Pinky.
-     */
-    Ghost pinky;
-    /**
-     * @brief Inky.
-     */
-    Ghost inky;
-    /**
-     * @brief Clyde.
-     */
-    Ghost clyde;
+    for (int y = 0; y < MAP_HEIGHT; ++y) {
+        for (int x = 0; x < MAP_WIDTH; ++x) {
+            float posX = gridOriginX + x * Entity::cellSize;
+            float posY = gridOriginY + y * Entity::cellSize;
+            char cell = initialMap[y][x]; // Scan initial map
+            
+            switch(cell) {
+                case 'p':
+                    pacman.setPosition(posX + 8.0f, posY); 
+                    pacman.setDirection({0.f, 0.f});
+                    pacman.setNextDirection({0.f, 0.f});
+                    break;
+                case 'B':
+                    blinky.setPosition(posX + 8.0f, posY);
+                    break;
+                case 'P':
+                    pinky.setPosition(posX + 8.0f, posY);
+                    break;
+                case 'I':
+                    inky.setPosition(posX + 8.0f, posY);
+                    break;
+                case 'C':
+                    clyde.setPosition(posX + 8.0f, posY);
+                    break;
+            }
+        }
+    }
     
-    // UI Elements
-    int m_score = 0;
-    int m_highScore = 0;
-    sf::Font m_font;
-    sf::Text m_lblScore;
-    sf::Text m_txtScore;
-    sf::Text m_lblHighScore;
-    sf::Text m_txtHighScore;
-    sf::RectangleShape m_headerMask;
+
+    m_lblScore.setFont(m_font);
+    m_lblScore.setString("Your Score");
+    m_lblScore.setCharacterSize(25); // Slightly smaller to match target look better? Or keep 22. User set 22.
+    m_lblScore.setFillColor(sf::Color::White);
+    m_lblScore.setPosition(sf::Vector2f(30.f, 25.f));
+
+    m_txtScore.setFont(m_font);
+    m_txtScore.setString("0");
+    m_txtScore.setCharacterSize(25);
+    m_txtScore.setFillColor(sf::Color::White);
+    m_txtScore.setPosition(sf::Vector2f(30.f, 55.f));
+
+    m_lblHighScore.setFont(m_font);
+    m_lblHighScore.setString("High Score");
+    m_lblHighScore.setCharacterSize(25);
+    m_lblHighScore.setFillColor(sf::Color::White);
+    m_lblHighScore.setPosition(sf::Vector2f(270.f, 25.f));
+
+    m_txtHighScore.setFont(m_font);
+    m_txtHighScore.setString("0"); 
+    m_txtHighScore.setCharacterSize(25);
+    m_txtHighScore.setFillColor(sf::Color::White);
+    m_txtHighScore.setPosition(sf::Vector2f(270.f, 55.f));
+
+    // Life Sprite Init
+    static sf::Texture pacTexture;
+    if (pacTexture.getSize().x == 0) {
+        if (!pacTexture.loadFromFile("./assets/pacman.png")) { 
+             std::cerr << "Warning: Could not load assets/pacman.png for UI" << std::endl;
+        }
+    }
+    m_lifeSprite.setTexture(pacTexture);
+    // Use the "left" facing or "neutral" frame. 
+    // Pacman.cpp uses {1*entitySize, 0} as start? Or {0,0}?
+    // Let's use 1st frame: {0, 0, 16, 16}
+    m_lifeSprite.setTextureRect(sf::IntRect({1*Entity::entitySize, 0}, {Entity::entitySize, Entity::entitySize})); 
+}
+
+void Map::draw(sf::RenderWindow& window) {
+    window.draw(mapSprite);
+    if (!started) return;
+    for (int y = 0; y < MAP_HEIGHT; ++y) {
+        for (int x = 0; x < MAP_WIDTH; ++x) {
+            float posX = gridOriginX + x * Entity::cellSize;
+            float posY = gridOriginY + y * Entity::cellSize;
+            char cell = mapGrid[y][x];
+
+            switch(cell) {
+                case '.':
+                    dotSprite.setPosition({posX, posY});
+                    window.draw(dotSprite);
+                    break;
+                case 'o':
+                    superDotSprite.setPosition({posX, posY});
+                    window.draw(superDotSprite);
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    // Draw Entities (Always on top of map elements)
+    pacman.draw(window);
+    blinky.draw(window);
+    pinky.draw(window);
+    inky.draw(window);
+    clyde.draw(window);
+
+    // Draw UI
+    window.draw(m_lblScore);
+    window.draw(m_txtScore);
+    window.draw(m_lblHighScore);
+    window.draw(m_txtHighScore);
+
+    // Draw Lives
+    int lives = pacman.getLives();
+    // Assuming icons at bottom left, e.g. (30, MAP_HEIGHT*16 + 10)
+    // Or closer to standard position
+    float startX = 48.0f;
+    float startY = 592.0f;
     
-    // Life UI
-    sf::Sprite m_lifeSprite;
+    for (int i = 0; i < lives; ++i) {
+        m_lifeSprite.setPosition(sf::Vector2f(startX + i * Entity::entitySize, startY));
+        window.draw(m_lifeSprite);
+    }
+}
+
+void Map::update() {
+
+    // Pellet Interaction
+    sf::Vector2f pos = pacman.getPosition();
+    // Calculate center of Pacman (logic is top-left)
+    float centerX = pos.x + 8.0f; 
+    float centerY = pos.y + 8.0f;
     
-    // Logic state
-    bool m_ghostsActive = false;
-    // End of UI elements
-};
+    int gridX = static_cast<int>((centerX - gridOriginX) / itemSize);
+    int gridY = static_cast<int>((centerY - gridOriginY) / itemSize);
+    
+    if (gridX >= 0 && gridX < MAP_WIDTH && gridY >= 0 && gridY < MAP_HEIGHT) {
+        char cell = mapGrid[gridY][gridX];
+        if (cell == '.') {
+            mapGrid[gridY][gridX] = ' ';
+            m_score += 10;
+            m_txtScore.setString(std::to_string(m_score));
+        } else if (cell == 'o') {
+            mapGrid[gridY][gridX] = ' ';
+            m_score += 50;
+            m_txtScore.setString(std::to_string(m_score));
+            // Trigger frightened mode
+            m_frightenedTimer = 10.0f; // 10 seconds of power
+            blinky.setMode(GhostMode::FRIGHTENED);
+            pinky.setMode(GhostMode::FRIGHTENED);
+            inky.setMode(GhostMode::FRIGHTENED);
+            clyde.setMode(GhostMode::FRIGHTENED);
+        }
+    }
+
+    float dt = 1.0f / 60.0f; // Delta time fixe pour l'instant
+    pacman.update(dt, mapGrid);
+
+    // Update Frightened Timer
+    if (m_frightenedTimer > 0) {
+        m_frightenedTimer -= dt;
+        if (m_frightenedTimer <= 0) {
+            m_frightenedTimer = 0;
+
+            blinky.setMode(GhostMode::CHASE);
+            pinky.setMode(GhostMode::CHASE);
+            inky.setMode(GhostMode::CHASE);
+            clyde.setMode(GhostMode::CHASE);
+        }
+    }
+
+    // Check if we should activate ghosts
+    if (!m_ghostsActive) {
+        if (pacman.getDirection() != sf::Vector2f(0.f, 0.f)) {
+            m_ghostsActive = true;
+        }
+    }
+
+    if (m_ghostsActive) {
+        blinky.update(dt, mapGrid);
+        pinky.update(dt, mapGrid);
+        inky.update(dt, mapGrid);
+        clyde.update(dt, mapGrid);
+    }
+
+
+    std::vector<Ghost*> ghosts = {&blinky, &pinky, &inky, &clyde};
+    sf::Vector2f pacPos = pacman.getPosition();
+    // Center point
+    sf::Vector2f pacCenter = pacPos + sf::Vector2f(8.f, 8.f);
+
+    for (auto* ghost : ghosts) {
+        sf::Vector2f ghostPos = ghost->getPosition();
+        sf::Vector2f ghostCenter = ghostPos + sf::Vector2f(8.f, 8.f);
+        
+        float dx = pacCenter.x - ghostCenter.x;
+        float dy = pacCenter.y - ghostCenter.y;
+        float distSq = dx*dx + dy*dy;
+        
+
+        if (distSq < 100.0f) {
+            if (ghost->getMode() == GhostMode::FRIGHTENED) {
+           
+                ghost->setMode(GhostMode::DEAD); 
+                // Speed and destination are handled in Ghost::update
+                m_score += 200;
+                m_txtScore.setString(std::to_string(m_score));
+            } else if (ghost->getMode() != GhostMode::DEAD) { // Don't die if touching a returning ghost
+                 // Normal mode - Death
+                 pacman.removeLife();
+                 if (pacman.getLives() >= 0) {
+                     resetPositions();
+                     m_frightenedTimer = 0;
+                     blinky.setMode(GhostMode::CHASE);
+                     pinky.setMode(GhostMode::CHASE);
+                     inky.setMode(GhostMode::CHASE);
+                     clyde.setMode(GhostMode::CHASE);
+                 } else {
+                     started = false; 
+                 }
+            }
+        }
+    }
+
+}
+
+void Map::handleInput(sf::Keyboard::Key key) {
+    switch (key) {
+        case sf::Keyboard::Key::Up:
+            pacman.setNextDirection({0.f, -1.f});
+            break;
+        case sf::Keyboard::Key::Down:
+            pacman.setNextDirection({0.f, 1.f});
+            break;
+        case sf::Keyboard::Key::Left:
+            pacman.setNextDirection({-1.f, 0.f});
+            break;
+        case sf::Keyboard::Key::Right:
+            pacman.setNextDirection({1.f, 0.f});
+            break;
+        default:
+            break;
+    }
+}
+
+void Map::start() {
+    started = true;
+    mapSprite = sf::Sprite(mapTexture);
+}
+

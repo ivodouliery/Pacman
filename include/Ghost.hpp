@@ -23,6 +23,8 @@ public:
     void draw(sf::RenderWindow& window) override;
     void setPosition(float x, float y) override;
     void setRotation(int direction);
+    void setMode(GhostMode m) { mode = m; }
+    GhostMode getMode() const { return mode; }
 
     static constexpr int eyesOriginY = 10*entitySize;
     
@@ -36,4 +38,8 @@ private:
     sf::Sprite sprite_eyes_up;
     sf::Sprite sprite_eyes_down;   
     sf::Sprite sprite_eyes_left_right;
+    sf::Sprite sprite_body_dead;
+    
+    // Helper for AI
+    sf::Vector2f getBestDirectionForTarget(sf::Vector2f target, const std::vector<sf::Vector2f>& possibleDirs);
 };
