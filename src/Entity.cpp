@@ -112,6 +112,22 @@ void Entity::update(float dt, const std::vector<std::string>& map) {
     // Apply Snapping (maintain alignment)
     alignToGrid();
 
+    // Tunnel Teleportation
+    int currentGridY = static_cast<int>(std::floor((position.y - 112) / cellSize));
+    if (currentGridY >= 0 && currentGridY < static_cast<int>(map.size())) {
+        // Check if this row is a tunnel (edges are empty)
+        if (!map[currentGridY].empty() && map[currentGridY][0] == ' ') { 
+             int currentGridX = static_cast<int>(std::round((position.x - 16) / cellSize));
+             int mapWidth = static_cast<int>(map[0].length());
+             
+             if (direction.x < 0 && currentGridX <= 0) {
+                 position.x = 16 + (mapWidth - 1) * cellSize;
+             } else if (direction.x > 0 && currentGridX >= mapWidth - 1) {
+                 position.x = 16;
+             }
+        }
+    }
+
     sf::Vector2f nextPos = position + direction * speed * dt;
 
     // Check collision with 2 corners to prevent clipping
