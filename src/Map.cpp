@@ -129,7 +129,7 @@ void Map::resetPositions() {
 
     m_lblScore.setFont(m_font);
     m_lblScore.setString("Your Score");
-    m_lblScore.setCharacterSize(25); // Slightly smaller to match target look better? Or keep 22. User set 22.
+    m_lblScore.setCharacterSize(25); 
     m_lblScore.setFillColor(sf::Color::White);
     m_lblScore.setPosition(sf::Vector2f(30.f, 25.f));
 
@@ -159,9 +159,6 @@ void Map::resetPositions() {
         }
     }
     m_lifeSprite.setTexture(pacTexture);
-    // Use the "left" facing or "neutral" frame. 
-    // Pacman.cpp uses {1*entitySize, 0} as start? Or {0,0}?
-    // Let's use 1st frame: {0, 0, 16, 16}
     m_lifeSprite.setTextureRect(sf::IntRect({1*Entity::entitySize, 0}, {Entity::entitySize, Entity::entitySize})); 
 }
 
@@ -269,10 +266,11 @@ void Map::update() {
     }
 
     if (m_ghostsActive) {
-        blinky.update(dt, mapGrid);
-        pinky.update(dt, mapGrid);
-        inky.update(dt, mapGrid);
-        clyde.update(dt, mapGrid);
+        sf::Vector2f pacPos = pacman.getPosition();
+        blinky.update(dt, mapGrid, pacPos);
+        pinky.update(dt, mapGrid, pacPos);
+        inky.update(dt, mapGrid, pacPos);
+        clyde.update(dt, mapGrid, pacPos);
     }
 
 

@@ -19,7 +19,7 @@ enum class GhostMode {
 class Ghost : public Entity {
 public:
     Ghost(GhostType type);
-    void update(float dt, const std::vector<std::string>& map) override;
+    void update(float dt, const std::vector<std::string>& map, sf::Vector2f pacmanPos);
     void draw(sf::RenderWindow& window) override;
     void setPosition(float x, float y) override;
     void setRotation(int direction);
@@ -41,5 +41,5 @@ private:
     sf::Sprite sprite_body_dead;
     
     // Helper for AI
-    sf::Vector2f getBestDirectionForTarget(sf::Vector2f target, const std::vector<sf::Vector2f>& possibleDirs);
+    sf::Vector2f getBestDirectionForTarget(sf::Vector2f target, const std::vector<sf::Vector2f>& possibleDirs, const std::vector<std::string>& map);
 };
