@@ -149,5 +149,9 @@ private:
     
     // Life UI
     sf::Sprite m_lifeSprite;
+    
+    // Logic state
+    bool m_ghostsActive = false;
+    float m_frightenedTimer = 0.0f;
     // End of UI elements
 };
