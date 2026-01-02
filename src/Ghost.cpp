@@ -1,8 +1,20 @@
 #include "../include/Ghost.hpp"
 #include <cmath>
 #include <cstdlib> // For rand()
+#include <queue>
+#include <vector>
 
-Ghost::Ghost(GhostType type) : type(type), mode(GhostMode::SCATTER), sprite_eyes(texture), sprite_eyes_left_right(texture), sprite_eyes_up(texture), sprite_eyes_down(texture), sprite_body_dead(texture), lastGridPos(-1, -1) {
+/**
+ * @brief Constructeur de Ghost.
+ * 
+ * Initialise le fantôme selon son type (Blinky, Pinky, Inky, Clyde).
+ * Configure les sprites (corps, yeux) et les textures correspondantes.
+ * Définit la vitesse initiale et le mode par défaut (CHASE).
+ * 
+ * @param type Le type de fantôme à créer.
+ * @throws std::runtime_error Si la texture "ghosts.png" ne peut pas être chargée.
+ */
+Ghost::Ghost(GhostType type) : type(type), mode(GhostMode::CHASE), sprite_eyes(texture), sprite_eyes_left_right(texture), sprite_eyes_up(texture), sprite_eyes_down(texture), sprite_body_dead(texture), lastGridPos(-1, -1) {
     speed = 90.0f; // Slightly slower than Pacman
     if(!texture.loadFromFile("./assets/ghosts.png")) {
         throw std::runtime_error("Failed to load texture");
@@ -42,6 +54,15 @@ Ghost::Ghost(GhostType type) : type(type), mode(GhostMode::SCATTER), sprite_eyes
 }
 
 
+/**
+ * @brief Définit la position du fantôme.
+ * 
+ * Met à jour la position de l'entité de base.
+ * Centre les sprites des yeux et du corps "mort" sur la nouvelle position.
+ * 
+ * @param x Coordonnée X.
+ * @param y Coordonnée Y.
+ */
 void Ghost::setPosition(float x, float y) {
     Entity::setPosition(x, y);
     sf::Vector2f center = position + sf::Vector2f(cellSize / 2.0f, cellSize / 2.0f);
@@ -51,6 +72,14 @@ void Ghost::setPosition(float x, float y) {
     sprite_body_dead.setOrigin({eyesSize / 2.0f, eyesSize / 2.0f});
 }
 
+/**
+ * @brief Dessine le fantôme.
+ * 
+ * Si le fantôme est mort, dessine uniquement les yeux (ou le sprite de mort).
+ * Sinon, dessine le corps puis les yeux par-dessus.
+ * 
+ * @param window La fenêtre de rendu.
+ */
 void Ghost::draw(sf::RenderWindow& window) {
     if (mode == GhostMode::DEAD) {
         window.draw(sprite_body_dead);
@@ -60,7 +89,25 @@ void Ghost::draw(sf::RenderWindow& window) {
     }
 }
 
-void Ghost::update(float dt, const std::vector<std::string>& map) {
+/**
+ * @brief Met à jour l'IA et le mouvement du fantôme.
+ * 
+ * Gère :
+ * 1. La vitesse en fonction du mode (Chase, Frightened, Dead).
+ * 2. La détection de la case courante.
+ * 3. Le retour à la base en mode DEAD (résurrection si atteint).
+ * 4. La prise de décision aux intersections (choix de direction).
+ *    - Utilise un algorithme BFS (via getBestDirectionForTarget) pour trouver le chemin le plus court vers la cible.
+ *    - La cible dépend du type de fantôme et du mode (Chase/Scatter).
+ *    - En mode Frightened, le mouvement est aléatoire.
+ * 5. L'animation du sprite (mouvement des jambes/fantôme).
+ * 6. L'orientation des yeux.
+ * 
+ * @param dt Temps écoulé.
+ * @param map La grille du niveau.
+ * @param pacmanPos La position de Pacman.
+ */
+void Ghost::update(float dt, const std::vector<std::string>& map, sf::Vector2f pacmanPos) {
     // Speed Handling
     if (mode == GhostMode::DEAD) {
         speed = 200.0f;
@@ -119,13 +166,67 @@ void Ghost::update(float dt, const std::vector<std::string>& map) {
                  float homeY = 112 + 14 * cellSize; 
                  sf::Vector2f target = {homeX, homeY};
                  
-                 sf::Vector2f bestDir = getBestDirectionForTarget(target, possibleDirs);
+                 sf::Vector2f bestDir = getBestDirectionForTarget(target, possibleDirs, map);
 
                  if (direction == sf::Vector2f(0.f, 0.f)) setDirection(bestDir);
                  else setNextDirection(bestDir);
 
+            } else if (mode == GhostMode::CHASE) {
+                sf::Vector2f bestDir = {0,0};
+                bool useRandom = false;
+
+                if (type == GhostType::BLINKY) {
+                    // Blinky: Always Chase using BFS
+                    bestDir = getBestDirectionForTarget(pacmanPos, possibleDirs, map);
+
+                } else if (type == GhostType::PINKY) {
+                    // Pinky: Random
+                    useRandom = true;
+
+                } else if (type == GhostType::INKY) {
+                    // Inky: Alternate Chase (20s) / Scatter-Random (7s)
+                    strategyTimer += dt;
+                    if (isChasing && strategyTimer > 20.0f) {
+                        isChasing = false; 
+                        strategyTimer = 0;
+                    } else if (!isChasing && strategyTimer > 7.0f) {
+                        isChasing = true; 
+                        strategyTimer = 0;
+                    }
+
+                    if (isChasing) {
+                        bestDir = getBestDirectionForTarget(pacmanPos, possibleDirs, map);
+                    } else {
+                        useRandom = true;
+                    }
+                } else if (type == GhostType::CLYDE) {
+                    // Clyde: Alternate Chase (10s) / Scatter-Random (3s)
+                    strategyTimer += dt;
+                    if (isChasing && strategyTimer > 10.0f) {
+                        isChasing = false; 
+                        strategyTimer = 0;
+                    } else if (!isChasing && strategyTimer > 3.0f) {
+                        isChasing = true; 
+                        strategyTimer = 0;
+                    }
+
+                    if (isChasing) {
+                        bestDir = getBestDirectionForTarget(pacmanPos, possibleDirs, map);
+                    } else {
+                        useRandom = true;
+                    }
+                }
+
+                if (useRandom) {
+                     int idx = rand() % possibleDirs.size();
+                     bestDir = possibleDirs[idx];
+                }
+                
+                if (direction == sf::Vector2f(0.f, 0.f)) setDirection(bestDir);
+                else setNextDirection(bestDir);
+
             } else {
-                // Random (or Chase later)
+                // SCATTER (random for now) or FRIGHTENED (random)
                 int idx = rand() % possibleDirs.size();
                 if (direction == sf::Vector2f(0.f, 0.f)) {
                     setDirection(possibleDirs[idx]);
@@ -178,6 +279,13 @@ void Ghost::update(float dt, const std::vector<std::string>& map) {
     else if (direction.y > 0) setRotation(1); // Down
 }
 
+/**
+ * @brief Définit l'orientation des yeux du fantôme.
+ * 
+ * Change le rectangle de texture des yeux en fonction de la direction.
+ * 
+ * @param direction Entier représentant la direction (0: Haut, 1: Bas, 2: Gauche, 3: Droite).
+ */
 void Ghost::setRotation(int direction) {
     // 0: Up, 1: Down, 2: Left, 3: Right
     switch(direction) {
@@ -193,20 +301,79 @@ void Ghost::setRotation(int direction) {
     }
 }
 
-sf::Vector2f Ghost::getBestDirectionForTarget(sf::Vector2f target, const std::vector<sf::Vector2f>& possibleDirs) {
+/**
+ * @brief Calcule la meilleure direction pour atteindre une cible.
+ * 
+ * Utilise un algorithme BFS (Breadth-First Search) inversé partant de la cible
+ * pour calculer la distance de chaque case à la cible.
+ * Ensuite, choisit parmi les directions possibles celle qui mène à la case
+ * ayant la plus petite distance vers la cible.
+ * 
+ * @param target La position cible (en pixels).
+ * @param possibleDirs Liste des directions valides depuis la position actuelle.
+ * @param map La grille du niveau.
+ * @return sf::Vector2f La direction optimale (vecteur unitaire).
+ */
+sf::Vector2f Ghost::getBestDirectionForTarget(sf::Vector2f target, const std::vector<sf::Vector2f>& possibleDirs, const std::vector<std::string>& map) {
     if (possibleDirs.empty()) return {0,0};
+
+    // BFS setup
+    int targetGridX = static_cast<int>(std::floor((target.x - 16) / cellSize));
+    int targetGridY = static_cast<int>(std::floor((target.y - 112) / cellSize));
     
-    sf::Vector2f bestDir = possibleDirs[0];
-    float minDistSq = 999999999.f;
+    // Bounds check
+    if (targetGridX < 0) targetGridX = 0;
+    if (targetGridX >= 28) targetGridX = 27;
+    if (targetGridY < 0) targetGridY = 0;
+    if (targetGridY >= 31) targetGridY = 30;
+
+    // Distance map (initialized to -1)
+    std::vector<std::vector<int>> distMap(35, std::vector<int>(30, -1));
+    std::queue<sf::Vector2i> q;
+
+    q.push({targetGridX, targetGridY});
+    distMap[targetGridY][targetGridX] = 0;
     
-    for(const auto& d : possibleDirs) {
-        sf::Vector2f nextTilePos = position + d * cellSize; // Approx
-        // Manhattan Distance: |x1 - x2| + |y1 - y2|
-        float dist = std::abs(nextTilePos.x - target.x) + std::abs(nextTilePos.y - target.y);
-        if (dist < minDistSq) {
-            minDistSq = dist;
-            bestDir = d;
+    // Run BFS backwards from Target to everywhere
+    while(!q.empty()) {
+        sf::Vector2i curr = q.front();
+        q.pop();
+        
+        sf::Vector2i dirs[] = {{0,1}, {0,-1}, {1,0}, {-1,0}};
+        for(auto d : dirs) {
+            int nx = curr.x + d.x;
+            int ny = curr.y + d.y;
+            
+            // Check bounds (0-27, 0-30)
+            if (nx >= 0 && nx < 28 && ny >= 0 && ny < 31) {
+                // Check wall
+                if (map[ny][nx] != '#' && distMap[ny][nx] == -1) {
+                    distMap[ny][nx] = distMap[curr.y][curr.x] + 1;
+                    q.push({nx, ny});
+                }
+            }
         }
     }
+
+    // Now check which neighbor has the smallest distance
+    sf::Vector2f bestDir = possibleDirs[0];
+    int minDist = 999999;
+    
+    int currentGridX = static_cast<int>(std::floor((position.x - 16) / cellSize));
+    int currentGridY = static_cast<int>(std::floor((position.y - 112) / cellSize));
+
+    for(const auto& d : possibleDirs) {
+        int nx = currentGridX + static_cast<int>(d.x);
+        int ny = currentGridY + static_cast<int>(d.y);
+        
+        if (nx >= 0 && nx < 28 && ny >= 0 && ny < 31) {
+             int dVal = distMap[ny][nx];
+             if (dVal != -1 && dVal < minDist) {
+                 minDist = dVal;
+                 bestDir = d;
+             }
+        }
+    }
+    
     return bestDir;
 }
