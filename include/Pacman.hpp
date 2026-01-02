@@ -10,7 +10,7 @@ public:
     
     void removeLife() { lives--; }
     int getLives() const { return lives; }
-    void resetLives() { lives = 3; }
+    void resetLives() { lives = 2; }
     
 private:
     int lives = 2;

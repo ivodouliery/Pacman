@@ -322,7 +322,14 @@ void Map::update() {
                      inky.setMode(GhostMode::CHASE);
                      clyde.setMode(GhostMode::CHASE);
                  } else {
-                     started = false; 
+                     if (m_score > m_highScore) {
+                         m_highScore = m_score;
+                         m_txtHighScore.setString(std::to_string(m_highScore));
+                     }
+                     m_score = 0;
+                     m_txtScore.setString(std::to_string(m_score));
+                     resetLevel();
+                     pacman.resetLives();
                  }
             }
         }
