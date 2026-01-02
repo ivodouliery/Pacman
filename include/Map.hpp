@@ -86,6 +86,9 @@ public:
      */
     void resetLevel();
 
+    int getScore() const;
+    int getHighScore() const;
+
 
 private:
     /**

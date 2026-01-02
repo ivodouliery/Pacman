@@ -414,3 +414,11 @@ void Map::resetLevel() {
     m_frightenedTimer = 0.0f;
     m_ghostsActive = false; // Reset ghosts wait for pacman move
 }
+
+int Map::getScore() const {
+    return m_score;
+}
+
+int Map::getHighScore() const {
+    return m_highScore;
+}
