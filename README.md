@@ -87,8 +87,9 @@ Le projet inclut une suite de tests unitaires utilisant le framework Catch2. Pou
 La documentation du projet est générée automatiquement avec Doxygen.
 
 ### Consulter la documentation
-Vous pouvez consulter la documentation hors ligne directement depuis le projet :
-*   Ouvrez le fichier `docs/index.html` dans votre navigateur web.
+Vous pouvez consulter la documentation :
+*   **En ligne** : [https://ivodouliery.github.io/Pacman/](https://ivodouliery.github.io/Pacman/)
+*   **Hors ligne** : Ouvrez le fichier `docs/index.html` dans votre navigateur web.
 
 ### Régénérer la documentation
 Si vous modifiez le code, vous pouvez mettre à jour la documentation en exécutant la commande suivante à la racine du projet (nécessite d'avoir [Doxygen](https://www.doxygen.nl/) installé) :
