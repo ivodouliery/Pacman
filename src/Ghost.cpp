@@ -79,10 +79,7 @@ void Ghost::update(float dt, const std::vector<std::string>& map) {
             }
         }
 
-        // Keep moving if strictly straight is allowed and no other options? 
-        // For random AI, we just pick from possibilities.
-        // If we filtered out reverse and it's a dead end, possibleDirs might be empty.
-        // In that case, add reverse back.
+
         if (possibleDirs.empty() && direction != sf::Vector2f(0.f, 0.f)) {
              possibleDirs.push_back(-direction);
         }
@@ -105,19 +102,24 @@ void Ghost::update(float dt, const std::vector<std::string>& map) {
     if(animationTimer >= animationSpeed) {
         animationTimer -= animationSpeed;
         currentFrame = (currentFrame + 1) % nbFrames;
-        switch(type) {
-            case GhostType::BLINKY: 
-                sprite_body.setTextureRect(sf::IntRect({currentFrame * entitySize, 0*entitySize}, {entitySize, entitySize}));
-                break;
-            case GhostType::INKY: 
-                sprite_body.setTextureRect(sf::IntRect({currentFrame * entitySize, 1*entitySize}, {entitySize, entitySize}));
-                break;
-            case GhostType::PINKY: 
-                sprite_body.setTextureRect(sf::IntRect({currentFrame * entitySize, 2*entitySize}, {entitySize, entitySize}));
-                break;
-            case GhostType::CLYDE: 
-                sprite_body.setTextureRect(sf::IntRect({currentFrame * entitySize, 3*entitySize}, {entitySize, entitySize}));
-                break;
+        if (mode == GhostMode::FRIGHTENED) {
+
+            sprite_body.setTextureRect(sf::IntRect({(currentFrame % 2) * entitySize, 4*entitySize}, {entitySize, entitySize}));
+        } else {
+            switch(type) {
+                case GhostType::BLINKY: 
+                    sprite_body.setTextureRect(sf::IntRect({currentFrame * entitySize, 0*entitySize}, {entitySize, entitySize}));
+                    break;
+                case GhostType::INKY: 
+                    sprite_body.setTextureRect(sf::IntRect({currentFrame * entitySize, 1*entitySize}, {entitySize, entitySize}));
+                    break;
+                case GhostType::PINKY: 
+                    sprite_body.setTextureRect(sf::IntRect({currentFrame * entitySize, 2*entitySize}, {entitySize, entitySize}));
+                    break;
+                case GhostType::CLYDE: 
+                    sprite_body.setTextureRect(sf::IntRect({currentFrame * entitySize, 3*entitySize}, {entitySize, entitySize}));
+                    break;
+            }
         }
     }
 
@@ -126,8 +128,7 @@ void Ghost::update(float dt, const std::vector<std::string>& map) {
     sprite_eyes.setPosition(center);
     sprite_eyes.setOrigin({eyesSize / 2.0f, eyesSize / 2.0f});
     
-    // Update eyes direction/rotation
-    // If direction changes, update eyes
+
     if (direction.x > 0) setRotation(3); // Right
     else if (direction.x < 0) setRotation(2); // Left
     else if (direction.y < 0) setRotation(0); // Up
