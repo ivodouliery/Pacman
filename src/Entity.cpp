@@ -131,7 +131,6 @@ void Entity::update(float dt, const std::vector<std::string>& map) {
 
     if (direction == sf::Vector2f(0.f, 0.f)) return;
 
-    // Apply Snapping (maintain alignment)
     alignToGrid();
 
     // Tunnel Teleportation
@@ -165,9 +164,8 @@ void Entity::update(float dt, const std::vector<std::string>& map) {
         check1 = {leadX, nextPos.y + margin};              
         check2 = {leadX, nextPos.y + boxSize - margin};    
     } else if (direction.x < 0) { // Left
-        // Leading edge: Left side of hitbox
         float leadX = nextPos.x + margin; // 2
-        check1 = {leadX, nextPos.y + margin};              
+        check1 = {leadX, nextPos.y + margin};
         check2 = {leadX, nextPos.y + boxSize - margin};    
         
     } else if (direction.y > 0) { // Down
@@ -188,7 +186,6 @@ void Entity::update(float dt, const std::vector<std::string>& map) {
         direction = {0.f, 0.f};
     }
     
-    // Sync visual
     sprite_body.setOrigin({entitySize / 2.0f, entitySize / 2.0f});
     sprite_body.setPosition(position + sf::Vector2f(cellSize / 2.0f, cellSize / 2.0f));
 }
