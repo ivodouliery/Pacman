@@ -159,7 +159,7 @@ private:
     /**
      * @brief Calcule la meilleure direction pour atteindre une cible.
      * 
-     * Utilise la distance euclidienne au carré pour choisir la direction qui minimise la distance à la cible.
+     * Utilise la distance Manhattan pour choisir la direction qui minimise la distance à la cible.
      * 
      * @param target Position cible (en pixels).
      * @param possibleDirs Liste des directions valides (pas de mur).
