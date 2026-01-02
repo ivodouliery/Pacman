@@ -115,25 +115,12 @@ void Ghost::update(float dt, const std::vector<std::string>& map) {
 
         if (!possibleDirs.empty()) {
             if (mode == GhostMode::DEAD) {
-                 // Target Finding Logic (A* simplified: Greedy Best First)
                  float homeX = 16 + 13 * cellSize + 8.0f;
-                 float homeY = 112 + 10 * cellSize;
+                 float homeY = 112 + 14 * cellSize; 
                  sf::Vector2f target = {homeX, homeY};
                  
-                 sf::Vector2f bestDir = possibleDirs[0];
-                 float minDistSq = 999999999.f;
-                 
-                 for(const auto& d : possibleDirs) {
-                     sf::Vector2f nextTilePos = position + d * cellSize; // Approx
-                     float dx = nextTilePos.x - target.x;
-                     float dy = nextTilePos.y - target.y;
-                     float distSq = dx*dx + dy*dy;
-                     if (distSq < minDistSq) {
-                         minDistSq = distSq;
-                         bestDir = d;
-                     }
-                 }
-                 setNextDirection(bestDir); // Buffer it? Or set directly?
+                 sf::Vector2f bestDir = getBestDirectionForTarget(target, possibleDirs);
+
                  if (direction == sf::Vector2f(0.f, 0.f)) setDirection(bestDir);
                  else setNextDirection(bestDir);
 
@@ -204,4 +191,22 @@ void Ghost::setRotation(int direction) {
             sprite_eyes.setTextureRect(sprite_eyes_left_right.getTextureRect());
             break;
     }
+}
+
+sf::Vector2f Ghost::getBestDirectionForTarget(sf::Vector2f target, const std::vector<sf::Vector2f>& possibleDirs) {
+    if (possibleDirs.empty()) return {0,0};
+    
+    sf::Vector2f bestDir = possibleDirs[0];
+    float minDistSq = 999999999.f;
+    
+    for(const auto& d : possibleDirs) {
+        sf::Vector2f nextTilePos = position + d * cellSize; // Approx
+        // Manhattan Distance: |x1 - x2| + |y1 - y2|
+        float dist = std::abs(nextTilePos.x - target.x) + std::abs(nextTilePos.y - target.y);
+        if (dist < minDistSq) {
+            minDistSq = dist;
+            bestDir = d;
+        }
+    }
+    return bestDir;
 }
