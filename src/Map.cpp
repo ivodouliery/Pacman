@@ -62,7 +62,6 @@ Map::Map(): blinky(GhostType::BLINKY), pinky(GhostType::PINKY), inky(GhostType::
 
     superDotSprite.setTextureRect(sf::IntRect({1 * itemSize, 1 * itemSize}, {itemSize, itemSize}));
 
-    // Initialisation des positions
     // Initialisation des positions & count dots
     m_remainingDots = 0;
     for (const auto& row : mapGrid) {
@@ -172,7 +171,6 @@ void Map::resetPositions() {
     m_txtHighScore.setFillColor(sf::Color::White);
     m_txtHighScore.setPosition(sf::Vector2f(270.f, 55.f));
 
-    // Life Sprite Init
     static sf::Texture pacTexture;
     if (pacTexture.getSize().x == 0) {
         if (!pacTexture.loadFromFile("./assets/pacman.png")) { 
@@ -200,7 +198,6 @@ void Map::resetPositions() {
 void Map::draw(sf::RenderWindow& window) {
     window.draw(mapSprite);
 
-    // Draw UI (Always visible)
     window.draw(m_lblScore);
     window.draw(m_txtScore);
     window.draw(m_lblHighScore);
@@ -228,17 +225,14 @@ void Map::draw(sf::RenderWindow& window) {
         }
     }
 
-    // Draw Entities (Always on top of map elements)
     pacman.draw(window);
     blinky.draw(window);
     pinky.draw(window);
     inky.draw(window);
     clyde.draw(window);
 
-    // Draw Lives
     int lives = pacman.getLives();
-    // Assuming icons at bottom left, e.g. (30, MAP_HEIGHT*16 + 10)
-    // Or closer to standard position
+
     float startX = 48.0f;
     float startY = 592.0f;
     
@@ -282,7 +276,7 @@ void Map::update() {
             m_score += 50;
             m_txtScore.setString(std::to_string(m_score));
             m_remainingDots--;
-            // Trigger frightened mode
+
             m_frightenedTimer = 10.0f; // 10 seconds of power
             blinky.setMode(GhostMode::FRIGHTENED);
             pinky.setMode(GhostMode::FRIGHTENED);
@@ -298,7 +292,6 @@ void Map::update() {
     float dt = 1.0f / 60.0f; // Delta time fixe pour l'instant
     pacman.update(dt, mapGrid);
 
-    // Update Frightened Timer
     if (m_frightenedTimer > 0) {
         m_frightenedTimer -= dt;
         if (m_frightenedTimer <= 0) {
@@ -345,11 +338,9 @@ void Map::update() {
             if (ghost->getMode() == GhostMode::FRIGHTENED) {
            
                 ghost->setMode(GhostMode::DEAD); 
-                // Speed and destination are handled in Ghost::update
                 m_score += 200;
                 m_txtScore.setString(std::to_string(m_score));
-            } else if (ghost->getMode() != GhostMode::DEAD) { // Don't die if touching a returning ghost
-                 // Normal mode - Death
+            } else if (ghost->getMode() != GhostMode::DEAD) {
                  pacman.removeLife();
                  if (pacman.getLives() >= 0) {
                      resetPositions();
@@ -421,7 +412,6 @@ void Map::start() {
  * Réinitialise l'état des fantômes (mode Chase, timer frightened).
  */
 void Map::resetLevel() {
-    // Restore original map layout (dots and all)
     mapGrid = {
         "############################", 
         "#............##............#", 
@@ -462,16 +452,14 @@ void Map::resetLevel() {
         }
     }
     
-    // Reset entities
     resetPositions();
-    
-    // Reset ghosts behavior if needed (e.g. they might be frightened)
+
     blinky.setMode(GhostMode::CHASE);
     pinky.setMode(GhostMode::CHASE);
     inky.setMode(GhostMode::CHASE);
     clyde.setMode(GhostMode::CHASE);
     m_frightenedTimer = 0.0f;
-    m_ghostsActive = false; // Reset ghosts wait for pacman move
+    m_ghostsActive = false;
 }
 
 int Map::getScore() const {
