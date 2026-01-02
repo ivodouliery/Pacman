@@ -21,11 +21,30 @@ set(HEADERS
 )
 
 
-add_executable(${PROJECT_NAME} 
-    ${SOURCES} 
-    ${HEADERS} 
-    include/Entity.hpp src/Entity.cpp
-    include/Pacman.hpp src/Pacman.cpp
+if(WIN32)
+    # Sur Windows, WIN32 évite d'ouvrir une console noire en arrière-plan
+    # Si vous voulez voir les std::cout, retirez "WIN32"
+    add_executable(${PROJECT_NAME} WIN32
+        ${SOURCES} 
+        ${HEADERS} 
+        include/Entity.hpp src/Entity.cpp
+        include/Pacman.hpp src/Pacman.cpp
+    )
+else()
+    add_executable(${PROJECT_NAME} 
+        ${SOURCES} 
+        ${HEADERS} 
+        include/Entity.hpp src/Entity.cpp
+        include/Pacman.hpp src/Pacman.cpp
+    )
+endif()
+
+# Copie automatique du dossier assets à côté de l'exécutable après la compilation
+add_custom_command(TARGET ${PROJECT_NAME} POST_BUILD
+    COMMAND ${CMAKE_COMMAND} -E copy_directory
+        ${CMAKE_SOURCE_DIR}/assets
+        $<TARGET_FILE_DIR:${PROJECT_NAME}>/assets
+    COMMENT "Copie des assets dans le dossier de build..."
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE include)
