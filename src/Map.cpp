@@ -294,12 +294,10 @@ void Map::update() {
             if (ghost->getMode() == GhostMode::FRIGHTENED) {
            
                 ghost->setMode(GhostMode::DEAD); 
-
-                ghost->setPosition(14 * Entity::cellSize, 14 * Entity::cellSize); 
-                ghost->setMode(GhostMode::CHASE); 
+                // Speed and destination are handled in Ghost::update
                 m_score += 200;
                 m_txtScore.setString(std::to_string(m_score));
-            } else {
+            } else if (ghost->getMode() != GhostMode::DEAD) { // Don't die if touching a returning ghost
                  // Normal mode - Death
                  pacman.removeLife();
                  if (pacman.getLives() >= 0) {
