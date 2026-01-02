@@ -39,4 +39,7 @@ private:
     sf::Sprite sprite_eyes_down;   
     sf::Sprite sprite_eyes_left_right;
     sf::Sprite sprite_body_dead;
+    
+    // Helper for AI
+    sf::Vector2f getBestDirectionForTarget(sf::Vector2f target, const std::vector<sf::Vector2f>& possibleDirs);
 };
