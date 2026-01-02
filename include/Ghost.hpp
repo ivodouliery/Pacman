@@ -23,6 +23,8 @@ public:
     void draw(sf::RenderWindow& window) override;
     void setPosition(float x, float y) override;
     void setRotation(int direction);
+    void setMode(GhostMode m) { mode = m; }
+    GhostMode getMode() const { return mode; }
 
     static constexpr int eyesOriginY = 10*entitySize;
     
