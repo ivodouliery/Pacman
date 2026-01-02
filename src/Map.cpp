@@ -2,7 +2,7 @@
 #include <filesystem>
 #include <iostream>
 
-Map::Map(): blinky(GhostType::BLINKY), pinky(GhostType::PINKY), inky(GhostType::INKY), clyde(GhostType::CLYDE), pacman(), mapSprite(mapTexture), dotSprite(itemTexture), superDotSprite(itemTexture), m_font(), m_lblScore(m_font), m_txtScore(m_font), m_lblHighScore(m_font), m_txtHighScore(m_font) {
+Map::Map(): blinky(GhostType::BLINKY), pinky(GhostType::PINKY), inky(GhostType::INKY), clyde(GhostType::CLYDE), pacman(), mapSprite(mapTexture), dotSprite(itemTexture), superDotSprite(itemTexture), m_font(), m_lblScore(m_font), m_txtScore(m_font), m_lblHighScore(m_font), m_txtHighScore(m_font), m_lifeSprite(itemTexture) {
     mapGrid = {
         "############################", 
         "#............##............#", 
@@ -55,34 +55,75 @@ Map::Map(): blinky(GhostType::BLINKY), pinky(GhostType::PINKY), inky(GhostType::
     superDotSprite.setTextureRect(sf::IntRect({1 * itemSize, 1 * itemSize}, {itemSize, itemSize}));
 
     // Initialisation des positions
+    resetPositions();
+
+    if (!m_font.openFromFile("assets/font.ttf")) {
+        std::cerr << "Warning: No font found (assets/font.ttf)" << std::endl;
+    }
+}
+
+void Map::resetPositions() {
+    m_ghostsActive = false;
+    
+    static const std::vector<std::string> initialMap = {
+        "############################", 
+        "#............##............#", 
+        "#.####.#####.##.#####.####.#", 
+        "#o####.#####.##.#####.####o#", 
+        "#..........................#",
+        "#.####.##.########.##.####.#", 
+        "#.####.##.########.##.####.#",
+        "#......##....##....##......#", 
+        "######.##### ## #####.######", 
+        "     #.##### ## #####.#     ",
+        "     #.##    B     ##.#     ",
+        "     #.## ###--### ##.#     ",
+        "######.## ###--### ##.######",
+        "      .   #I P C #   .      ",
+        "######.## ######## ##.######",
+        "     #.## ######## ##.#     ",
+        "     #.##          ##.#     ",
+        "     #.## ######## ##.#     ",
+        "######.## ######## ##.######", 
+        "#............##............#",
+        "#.####.#####.##.#####.####.#",
+        "#.####.#####.##.#####.####.#",
+        "#o..##.......p .......##..o#",
+        "###.##.##.########.##.##.###",
+        "###.##.##.########.##.##.###",
+        "#......##....##....##......#",
+        "#.##########.##.##########.#",
+        "#.##########.##.##########.#",
+        "#..........................#",
+        "############################"
+    };
+
     for (int y = 0; y < MAP_HEIGHT; ++y) {
         for (int x = 0; x < MAP_WIDTH; ++x) {
             float posX = gridOriginX + x * Entity::cellSize;
             float posY = gridOriginY + y * Entity::cellSize;
-            char cell = mapGrid[y][x];
+            char cell = initialMap[y][x]; // Scan initial map
             
             switch(cell) {
                 case 'p':
-                    pacman.setPosition(posX, posY);
+                    pacman.setPosition(posX + 8.0f, posY); 
+                    pacman.setDirection({0.f, 0.f});
+                    pacman.setNextDirection({0.f, 0.f});
                     break;
                 case 'B':
-                    blinky.setPosition(posX, posY);
+                    blinky.setPosition(posX + 8.0f, posY);
                     break;
                 case 'P':
-                    pinky.setPosition(posX, posY);
+                    pinky.setPosition(posX + 8.0f, posY);
                     break;
                 case 'I':
-                    inky.setPosition(posX, posY);
+                    inky.setPosition(posX + 8.0f, posY);
                     break;
                 case 'C':
-                    clyde.setPosition(posX, posY);
+                    clyde.setPosition(posX + 8.0f, posY);
                     break;
             }
         }
-    }
-
-    if (!m_font.openFromFile("assets/font.ttf")) {
-        std::cerr << "Warning: No font found (assets/font.ttf)" << std::endl;
     }
     
 
@@ -109,6 +150,19 @@ Map::Map(): blinky(GhostType::BLINKY), pinky(GhostType::PINKY), inky(GhostType::
     m_txtHighScore.setCharacterSize(25);
     m_txtHighScore.setFillColor(sf::Color::White);
     m_txtHighScore.setPosition(sf::Vector2f(270.f, 55.f));
+
+    // Life Sprite Init
+    static sf::Texture pacTexture;
+    if (pacTexture.getSize().x == 0) {
+        if (!pacTexture.loadFromFile("./assets/pacman.png")) { 
+             std::cerr << "Warning: Could not load assets/pacman.png for UI" << std::endl;
+        }
+    }
+    m_lifeSprite.setTexture(pacTexture);
+    // Use the "left" facing or "neutral" frame. 
+    // Pacman.cpp uses {1*entitySize, 0} as start? Or {0,0}?
+    // Let's use 1st frame: {0, 0, 16, 16}
+    m_lifeSprite.setTextureRect(sf::IntRect({1*Entity::entitySize, 0}, {Entity::entitySize, Entity::entitySize})); 
 }
 
 void Map::draw(sf::RenderWindow& window) {
@@ -147,6 +201,18 @@ void Map::draw(sf::RenderWindow& window) {
     window.draw(m_txtScore);
     window.draw(m_lblHighScore);
     window.draw(m_txtHighScore);
+
+    // Draw Lives
+    int lives = pacman.getLives();
+    // Assuming icons at bottom left, e.g. (30, MAP_HEIGHT*16 + 10)
+    // Or closer to standard position
+    float startX = 48.0f;
+    float startY = 592.0f;
+    
+    for (int i = 0; i < lives; ++i) {
+        m_lifeSprite.setPosition(sf::Vector2f(startX + i * Entity::entitySize, startY));
+        window.draw(m_lifeSprite);
+    }
 }
 
 void Map::update() {
@@ -170,16 +236,83 @@ void Map::update() {
             mapGrid[gridY][gridX] = ' ';
             m_score += 50;
             m_txtScore.setString(std::to_string(m_score));
-            // TODO: Trigger frightened mode
+            // Trigger frightened mode
+            m_frightenedTimer = 10.0f; // 10 seconds of power
+            blinky.setMode(GhostMode::FRIGHTENED);
+            pinky.setMode(GhostMode::FRIGHTENED);
+            inky.setMode(GhostMode::FRIGHTENED);
+            clyde.setMode(GhostMode::FRIGHTENED);
         }
     }
 
     float dt = 1.0f / 60.0f; // Delta time fixe pour l'instant
     pacman.update(dt, mapGrid);
-    blinky.update(dt, mapGrid);
-    pinky.update(dt, mapGrid);
-    inky.update(dt, mapGrid);
-    clyde.update(dt, mapGrid);
+
+    // Update Frightened Timer
+    if (m_frightenedTimer > 0) {
+        m_frightenedTimer -= dt;
+        if (m_frightenedTimer <= 0) {
+            m_frightenedTimer = 0;
+
+            blinky.setMode(GhostMode::CHASE);
+            pinky.setMode(GhostMode::CHASE);
+            inky.setMode(GhostMode::CHASE);
+            clyde.setMode(GhostMode::CHASE);
+        }
+    }
+
+    // Check if we should activate ghosts
+    if (!m_ghostsActive) {
+        if (pacman.getDirection() != sf::Vector2f(0.f, 0.f)) {
+            m_ghostsActive = true;
+        }
+    }
+
+    if (m_ghostsActive) {
+        blinky.update(dt, mapGrid);
+        pinky.update(dt, mapGrid);
+        inky.update(dt, mapGrid);
+        clyde.update(dt, mapGrid);
+    }
+
+
+    std::vector<Ghost*> ghosts = {&blinky, &pinky, &inky, &clyde};
+    sf::Vector2f pacPos = pacman.getPosition();
+    // Center point
+    sf::Vector2f pacCenter = pacPos + sf::Vector2f(8.f, 8.f);
+
+    for (auto* ghost : ghosts) {
+        sf::Vector2f ghostPos = ghost->getPosition();
+        sf::Vector2f ghostCenter = ghostPos + sf::Vector2f(8.f, 8.f);
+        
+        float dx = pacCenter.x - ghostCenter.x;
+        float dy = pacCenter.y - ghostCenter.y;
+        float distSq = dx*dx + dy*dy;
+        
+
+        if (distSq < 100.0f) {
+            if (ghost->getMode() == GhostMode::FRIGHTENED) {
+           
+                ghost->setMode(GhostMode::DEAD); 
+                // Speed and destination are handled in Ghost::update
+                m_score += 200;
+                m_txtScore.setString(std::to_string(m_score));
+            } else if (ghost->getMode() != GhostMode::DEAD) { // Don't die if touching a returning ghost
+                 // Normal mode - Death
+                 pacman.removeLife();
+                 if (pacman.getLives() >= 0) {
+                     resetPositions();
+                     m_frightenedTimer = 0;
+                     blinky.setMode(GhostMode::CHASE);
+                     pinky.setMode(GhostMode::CHASE);
+                     inky.setMode(GhostMode::CHASE);
+                     clyde.setMode(GhostMode::CHASE);
+                 } else {
+                     started = false; 
+                 }
+            }
+        }
+    }
 
 }
 

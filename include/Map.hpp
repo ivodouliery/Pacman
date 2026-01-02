@@ -76,6 +76,11 @@ public:
      */
     void start();
 
+    /**
+     * @brief Réinitialise les positions des entités.
+     */
+    void resetPositions();
+
 
 private:
     /**
@@ -140,5 +145,13 @@ private:
     sf::Text m_txtScore;
     sf::Text m_lblHighScore;
     sf::Text m_txtHighScore;
+    sf::RectangleShape m_headerMask;
+    
+    // Life UI
+    sf::Sprite m_lifeSprite;
+    
+    // Logic state
+    bool m_ghostsActive = false;
+    float m_frightenedTimer = 0.0f;
     // End of UI elements
 };
