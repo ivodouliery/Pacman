@@ -30,6 +30,8 @@ public:
     
     // AI State
     sf::Vector2i lastGridPos;
+    float strategyTimer = 0.0f;
+    bool isChasing = true;
 
 private:
     GhostType type;
