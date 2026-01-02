@@ -2,6 +2,14 @@
 #include <filesystem>
 #include <iostream>
 
+/**
+ * @brief Constructeur de la classe Map.
+ * 
+ * Initialise les fantômes, Pacman, les textures et la grille du niveau.
+ * Charge les ressources graphiques (textures) et la police d'écriture.
+ * Configure les sprites pour l'affichage.
+ * Compte le nombre de pac-gommes initiales.
+ */
 Map::Map(): blinky(GhostType::BLINKY), pinky(GhostType::PINKY), inky(GhostType::INKY), clyde(GhostType::CLYDE), pacman(), mapSprite(mapTexture), dotSprite(itemTexture), superDotSprite(itemTexture), m_font(), m_lblScore(m_font), m_txtScore(m_font), m_lblHighScore(m_font), m_txtHighScore(m_font), m_lifeSprite(itemTexture) {
     mapGrid = {
         "############################", 
@@ -69,6 +77,12 @@ Map::Map(): blinky(GhostType::BLINKY), pinky(GhostType::PINKY), inky(GhostType::
     }
 }
 
+/**
+ * @brief Réinitialise les positions des entités.
+ * 
+ * Replace Pacman et les fantômes à leurs positions de départ définies dans la grille initiale.
+ * Réinitialise également l'interface utilisateur (Score, High Score, Vies).
+ */
 void Map::resetPositions() {
     m_ghostsActive = false;
     
@@ -171,6 +185,18 @@ void Map::resetPositions() {
     
 }
 
+/**
+ * @brief Dessine la carte sur la fenêtre.
+ * 
+ * Affiche dans l'ordre :
+ * 1. Le fond de la carte (mapSprite).
+ * 2. L'interface utilisateur (Score, High Score).
+ * 3. Les pac-gommes et super pac-gommes (si le jeu a commencé).
+ * 4. Les entités (Pacman et Fantômes).
+ * 5. Les vies restantes en bas de l'écran.
+ * 
+ * @param window La fenêtre de rendu SFML.
+ */
 void Map::draw(sf::RenderWindow& window) {
     window.draw(mapSprite);
 
@@ -222,6 +248,17 @@ void Map::draw(sf::RenderWindow& window) {
     }
 }
 
+/**
+ * @brief Met à jour la carte.
+ * 
+ * Gère la logique principale du jeu à chaque frame :
+ * - Interaction Pacman / Pac-gommes (score, mode frightened).
+ * - Mise à jour des entités (Pacman, Fantômes).
+ * - Gestion du timer "Frightened".
+ * - Activation des fantômes au premier mouvement.
+ * - Collisions Pacman / Fantômes (mort ou manger fantôme).
+ * - Conditions de victoire (plus de pac-gommes) ou défaite (plus de vies).
+ */
 void Map::update() {
 
     // Pellet Interaction
@@ -337,6 +374,14 @@ void Map::update() {
 
 }
 
+/**
+ * @brief Gère les entrées du joueur.
+ * 
+ * Convertit les touches fléchées en vecteurs de direction pour Pacman.
+ * Utilise setNextDirection pour permettre le "buffering" des commandes.
+ * 
+ * @param key La touche appuyée.
+ */
 void Map::handleInput(sf::Keyboard::Key key) {
     switch (key) {
         case sf::Keyboard::Key::Up:
@@ -356,11 +401,25 @@ void Map::handleInput(sf::Keyboard::Key key) {
     }
 }
 
+/**
+ * @brief Démarre le jeu.
+ * 
+ * Active le flag `started` et change le sprite de fond pour afficher le niveau de jeu
+ * au lieu de l'écran titre.
+ */
 void Map::start() {
     started = true;
     mapSprite = sf::Sprite(mapTexture);
 }
 
+/**
+ * @brief Réinitialise le niveau complet.
+ * 
+ * Restaure la grille initiale (murs, pac-gommes).
+ * Réinitialise le compteur de pac-gommes.
+ * Replace les entités à leurs positions de départ.
+ * Réinitialise l'état des fantômes (mode Chase, timer frightened).
+ */
 void Map::resetLevel() {
     // Restore original map layout (dots and all)
     mapGrid = {
