@@ -236,12 +236,30 @@ void Map::update() {
             mapGrid[gridY][gridX] = ' ';
             m_score += 50;
             m_txtScore.setString(std::to_string(m_score));
-            // TODO: Trigger frightened mode
+            // Trigger frightened mode
+            m_frightenedTimer = 10.0f; // 10 seconds of power
+            blinky.setMode(GhostMode::FRIGHTENED);
+            pinky.setMode(GhostMode::FRIGHTENED);
+            inky.setMode(GhostMode::FRIGHTENED);
+            clyde.setMode(GhostMode::FRIGHTENED);
         }
     }
 
     float dt = 1.0f / 60.0f; // Delta time fixe pour l'instant
     pacman.update(dt, mapGrid);
+
+    // Update Frightened Timer
+    if (m_frightenedTimer > 0) {
+        m_frightenedTimer -= dt;
+        if (m_frightenedTimer <= 0) {
+            m_frightenedTimer = 0;
+
+            blinky.setMode(GhostMode::CHASE);
+            pinky.setMode(GhostMode::CHASE);
+            inky.setMode(GhostMode::CHASE);
+            clyde.setMode(GhostMode::CHASE);
+        }
+    }
 
     // Check if we should activate ghosts
     if (!m_ghostsActive) {
@@ -257,9 +275,7 @@ void Map::update() {
         clyde.update(dt, mapGrid);
     }
 
-    // Collision Detection
-    // Check collision with ghosts
-    // Simple distance check (e.g. < 10 pixels seems generous enough for hit)
+
     std::vector<Ghost*> ghosts = {&blinky, &pinky, &inky, &clyde};
     sf::Vector2f pacPos = pacman.getPosition();
     // Center point
@@ -273,20 +289,28 @@ void Map::update() {
         float dy = pacCenter.y - ghostCenter.y;
         float distSq = dx*dx + dy*dy;
         
-        // Threshold: 8 pixels radius sum? 16*16 = 256. 
-        // Let's go strict: 10*10 = 100
+
         if (distSq < 100.0f) {
-            // Collision!
-            // TODO: Check for Frightened Mode
-            if (true) { // Normal mode
+            if (ghost->getMode() == GhostMode::FRIGHTENED) {
+           
+                ghost->setMode(GhostMode::DEAD); 
+
+                ghost->setPosition(14 * Entity::cellSize, 14 * Entity::cellSize); 
+                ghost->setMode(GhostMode::CHASE); 
+                m_score += 200;
+                m_txtScore.setString(std::to_string(m_score));
+            } else {
+                 // Normal mode - Death
                  pacman.removeLife();
                  if (pacman.getLives() >= 0) {
                      resetPositions();
-                     // Maybe reset game state or pause?
+                     m_frightenedTimer = 0;
+                     blinky.setMode(GhostMode::CHASE);
+                     pinky.setMode(GhostMode::CHASE);
+                     inky.setMode(GhostMode::CHASE);
+                     clyde.setMode(GhostMode::CHASE);
                  } else {
-                     // Game Over logic (not requested yet, but stop game?)
                      started = false; 
-                     // Or screen change
                  }
             }
         }
