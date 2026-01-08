@@ -225,11 +225,6 @@ private:
      * @brief Texte affichant la valeur du high score.
      */
     sf::Text m_txtHighScore;
-
-    /**
-     * @brief Masque pour l'en-tête (non utilisé actuellement).
-     */
-    sf::RectangleShape m_headerMask;
     
     // Life UI
     /**
