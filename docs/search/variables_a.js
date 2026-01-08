@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['speed_0',['speed',['../class_entity.html#a1de3d8d9ab8088f61e6726069b26fa60',1,'Entity']]],
-  ['sprite_5fbody_1',['sprite_body',['../class_entity.html#ae986d50a98c74603d7aff5d98dd1c419',1,'Entity']]],
-  ['strategytimer_2',['strategyTimer',['../class_ghost.html#a2aec5bc8664e5281e540db3a44d37922',1,'Ghost']]]
+  ['pacman_0',['pacman',['../class_map.html#aef7879dc0d066789484c89c1748ed87c',1,'Map']]],
+  ['pacmansize_1',['pacmanSize',['../class_map.html#a486fa783f88b55da7bd0c9670f3c9236',1,'Map']]],
+  ['pinky_2',['pinky',['../class_map.html#af7ed6e878266ba7e8eb6196ce92cc639',1,'Map']]],
+  ['position_3',['position',['../class_entity.html#afc349ec89c2bffef70bf6a1d95603154',1,'Entity']]]
 ];

@@ -108,14 +108,14 @@ $(function(){initNavTree('_pacman_8hpp_source.html','',''); });
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span></div>
 <div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>    <span class="keywordtype">bool</span> <a class="code hl_function" href="class_pacman.html#ac0d4fb3dd9b031c8d2475c4b9210de4a">canMove</a>(<span class="keyword">const</span> std::vector&lt;std::string&gt;&amp; map, <span class="keywordtype">float</span> x, <span class="keywordtype">float</span> y) <span class="keyword">override</span>;</div>
 <div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>    </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="class_pacman.html#aaf4bd44f1699782d0f6e665efc394f41">   69</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_pacman.html#aaf4bd44f1699782d0f6e665efc394f41">removeLife</a>() { lives--; }</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno"><a class="line" href="class_pacman.html#aaf4bd44f1699782d0f6e665efc394f41">   69</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_pacman.html#aaf4bd44f1699782d0f6e665efc394f41">removeLife</a>() { <a class="code hl_variable" href="class_pacman.html#ad3a1939b946813600737dcf08812c31a">lives</a>--; }</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span></div>
-<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="class_pacman.html#aca6931bada7a4dfa7771c73923554d95">   75</a></span>    <span class="keywordtype">int</span> <a class="code hl_function" href="class_pacman.html#aca6931bada7a4dfa7771c73923554d95">getLives</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> lives; }</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno"><a class="line" href="class_pacman.html#aca6931bada7a4dfa7771c73923554d95">   75</a></span>    <span class="keywordtype">int</span> <a class="code hl_function" href="class_pacman.html#aca6931bada7a4dfa7771c73923554d95">getLives</a>()<span class="keyword"> const </span>{ <span class="keywordflow">return</span> <a class="code hl_variable" href="class_pacman.html#ad3a1939b946813600737dcf08812c31a">lives</a>; }</div>
 <div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span></div>
-<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="class_pacman.html#a6a130d8fe91d9cb155f43076c9eade00">   80</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_pacman.html#a6a130d8fe91d9cb155f43076c9eade00">resetLives</a>() { lives = 2; }</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno"><a class="line" href="class_pacman.html#a6a130d8fe91d9cb155f43076c9eade00">   80</a></span>    <span class="keywordtype">void</span> <a class="code hl_function" href="class_pacman.html#a6a130d8fe91d9cb155f43076c9eade00">resetLives</a>() { <a class="code hl_variable" href="class_pacman.html#ad3a1939b946813600737dcf08812c31a">lives</a> = 2; }</div>
 <div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span>    </div>
 <div class="line"><a id="l00082" name="l00082"></a><span class="lineno">   82</span><span class="keyword">private</span>:</div>
-<div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>    <span class="keywordtype">int</span> lives = 2;</div>
+<div class="line"><a id="l00088" name="l00088"></a><span class="lineno"><a class="line" href="class_pacman.html#ad3a1939b946813600737dcf08812c31a">   88</a></span>    <span class="keywordtype">int</span> <a class="code hl_variable" href="class_pacman.html#ad3a1939b946813600737dcf08812c31a">lives</a> = 2;</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>};</div>
 </div>
 <div class="ttc" id="a_entity_8hpp_html"><div class="ttname"><a href="_entity_8hpp.html">Entity.hpp</a></div><div class="ttdoc">Définition de la classe de base pour les entités du jeu.</div></div>
@@ -128,13 +128,14 @@ $(function(){initNavTree('_pacman_8hpp_source.html','',''); });
 <div class="ttc" id="aclass_pacman_html_ac0d4fb3dd9b031c8d2475c4b9210de4a"><div class="ttname"><a href="class_pacman.html#ac0d4fb3dd9b031c8d2475c4b9210de4a">Pacman::canMove</a></div><div class="ttdeci">bool canMove(const std::vector&lt; std::string &gt; &amp;map, float x, float y) override</div><div class="ttdoc">Vérifie si Pacman peut se déplacer vers une position.</div><div class="ttdef"><b>Definition</b> Pacman.cpp:47</div></div>
 <div class="ttc" id="aclass_pacman_html_ac3d4b745da71eea6ec69b1105fa81f13"><div class="ttname"><a href="class_pacman.html#ac3d4b745da71eea6ec69b1105fa81f13">Pacman::draw</a></div><div class="ttdeci">void draw(sf::RenderWindow &amp;window) override</div><div class="ttdoc">Dessine Pacman sur la fenêtre.</div><div class="ttdef"><b>Definition</b> Pacman.cpp:15</div></div>
 <div class="ttc" id="aclass_pacman_html_aca6931bada7a4dfa7771c73923554d95"><div class="ttname"><a href="class_pacman.html#aca6931bada7a4dfa7771c73923554d95">Pacman::getLives</a></div><div class="ttdeci">int getLives() const</div><div class="ttdoc">Récupère le nombre de vies restantes.</div><div class="ttdef"><b>Definition</b> Pacman.hpp:75</div></div>
+<div class="ttc" id="aclass_pacman_html_ad3a1939b946813600737dcf08812c31a"><div class="ttname"><a href="class_pacman.html#ad3a1939b946813600737dcf08812c31a">Pacman::lives</a></div><div class="ttdeci">int lives</div><div class="ttdoc">Nombre de vies restantes.</div><div class="ttdef"><b>Definition</b> Pacman.hpp:88</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 </div><!-- container -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><b>include</b></li><li class="navelem"><a href="_pacman_8hpp.html">Pacman.hpp</a></li>
+    <li class="navelem"><a href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a href="_pacman_8hpp.html">Pacman.hpp</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.15.0 </li>
   </ul>
 </div>

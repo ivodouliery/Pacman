@@ -16,12 +16,62 @@ Classe principale gérant le cycle de vie du jeu.
 \begin{DoxyCompactList}\small\item\em Constructeur de la classe \doxylink{class_game}{Game}. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_game_a1ab78f5ed0d5ea879157357cf2fb2afa}{run}} ()
 \begin{DoxyCompactList}\small\item\em Lance la boucle principale du jeu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{class_game_a7f57a7a8408e554d0a72882c287e1d04}{Game\+State}} \{ \mbox{\hyperlink{class_game_a7f57a7a8408e554d0a72882c287e1d04ab078ffd28db767c502ac367053f6e0ac}{START}}
+, \mbox{\hyperlink{class_game_a7f57a7a8408e554d0a72882c287e1d04a50366a49630a416ab3ccaa004196027e}{PLAYING}}
+ \}
+\begin{DoxyCompactList}\small\item\em Énumération représentant les différents états possibles du jeu. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_game_a79f698dda206dd7a9bed28b3f88bdc38}{process\+Events}} ()
+\begin{DoxyCompactList}\small\item\em Gère les événements utilisateur. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a79df6376b332d63c9eca0dcee30305c3}{update}} ()
+\begin{DoxyCompactList}\small\item\em Met à jour la logique du jeu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_game_a15ddd769261d923827a3cdf41499c843}{render}} ()
+\begin{DoxyCompactList}\small\item\em Affiche les éléments du jeu à l\textquotesingle{}écran. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+sf\+::\+Render\+Window \mbox{\hyperlink{class_game_a223de215aeb661cd423ac145756cc730}{window}}
+\begin{DoxyCompactList}\small\item\em La fenêtre de rendu SFML. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_game_a7f57a7a8408e554d0a72882c287e1d04}{Game\+State}} \mbox{\hyperlink{class_game_ad9fc2a8710ee56916f79314b91112ed0}{state}} = \mbox{\hyperlink{class_game_a7f57a7a8408e554d0a72882c287e1d04ab078ffd28db767c502ac367053f6e0ac}{Game\+State\+::\+START}}
+\begin{DoxyCompactList}\small\item\em État actuel du jeu. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_map}{Map}} \mbox{\hyperlink{class_game_a519a7d3a52198b7a0a1ad18f477b2729}{grid}}
+\begin{DoxyCompactList}\small\item\em Instance de la carte du jeu. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
 Classe principale gérant le cycle de vie du jeu. 
 
 La classe \doxylink{class_game}{Game} encapsule la fenêtre SFML, la boucle de jeu principale et délègue la logique spécifique à la carte (\doxylink{class_map}{Map}) et aux entités. 
+
+\label{doc-enum-members}
+\Hypertarget{class_game_doc-enum-members}
+\doxysubsection{Member Enumeration Documentation}
+\Hypertarget{class_game_a7f57a7a8408e554d0a72882c287e1d04}\index{Game@{Game}!GameState@{GameState}}
+\index{GameState@{GameState}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{GameState}{GameState}}
+{\footnotesize\ttfamily \label{class_game_a7f57a7a8408e554d0a72882c287e1d04} 
+enum class \mbox{\hyperlink{class_game_a7f57a7a8408e554d0a72882c287e1d04}{Game\+::\+Game\+State}}\hspace{0.3cm}{\ttfamily [strong]}, {\ttfamily [private]}}
+
+
+
+Énumération représentant les différents états possibles du jeu. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{START@{START}!Game@{Game}}\index{Game@{Game}!START@{START}}}\Hypertarget{class_game_a7f57a7a8408e554d0a72882c287e1d04ab078ffd28db767c502ac367053f6e0ac}\label{class_game_a7f57a7a8408e554d0a72882c287e1d04ab078ffd28db767c502ac367053f6e0ac} 
+START&Écran de démarrage ou état d\textquotesingle{}attente avant le début du jeu. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{PLAYING@{PLAYING}!Game@{Game}}\index{Game@{Game}!PLAYING@{PLAYING}}}\Hypertarget{class_game_a7f57a7a8408e554d0a72882c287e1d04a50366a49630a416ab3ccaa004196027e}\label{class_game_a7f57a7a8408e554d0a72882c287e1d04a50366a49630a416ab3ccaa004196027e} 
+PLAYING&Le jeu est en cours d\textquotesingle{}exécution. \\
+\hline
+
+\end{DoxyEnumFields}
+
 
 \label{doc-constructors}
 \Hypertarget{class_game_doc-constructors}
@@ -41,7 +91,27 @@ Initialise la fenêtre de jeu avec les paramètres par défaut (taille, titre, f
 \label{doc-func-members}
 \Hypertarget{class_game_doc-func-members}
 \doxysubsection{Member Function Documentation}
-\Hypertarget{class_game_a1ab78f5ed0d5ea879157357cf2fb2afa}\index{Game@{Game}!run@{run}}
+\Hypertarget{class_game_a79f698dda206dd7a9bed28b3f88bdc38}\index{Game@{Game}!processEvents@{processEvents}}
+\index{processEvents@{processEvents}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{processEvents()}{processEvents()}}
+{\footnotesize\ttfamily \label{class_game_a79f698dda206dd7a9bed28b3f88bdc38} 
+void Game\+::process\+Events (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Gère les événements utilisateur. 
+
+Traite les entrées clavier pour contrôler le jeu et les événements système comme la fermeture de la fenêtre. \Hypertarget{class_game_a15ddd769261d923827a3cdf41499c843}\index{Game@{Game}!render@{render}}
+\index{render@{render}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{render()}{render()}}
+{\footnotesize\ttfamily \label{class_game_a15ddd769261d923827a3cdf41499c843} 
+void Game\+::render (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Affiche les éléments du jeu à l\textquotesingle{}écran. 
+
+Efface la fenêtre, dessine la carte et ses entités, puis affiche le rendu. \Hypertarget{class_game_a1ab78f5ed0d5ea879157357cf2fb2afa}\index{Game@{Game}!run@{run}}
 \index{run@{run}!Game@{Game}}
 \doxysubsubsection{\texorpdfstring{run()}{run()}}
 {\footnotesize\ttfamily \label{class_game_a1ab78f5ed0d5ea879157357cf2fb2afa} 
@@ -51,9 +121,54 @@ void Game\+::run (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
 
 Lance la boucle principale du jeu. 
 
-Cette méthode contient la boucle while(window.\+is\+Open()) qui appelle successivement process\+Events(), update() et render() à chaque frame. 
+Cette méthode contient la boucle while(window.\+is\+Open()) qui appelle successivement \doxylink{class_game_a79f698dda206dd7a9bed28b3f88bdc38}{process\+Events()}, \doxylink{class_game_a79df6376b332d63c9eca0dcee30305c3}{update()} et \doxylink{class_game_a15ddd769261d923827a3cdf41499c843}{render()} à chaque frame. \Hypertarget{class_game_a79df6376b332d63c9eca0dcee30305c3}\index{Game@{Game}!update@{update}}
+\index{update@{update}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily \label{class_game_a79df6376b332d63c9eca0dcee30305c3} 
+void Game\+::update (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Met à jour la logique du jeu. 
+
+Appelle la méthode update de la carte (grid) si le jeu est en cours. 
+
+\label{doc-variable-members}
+\Hypertarget{class_game_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_game_a519a7d3a52198b7a0a1ad18f477b2729}\index{Game@{Game}!grid@{grid}}
+\index{grid@{grid}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{grid}{grid}}
+{\footnotesize\ttfamily \label{class_game_a519a7d3a52198b7a0a1ad18f477b2729} 
+\mbox{\hyperlink{class_map}{Map}} Game\+::grid\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Instance de la carte du jeu. 
+
+Gère la grille, \doxylink{class_pacman}{Pacman}, les fantômes et la logique de jeu associée. \Hypertarget{class_game_ad9fc2a8710ee56916f79314b91112ed0}\index{Game@{Game}!state@{state}}
+\index{state@{state}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{state}{state}}
+{\footnotesize\ttfamily \label{class_game_ad9fc2a8710ee56916f79314b91112ed0} 
+\mbox{\hyperlink{class_game_a7f57a7a8408e554d0a72882c287e1d04}{Game\+State}} Game\+::state = \mbox{\hyperlink{class_game_a7f57a7a8408e554d0a72882c287e1d04ab078ffd28db767c502ac367053f6e0ac}{Game\+State\+::\+START}}\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+État actuel du jeu. 
+
+Initialisé à \doxylink{class_game_a7f57a7a8408e554d0a72882c287e1d04ab078ffd28db767c502ac367053f6e0ac}{Game\+State\+::\+START}. \Hypertarget{class_game_a223de215aeb661cd423ac145756cc730}\index{Game@{Game}!window@{window}}
+\index{window@{window}!Game@{Game}}
+\doxysubsubsection{\texorpdfstring{window}{window}}
+{\footnotesize\ttfamily \label{class_game_a223de215aeb661cd423ac145756cc730} 
+sf\+::\+Render\+Window Game\+::window\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+La fenêtre de rendu SFML. 
+
+
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
 include/\mbox{\hyperlink{_game_8hpp}{Game.\+hpp}}\item 
-src/Game.\+cpp\end{DoxyCompactItemize}
+src/\mbox{\hyperlink{_game_8cpp}{Game.\+cpp}}\end{DoxyCompactItemize}

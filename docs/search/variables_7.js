@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['map_5fheight_0',['MAP_HEIGHT',['../class_map.html#aa72f1eb56e895ad10c94ba53e8058447',1,'Map']]],
-  ['map_5fwidth_1',['MAP_WIDTH',['../class_map.html#ac3ba9233ac86cd70e2bd6b556edbdb88',1,'Map']]]
+  ['lastgridpos_0',['lastGridPos',['../class_ghost.html#a19d3792ec591051cbfa82b575318bb30',1,'Ghost']]],
+  ['lives_1',['lives',['../class_pacman.html#ad3a1939b946813600737dcf08812c31a',1,'Pacman']]]
 ];

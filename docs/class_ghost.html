@@ -108,7 +108,7 @@ Inheritance diagram for Ghost:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-methods" class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4864553d167e76985d36ec71c448b9ed" id="r_a4864553d167e76985d36ec71c448b9ed"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4864553d167e76985d36ec71c448b9ed">Ghost</a> (<a class="el" href="_ghost_8hpp.html#a19c48855930abe71014f6f21514b3925">GhostType</a> type)</td></tr>
+<tr class="memitem:a4864553d167e76985d36ec71c448b9ed" id="r_a4864553d167e76985d36ec71c448b9ed"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4864553d167e76985d36ec71c448b9ed">Ghost</a> (<a class="el" href="_ghost_8hpp.html#a19c48855930abe71014f6f21514b3925">GhostType</a> <a class="el" href="#a13a4c3b065ee08ce849d19680718ee18">type</a>)</td></tr>
 <tr class="memdesc:a4864553d167e76985d36ec71c448b9ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur de <a class="el" href="class_ghost.html" title="Classe représentant un fantôme ennemi.">Ghost</a>.  <br /></td></tr>
 <tr class="memitem:a03f280329a77e8fdbeb64720e8c43e79" id="r_a03f280329a77e8fdbeb64720e8c43e79"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a03f280329a77e8fdbeb64720e8c43e79">update</a> (float dt, const std::vector&lt; std::string &gt; &amp;map, sf::Vector2f pacmanPos)</td></tr>
 <tr class="memdesc:a03f280329a77e8fdbeb64720e8c43e79"><td class="mdescLeft">&#160;</td><td class="mdescRight">Met à jour l'IA et le mouvement du fantôme.  <br /></td></tr>
@@ -125,9 +125,8 @@ Public Member Functions</h2></td></tr>
 <tr class="inherit_header pub_methods_class_entity"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_methods_class_entity')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Public Member Functions inherited from <a class="el" href="class_entity.html">Entity</a></td></tr>
 <tr class="memitem:a980f368aa07ce358583982821533a54a inherit pub_methods_class_entity" id="r_a980f368aa07ce358583982821533a54a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a980f368aa07ce358583982821533a54a">Entity</a> ()</td></tr>
 <tr class="memdesc:a980f368aa07ce358583982821533a54a inherit pub_methods_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur par défaut.  <br /></td></tr>
-<tr class="memitem:ac479d009ddde62dfb378ca0a70d81307 inherit pub_methods_class_entity" id="r_ac479d009ddde62dfb378ca0a70d81307"><td class="memItemLeft" align="right" valign="top">
-virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~Entity</b> ()=default</td></tr>
-<tr class="memdesc:ac479d009ddde62dfb378ca0a70d81307 inherit pub_methods_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructeur virtuel par défaut. <br /></td></tr>
+<tr class="memitem:ac479d009ddde62dfb378ca0a70d81307 inherit pub_methods_class_entity" id="r_ac479d009ddde62dfb378ca0a70d81307"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#ac479d009ddde62dfb378ca0a70d81307">~Entity</a> ()=default</td></tr>
+<tr class="memdesc:ac479d009ddde62dfb378ca0a70d81307 inherit pub_methods_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructeur virtuel par défaut.  <br /></td></tr>
 <tr class="memitem:a11d7f8fde1e714c76a20b69793fa157c inherit pub_methods_class_entity" id="r_a11d7f8fde1e714c76a20b69793fa157c"><td class="memItemLeft" align="right" valign="top">sf::Vector2f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a11d7f8fde1e714c76a20b69793fa157c">getPosition</a> () const</td></tr>
 <tr class="memdesc:a11d7f8fde1e714c76a20b69793fa157c inherit pub_methods_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Récupère la position actuelle de l'entité.  <br /></td></tr>
 <tr class="memitem:a484d8593928d4c4ad7f28d45ae4ac75b inherit pub_methods_class_entity" id="r_a484d8593928d4c4ad7f28d45ae4ac75b"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a484d8593928d4c4ad7f28d45ae4ac75b">update</a> (float dt, const std::vector&lt; std::string &gt; &amp;map)</td></tr>
@@ -151,68 +150,72 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~Entity</b> ()=def
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-attribs" class="groupheader"><a id="pub-attribs" name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a19d3792ec591051cbfa82b575318bb30" id="r_a19d3792ec591051cbfa82b575318bb30"><td class="memItemLeft" align="right" valign="top"><a id="a19d3792ec591051cbfa82b575318bb30" name="a19d3792ec591051cbfa82b575318bb30"></a>
-sf::Vector2i&#160;</td><td class="memItemRight" valign="bottom"><b>lastGridPos</b></td></tr>
-<tr class="memdesc:a19d3792ec591051cbfa82b575318bb30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dernière position grille visitée (pour éviter les demi-tours immédiats). <br /></td></tr>
-<tr class="memitem:a2aec5bc8664e5281e540db3a44d37922" id="r_a2aec5bc8664e5281e540db3a44d37922"><td class="memItemLeft" align="right" valign="top"><a id="a2aec5bc8664e5281e540db3a44d37922" name="a2aec5bc8664e5281e540db3a44d37922"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>strategyTimer</b> = 0.0f</td></tr>
-<tr class="memdesc:a2aec5bc8664e5281e540db3a44d37922"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer pour gérer l'alternance des stratégies (Chase/Scatter). <br /></td></tr>
-<tr class="memitem:a5e064df5bf825be47649a389b39b2798" id="r_a5e064df5bf825be47649a389b39b2798"><td class="memItemLeft" align="right" valign="top"><a id="a5e064df5bf825be47649a389b39b2798" name="a5e064df5bf825be47649a389b39b2798"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>isChasing</b> = true</td></tr>
-<tr class="memdesc:a5e064df5bf825be47649a389b39b2798"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique si le fantôme est en mode poursuite (true) ou dispersion (false). <br /></td></tr>
+<tr class="memitem:a19d3792ec591051cbfa82b575318bb30" id="r_a19d3792ec591051cbfa82b575318bb30"><td class="memItemLeft" align="right" valign="top">sf::Vector2i&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a19d3792ec591051cbfa82b575318bb30">lastGridPos</a></td></tr>
+<tr class="memdesc:a19d3792ec591051cbfa82b575318bb30"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dernière position grille visitée (pour éviter les demi-tours immédiats).  <br /></td></tr>
+<tr class="memitem:a2aec5bc8664e5281e540db3a44d37922" id="r_a2aec5bc8664e5281e540db3a44d37922"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a2aec5bc8664e5281e540db3a44d37922">strategyTimer</a> = 0.0f</td></tr>
+<tr class="memdesc:a2aec5bc8664e5281e540db3a44d37922"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer pour gérer l'alternance des stratégies (Chase/Scatter).  <br /></td></tr>
+<tr class="memitem:a5e064df5bf825be47649a389b39b2798" id="r_a5e064df5bf825be47649a389b39b2798"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5e064df5bf825be47649a389b39b2798">isChasing</a> = true</td></tr>
+<tr class="memdesc:a5e064df5bf825be47649a389b39b2798"><td class="mdescLeft">&#160;</td><td class="mdescRight">Indique si le fantôme est en mode poursuite (true) ou dispersion (false).  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-attribs" class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:aab87656929905e560c20f67b52fde2b5" id="r_aab87656929905e560c20f67b52fde2b5"><td class="memItemLeft" align="right" valign="top"><a id="aab87656929905e560c20f67b52fde2b5" name="aab87656929905e560c20f67b52fde2b5"></a>
-static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>eyesOriginY</b> = 10*<a class="el" href="class_entity.html#a3ae73f0ab9972b909c86c7950a1dc86e">entitySize</a></td></tr>
-<tr class="memdesc:aab87656929905e560c20f67b52fde2b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Position Y dans la texture pour les yeux. <br /></td></tr>
+<tr class="memitem:aab87656929905e560c20f67b52fde2b5" id="r_aab87656929905e560c20f67b52fde2b5"><td class="memItemLeft" align="right" valign="top">static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aab87656929905e560c20f67b52fde2b5">eyesOriginY</a> = 10*<a class="el" href="class_entity.html#a3ae73f0ab9972b909c86c7950a1dc86e">entitySize</a></td></tr>
+<tr class="memdesc:aab87656929905e560c20f67b52fde2b5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Position Y dans la texture pour les yeux.  <br /></td></tr>
 <tr class="inherit_header pub_static_attribs_class_entity"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pub_static_attribs_class_entity')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Static Public Attributes inherited from <a class="el" href="class_entity.html">Entity</a></td></tr>
-<tr class="memitem:a3ae73f0ab9972b909c86c7950a1dc86e inherit pub_static_attribs_class_entity" id="r_a3ae73f0ab9972b909c86c7950a1dc86e"><td class="memItemLeft" align="right" valign="top">
-static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>entitySize</b> = 32</td></tr>
-<tr class="memdesc:a3ae73f0ab9972b909c86c7950a1dc86e inherit pub_static_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Taille d'une entité dans la texture (32x32 pixels). <br /></td></tr>
-<tr class="memitem:a4d0f338426d19d53d4bcc9744debac87 inherit pub_static_attribs_class_entity" id="r_a4d0f338426d19d53d4bcc9744debac87"><td class="memItemLeft" align="right" valign="top">
-static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><b>cellSize</b> = 16.0f</td></tr>
-<tr class="memdesc:a4d0f338426d19d53d4bcc9744debac87 inherit pub_static_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Taille d'une case de la grille (16x16 pixels). <br /></td></tr>
-<tr class="memitem:aa7631a36543bc4eeae534fc7c3e63d96 inherit pub_static_attribs_class_entity" id="r_aa7631a36543bc4eeae534fc7c3e63d96"><td class="memItemLeft" align="right" valign="top">
-static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>eyesSize</b> = 16</td></tr>
-<tr class="memdesc:aa7631a36543bc4eeae534fc7c3e63d96 inherit pub_static_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Taille des yeux des fantômes (16x16 pixels). <br /></td></tr>
-<tr class="memitem:a4e5e7336a0b9cb78aa74d30e3578b776 inherit pub_static_attribs_class_entity" id="r_a4e5e7336a0b9cb78aa74d30e3578b776"><td class="memItemLeft" align="right" valign="top">
-static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><b>animationSpeed</b> = 0.1f</td></tr>
-<tr class="memdesc:a4e5e7336a0b9cb78aa74d30e3578b776 inherit pub_static_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Durée d'affichage de chaque frame d'animation (en secondes). <br /></td></tr>
+<tr class="memitem:a3ae73f0ab9972b909c86c7950a1dc86e inherit pub_static_attribs_class_entity" id="r_a3ae73f0ab9972b909c86c7950a1dc86e"><td class="memItemLeft" align="right" valign="top">static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a3ae73f0ab9972b909c86c7950a1dc86e">entitySize</a> = 32</td></tr>
+<tr class="memdesc:a3ae73f0ab9972b909c86c7950a1dc86e inherit pub_static_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Taille d'une entité dans la texture (32x32 pixels).  <br /></td></tr>
+<tr class="memitem:a4d0f338426d19d53d4bcc9744debac87 inherit pub_static_attribs_class_entity" id="r_a4d0f338426d19d53d4bcc9744debac87"><td class="memItemLeft" align="right" valign="top">static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a4d0f338426d19d53d4bcc9744debac87">cellSize</a> = 16.0f</td></tr>
+<tr class="memdesc:a4d0f338426d19d53d4bcc9744debac87 inherit pub_static_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Taille d'une case de la grille (16x16 pixels).  <br /></td></tr>
+<tr class="memitem:aa7631a36543bc4eeae534fc7c3e63d96 inherit pub_static_attribs_class_entity" id="r_aa7631a36543bc4eeae534fc7c3e63d96"><td class="memItemLeft" align="right" valign="top">static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#aa7631a36543bc4eeae534fc7c3e63d96">eyesSize</a> = 16</td></tr>
+<tr class="memdesc:aa7631a36543bc4eeae534fc7c3e63d96 inherit pub_static_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Taille des yeux des fantômes (16x16 pixels).  <br /></td></tr>
+<tr class="memitem:a4e5e7336a0b9cb78aa74d30e3578b776 inherit pub_static_attribs_class_entity" id="r_a4e5e7336a0b9cb78aa74d30e3578b776"><td class="memItemLeft" align="right" valign="top">static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a4e5e7336a0b9cb78aa74d30e3578b776">animationSpeed</a> = 0.1f</td></tr>
+<tr class="memdesc:a4e5e7336a0b9cb78aa74d30e3578b776 inherit pub_static_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Durée d'affichage de chaque frame d'animation (en secondes).  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:acfd42a1cdb2a827a3c647ae245a34558" id="r_acfd42a1cdb2a827a3c647ae245a34558"><td class="memItemLeft" align="right" valign="top">sf::Vector2f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#acfd42a1cdb2a827a3c647ae245a34558">getBestDirectionForTarget</a> (sf::Vector2f target, const std::vector&lt; sf::Vector2f &gt; &amp;possibleDirs, const std::vector&lt; std::string &gt; &amp;map)</td></tr>
+<tr class="memdesc:acfd42a1cdb2a827a3c647ae245a34558"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calcule la meilleure direction pour atteindre une cible.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a13a4c3b065ee08ce849d19680718ee18" id="r_a13a4c3b065ee08ce849d19680718ee18"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_ghost_8hpp.html#a19c48855930abe71014f6f21514b3925">GhostType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a13a4c3b065ee08ce849d19680718ee18">type</a></td></tr>
+<tr class="memdesc:a13a4c3b065ee08ce849d19680718ee18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Type du fantôme.  <br /></td></tr>
+<tr class="memitem:a1787d22c32b1973c9cd2d9e262c8e2a6" id="r_a1787d22c32b1973c9cd2d9e262c8e2a6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_ghost_8hpp.html#ac1c5b6f654cc52ab515d251ff988f753">GhostMode</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1787d22c32b1973c9cd2d9e262c8e2a6">mode</a></td></tr>
+<tr class="memdesc:a1787d22c32b1973c9cd2d9e262c8e2a6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Mode actuel du fantôme.  <br /></td></tr>
+<tr class="memitem:a5bd50263bbf8f7a4783511b359817647" id="r_a5bd50263bbf8f7a4783511b359817647"><td class="memItemLeft" align="right" valign="top">sf::Sprite&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a5bd50263bbf8f7a4783511b359817647">sprite_eyes</a></td></tr>
+<tr class="memdesc:a5bd50263bbf8f7a4783511b359817647"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sprite des yeux (générique).  <br /></td></tr>
+<tr class="memitem:a281490fa842a48520d9873396e4f7cf9" id="r_a281490fa842a48520d9873396e4f7cf9"><td class="memItemLeft" align="right" valign="top">sf::Sprite&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a281490fa842a48520d9873396e4f7cf9">sprite_eyes_up</a></td></tr>
+<tr class="memdesc:a281490fa842a48520d9873396e4f7cf9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sprite des yeux regardant vers le haut.  <br /></td></tr>
+<tr class="memitem:adea8284c27f06588b66db49c2bc35f73" id="r_adea8284c27f06588b66db49c2bc35f73"><td class="memItemLeft" align="right" valign="top">sf::Sprite&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adea8284c27f06588b66db49c2bc35f73">sprite_eyes_down</a></td></tr>
+<tr class="memdesc:adea8284c27f06588b66db49c2bc35f73"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sprite des yeux regardant vers le bas.  <br /></td></tr>
+<tr class="memitem:ad4766415e5d29489891c3a7ec0292c83" id="r_ad4766415e5d29489891c3a7ec0292c83"><td class="memItemLeft" align="right" valign="top">sf::Sprite&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad4766415e5d29489891c3a7ec0292c83">sprite_eyes_left_right</a></td></tr>
+<tr class="memdesc:ad4766415e5d29489891c3a7ec0292c83"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sprite des yeux regardant vers la gauche ou la droite.  <br /></td></tr>
+<tr class="memitem:a6984e43b2a46b34360452f8a91b9a52f" id="r_a6984e43b2a46b34360452f8a91b9a52f"><td class="memItemLeft" align="right" valign="top">sf::Sprite&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6984e43b2a46b34360452f8a91b9a52f">sprite_body_dead</a></td></tr>
+<tr class="memdesc:a6984e43b2a46b34360452f8a91b9a52f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sprite du corps en mode mort (yeux seuls, ou score affiché). Note: Dans cette implémentation, semble être utilisé pour les yeux seuls ou un état spécifique.  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-inherited" class="groupheader"><a id="inherited" name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_attribs_class_entity"><td colspan="2" onclick="javascript:dynsection.toggleInherit('pro_attribs_class_entity')"><span class="dynarrow"><span class="arrowhead closed"></span></span>Protected Attributes inherited from <a class="el" href="class_entity.html">Entity</a></td></tr>
-<tr class="memitem:afc349ec89c2bffef70bf6a1d95603154 inherit pro_attribs_class_entity" id="r_afc349ec89c2bffef70bf6a1d95603154"><td class="memItemLeft" align="right" valign="top">
-sf::Vector2f&#160;</td><td class="memItemRight" valign="bottom"><b>position</b></td></tr>
-<tr class="memdesc:afc349ec89c2bffef70bf6a1d95603154 inherit pro_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Position actuelle de l'entité (coin haut-gauche). <br /></td></tr>
-<tr class="memitem:a0d5a432f448230f9f04cea3597ecd39e inherit pro_attribs_class_entity" id="r_a0d5a432f448230f9f04cea3597ecd39e"><td class="memItemLeft" align="right" valign="top">
-sf::Vector2f&#160;</td><td class="memItemRight" valign="bottom"><b>direction</b></td></tr>
-<tr class="memdesc:a0d5a432f448230f9f04cea3597ecd39e inherit pro_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Direction actuelle du mouvement. <br /></td></tr>
-<tr class="memitem:af45b89d52fa753fe3134d0eed2564d33 inherit pro_attribs_class_entity" id="r_af45b89d52fa753fe3134d0eed2564d33"><td class="memItemLeft" align="right" valign="top">
-sf::Vector2f&#160;</td><td class="memItemRight" valign="bottom"><b>nextDirection</b></td></tr>
-<tr class="memdesc:af45b89d52fa753fe3134d0eed2564d33 inherit pro_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prochaine direction demandée par l'utilisateur ou l'IA. <br /></td></tr>
-<tr class="memitem:a1de3d8d9ab8088f61e6726069b26fa60 inherit pro_attribs_class_entity" id="r_a1de3d8d9ab8088f61e6726069b26fa60"><td class="memItemLeft" align="right" valign="top">
-float&#160;</td><td class="memItemRight" valign="bottom"><b>speed</b></td></tr>
-<tr class="memdesc:a1de3d8d9ab8088f61e6726069b26fa60 inherit pro_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vitesse de déplacement en pixels/seconde. <br /></td></tr>
-<tr class="memitem:a1c826bef4907b26da47fb618726a39c9 inherit pro_attribs_class_entity" id="r_a1c826bef4907b26da47fb618726a39c9"><td class="memItemLeft" align="right" valign="top">
-int&#160;</td><td class="memItemRight" valign="bottom"><b>currentFrame</b></td></tr>
-<tr class="memdesc:a1c826bef4907b26da47fb618726a39c9 inherit pro_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Index de la frame d'animation actuelle. <br /></td></tr>
-<tr class="memitem:aad1dd7c59281ed552e7ca57f6e701cc6 inherit pro_attribs_class_entity" id="r_aad1dd7c59281ed552e7ca57f6e701cc6"><td class="memItemLeft" align="right" valign="top">
-float&#160;</td><td class="memItemRight" valign="bottom"><b>animationTimer</b></td></tr>
-<tr class="memdesc:aad1dd7c59281ed552e7ca57f6e701cc6 inherit pro_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer accumulant le temps pour gérer le changement de frame. <br /></td></tr>
-<tr class="memitem:adbe193127b9f38b7498a8f3f7c1f6440 inherit pro_attribs_class_entity" id="r_adbe193127b9f38b7498a8f3f7c1f6440"><td class="memItemLeft" align="right" valign="top">
-int&#160;</td><td class="memItemRight" valign="bottom"><b>nbFrames</b></td></tr>
-<tr class="memdesc:adbe193127b9f38b7498a8f3f7c1f6440 inherit pro_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre total de frames dans l'animation. <br /></td></tr>
-<tr class="memitem:ad64dd6d282432a68475f30f7c7bbdc88 inherit pro_attribs_class_entity" id="r_ad64dd6d282432a68475f30f7c7bbdc88"><td class="memItemLeft" align="right" valign="top">
-sf::Texture&#160;</td><td class="memItemRight" valign="bottom"><b>texture</b></td></tr>
-<tr class="memdesc:ad64dd6d282432a68475f30f7c7bbdc88 inherit pro_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Texture partagée ou spécifique de l'entité. <br /></td></tr>
-<tr class="memitem:ae986d50a98c74603d7aff5d98dd1c419 inherit pro_attribs_class_entity" id="r_ae986d50a98c74603d7aff5d98dd1c419"><td class="memItemLeft" align="right" valign="top">
-sf::Sprite&#160;</td><td class="memItemRight" valign="bottom"><b>sprite_body</b></td></tr>
-<tr class="memdesc:ae986d50a98c74603d7aff5d98dd1c419 inherit pro_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sprite principal représentant le corps de l'entité. <br /></td></tr>
-<tr class="memitem:a153a342a808a8ac6f3c0bd13596f7c4a inherit pro_attribs_class_entity" id="r_a153a342a808a8ac6f3c0bd13596f7c4a"><td class="memItemLeft" align="right" valign="top">
-sf::IntRect&#160;</td><td class="memItemRight" valign="bottom"><b>textureRect</b></td></tr>
-<tr class="memdesc:a153a342a808a8ac6f3c0bd13596f7c4a inherit pro_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rectangle de texture définissant la zone à afficher. <br /></td></tr>
+<tr class="memitem:afc349ec89c2bffef70bf6a1d95603154 inherit pro_attribs_class_entity" id="r_afc349ec89c2bffef70bf6a1d95603154"><td class="memItemLeft" align="right" valign="top">sf::Vector2f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#afc349ec89c2bffef70bf6a1d95603154">position</a></td></tr>
+<tr class="memdesc:afc349ec89c2bffef70bf6a1d95603154 inherit pro_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Position actuelle de l'entité (coin haut-gauche).  <br /></td></tr>
+<tr class="memitem:a0d5a432f448230f9f04cea3597ecd39e inherit pro_attribs_class_entity" id="r_a0d5a432f448230f9f04cea3597ecd39e"><td class="memItemLeft" align="right" valign="top">sf::Vector2f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a0d5a432f448230f9f04cea3597ecd39e">direction</a></td></tr>
+<tr class="memdesc:a0d5a432f448230f9f04cea3597ecd39e inherit pro_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Direction actuelle du mouvement.  <br /></td></tr>
+<tr class="memitem:af45b89d52fa753fe3134d0eed2564d33 inherit pro_attribs_class_entity" id="r_af45b89d52fa753fe3134d0eed2564d33"><td class="memItemLeft" align="right" valign="top">sf::Vector2f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#af45b89d52fa753fe3134d0eed2564d33">nextDirection</a></td></tr>
+<tr class="memdesc:af45b89d52fa753fe3134d0eed2564d33 inherit pro_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prochaine direction demandée par l'utilisateur ou l'IA.  <br /></td></tr>
+<tr class="memitem:a1de3d8d9ab8088f61e6726069b26fa60 inherit pro_attribs_class_entity" id="r_a1de3d8d9ab8088f61e6726069b26fa60"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a1de3d8d9ab8088f61e6726069b26fa60">speed</a></td></tr>
+<tr class="memdesc:a1de3d8d9ab8088f61e6726069b26fa60 inherit pro_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vitesse de déplacement en pixels/seconde.  <br /></td></tr>
+<tr class="memitem:a1c826bef4907b26da47fb618726a39c9 inherit pro_attribs_class_entity" id="r_a1c826bef4907b26da47fb618726a39c9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a1c826bef4907b26da47fb618726a39c9">currentFrame</a></td></tr>
+<tr class="memdesc:a1c826bef4907b26da47fb618726a39c9 inherit pro_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Index de la frame d'animation actuelle.  <br /></td></tr>
+<tr class="memitem:aad1dd7c59281ed552e7ca57f6e701cc6 inherit pro_attribs_class_entity" id="r_aad1dd7c59281ed552e7ca57f6e701cc6"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#aad1dd7c59281ed552e7ca57f6e701cc6">animationTimer</a></td></tr>
+<tr class="memdesc:aad1dd7c59281ed552e7ca57f6e701cc6 inherit pro_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer accumulant le temps pour gérer le changement de frame.  <br /></td></tr>
+<tr class="memitem:adbe193127b9f38b7498a8f3f7c1f6440 inherit pro_attribs_class_entity" id="r_adbe193127b9f38b7498a8f3f7c1f6440"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#adbe193127b9f38b7498a8f3f7c1f6440">nbFrames</a></td></tr>
+<tr class="memdesc:adbe193127b9f38b7498a8f3f7c1f6440 inherit pro_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre total de frames dans l'animation.  <br /></td></tr>
+<tr class="memitem:ad64dd6d282432a68475f30f7c7bbdc88 inherit pro_attribs_class_entity" id="r_ad64dd6d282432a68475f30f7c7bbdc88"><td class="memItemLeft" align="right" valign="top">sf::Texture&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#ad64dd6d282432a68475f30f7c7bbdc88">texture</a></td></tr>
+<tr class="memdesc:ad64dd6d282432a68475f30f7c7bbdc88 inherit pro_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Texture partagée ou spécifique de l'entité.  <br /></td></tr>
+<tr class="memitem:ae986d50a98c74603d7aff5d98dd1c419 inherit pro_attribs_class_entity" id="r_ae986d50a98c74603d7aff5d98dd1c419"><td class="memItemLeft" align="right" valign="top">sf::Sprite&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#ae986d50a98c74603d7aff5d98dd1c419">sprite_body</a></td></tr>
+<tr class="memdesc:ae986d50a98c74603d7aff5d98dd1c419 inherit pro_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sprite principal représentant le corps de l'entité.  <br /></td></tr>
+<tr class="memitem:a153a342a808a8ac6f3c0bd13596f7c4a inherit pro_attribs_class_entity" id="r_a153a342a808a8ac6f3c0bd13596f7c4a"><td class="memItemLeft" align="right" valign="top">sf::IntRect&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a153a342a808a8ac6f3c0bd13596f7c4a">textureRect</a></td></tr>
+<tr class="memdesc:a153a342a808a8ac6f3c0bd13596f7c4a inherit pro_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rectangle de texture définissant la zone à afficher.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Classe représentant un fantôme ennemi. </p>
@@ -277,6 +280,52 @@ sf::IntRect&#160;</td><td class="memItemRight" valign="bottom"><b>textureRect</b
 </dl>
 
 <p>Implements <a class="el" href="class_entity.html#adf9715beac862471e5af417605e1241d">Entity</a>.</p>
+
+</div>
+</div>
+<a id="acfd42a1cdb2a827a3c647ae245a34558" name="acfd42a1cdb2a827a3c647ae245a34558"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acfd42a1cdb2a827a3c647ae245a34558">&#9670;&#160;</a></span>getBestDirectionForTarget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sf::Vector2f Ghost::getBestDirectionForTarget </td>
+          <td>(</td>
+          <td class="paramtype">sf::Vector2f</td>          <td class="paramname"><span class="paramname"><em>target</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; sf::Vector2f &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>possibleDirs</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const std::vector&lt; std::string &gt; &amp;</td>          <td class="paramname"><span class="paramname"><em>map</em></span>&#160;)</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Calcule la meilleure direction pour atteindre une cible. </p>
+<p>Utilise la distance Manhattan pour choisir la direction qui minimise la distance à la cible.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">target</td><td>Position cible (en pixels). </td></tr>
+    <tr><td class="paramname">possibleDirs</td><td>Liste des directions valides (pas de mur). </td></tr>
+    <tr><td class="paramname">map</td><td>La grille du niveau. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Le vecteur de direction choisi. </dd></dl>
 
 </div>
 </div>
@@ -445,9 +494,250 @@ sf::IntRect&#160;</td><td class="memItemRight" valign="bottom"><b>textureRect</b
 
 </div>
 </div>
+<a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
+<a id="aab87656929905e560c20f67b52fde2b5" name="aab87656929905e560c20f67b52fde2b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab87656929905e560c20f67b52fde2b5">&#9670;&#160;</a></span>eyesOriginY</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Ghost::eyesOriginY = 10*<a class="el" href="class_entity.html#a3ae73f0ab9972b909c86c7950a1dc86e">entitySize</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Position Y dans la texture pour les yeux. </p>
+
+</div>
+</div>
+<a id="a5e064df5bf825be47649a389b39b2798" name="a5e064df5bf825be47649a389b39b2798"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e064df5bf825be47649a389b39b2798">&#9670;&#160;</a></span>isChasing</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Ghost::isChasing = true</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Indique si le fantôme est en mode poursuite (true) ou dispersion (false). </p>
+
+</div>
+</div>
+<a id="a19d3792ec591051cbfa82b575318bb30" name="a19d3792ec591051cbfa82b575318bb30"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a19d3792ec591051cbfa82b575318bb30">&#9670;&#160;</a></span>lastGridPos</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">sf::Vector2i Ghost::lastGridPos</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Dernière position grille visitée (pour éviter les demi-tours immédiats). </p>
+
+</div>
+</div>
+<a id="a1787d22c32b1973c9cd2d9e262c8e2a6" name="a1787d22c32b1973c9cd2d9e262c8e2a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1787d22c32b1973c9cd2d9e262c8e2a6">&#9670;&#160;</a></span>mode</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_ghost_8hpp.html#ac1c5b6f654cc52ab515d251ff988f753">GhostMode</a> Ghost::mode</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Mode actuel du fantôme. </p>
+
+</div>
+</div>
+<a id="a6984e43b2a46b34360452f8a91b9a52f" name="a6984e43b2a46b34360452f8a91b9a52f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6984e43b2a46b34360452f8a91b9a52f">&#9670;&#160;</a></span>sprite_body_dead</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sf::Sprite Ghost::sprite_body_dead</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sprite du corps en mode mort (yeux seuls, ou score affiché). Note: Dans cette implémentation, semble être utilisé pour les yeux seuls ou un état spécifique. </p>
+
+</div>
+</div>
+<a id="a5bd50263bbf8f7a4783511b359817647" name="a5bd50263bbf8f7a4783511b359817647"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5bd50263bbf8f7a4783511b359817647">&#9670;&#160;</a></span>sprite_eyes</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sf::Sprite Ghost::sprite_eyes</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sprite des yeux (générique). </p>
+
+</div>
+</div>
+<a id="adea8284c27f06588b66db49c2bc35f73" name="adea8284c27f06588b66db49c2bc35f73"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adea8284c27f06588b66db49c2bc35f73">&#9670;&#160;</a></span>sprite_eyes_down</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sf::Sprite Ghost::sprite_eyes_down</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sprite des yeux regardant vers le bas. </p>
+
+</div>
+</div>
+<a id="ad4766415e5d29489891c3a7ec0292c83" name="ad4766415e5d29489891c3a7ec0292c83"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad4766415e5d29489891c3a7ec0292c83">&#9670;&#160;</a></span>sprite_eyes_left_right</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sf::Sprite Ghost::sprite_eyes_left_right</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sprite des yeux regardant vers la gauche ou la droite. </p>
+
+</div>
+</div>
+<a id="a281490fa842a48520d9873396e4f7cf9" name="a281490fa842a48520d9873396e4f7cf9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a281490fa842a48520d9873396e4f7cf9">&#9670;&#160;</a></span>sprite_eyes_up</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sf::Sprite Ghost::sprite_eyes_up</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sprite des yeux regardant vers le haut. </p>
+
+</div>
+</div>
+<a id="a2aec5bc8664e5281e540db3a44d37922" name="a2aec5bc8664e5281e540db3a44d37922"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2aec5bc8664e5281e540db3a44d37922">&#9670;&#160;</a></span>strategyTimer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Ghost::strategyTimer = 0.0f</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Timer pour gérer l'alternance des stratégies (Chase/Scatter). </p>
+
+</div>
+</div>
+<a id="a13a4c3b065ee08ce849d19680718ee18" name="a13a4c3b065ee08ce849d19680718ee18"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13a4c3b065ee08ce849d19680718ee18">&#9670;&#160;</a></span>type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="_ghost_8hpp.html#a19c48855930abe71014f6f21514b3925">GhostType</a> Ghost::type</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Type du fantôme. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>include/<a class="el" href="_ghost_8hpp_source.html">Ghost.hpp</a></li>
-<li>src/<b>Ghost.cpp</b></li>
+<li>src/<a class="el" href="_ghost_8cpp.html">Ghost.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

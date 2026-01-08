@@ -7,5 +7,6 @@ var class_pacman =
     [ "removeLife", "class_pacman.html#aaf4bd44f1699782d0f6e665efc394f41", null ],
     [ "resetLives", "class_pacman.html#a6a130d8fe91d9cb155f43076c9eade00", null ],
     [ "setPosition", "class_pacman.html#a15730815e4962dec039d916426e7185e", null ],
-    [ "update", "class_pacman.html#a3e7b8c7db8958bd87c1cd34081536864", null ]
+    [ "update", "class_pacman.html#a3e7b8c7db8958bd87c1cd34081536864", null ],
+    [ "lives", "class_pacman.html#ad3a1939b946813600737dcf08812c31a", null ]
 ];

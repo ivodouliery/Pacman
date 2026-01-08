@@ -28,20 +28,18 @@ void \mbox{\hyperlink{class_pacman_a15730815e4962dec039d916426e7185e}{set\+Posit
 \begin{DoxyCompactList}\small\item\em Définit la position de \doxylink{class_pacman}{Pacman}. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{class_pacman_ac0d4fb3dd9b031c8d2475c4b9210de4a}{can\+Move}} (const std\+::vector$<$ std\+::string $>$ \&map, float x, float y) override
 \begin{DoxyCompactList}\small\item\em Vérifie si \doxylink{class_pacman}{Pacman} peut se déplacer vers une position. \end{DoxyCompactList}\item 
-\Hypertarget{class_pacman_aaf4bd44f1699782d0f6e665efc394f41}\label{class_pacman_aaf4bd44f1699782d0f6e665efc394f41} 
-void {\bfseries remove\+Life} ()
+void \mbox{\hyperlink{class_pacman_aaf4bd44f1699782d0f6e665efc394f41}{remove\+Life}} ()
 \begin{DoxyCompactList}\small\item\em Décrémente le nombre de vies de \doxylink{class_pacman}{Pacman}. \end{DoxyCompactList}\item 
 int \mbox{\hyperlink{class_pacman_aca6931bada7a4dfa7771c73923554d95}{get\+Lives}} () const
 \begin{DoxyCompactList}\small\item\em Récupère le nombre de vies restantes. \end{DoxyCompactList}\item 
-\Hypertarget{class_pacman_a6a130d8fe91d9cb155f43076c9eade00}\label{class_pacman_a6a130d8fe91d9cb155f43076c9eade00} 
-void {\bfseries reset\+Lives} ()
+void \mbox{\hyperlink{class_pacman_a6a130d8fe91d9cb155f43076c9eade00}{reset\+Lives}} ()
 \begin{DoxyCompactList}\small\item\em Réinitialise le nombre de vies à sa valeur par défaut (2). \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_entity}{Entity}}}
 \begin{DoxyCompactItemize}
 \item 
 \mbox{\hyperlink{class_entity_a980f368aa07ce358583982821533a54a}{Entity}} ()
 \begin{DoxyCompactList}\small\item\em Constructeur par défaut. \end{DoxyCompactList}\item 
-virtual {\bfseries \texorpdfstring{$\sim$}{\string~}\+Entity} ()=default
+virtual \mbox{\hyperlink{class_entity_ac479d009ddde62dfb378ca0a70d81307}{\texorpdfstring{$\sim$}{\string~}\+Entity}} ()=default
 \begin{DoxyCompactList}\small\item\em Destructeur virtuel par défaut. \end{DoxyCompactList}\item 
 sf\+::\+Vector2f \mbox{\hyperlink{class_entity_a11d7f8fde1e714c76a20b69793fa157c}{get\+Position}} () const
 \begin{DoxyCompactList}\small\item\em Récupère la position actuelle de l\textquotesingle{}entité. \end{DoxyCompactList}\item 
@@ -59,40 +57,45 @@ sf\+::\+Vector2f \mbox{\hyperlink{class_entity_aad393ed46cb85db00d0ff473246afd73
 \begin{DoxyCompactList}\small\item\em Récupère la prochaine direction souhaitée. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_entity_a4ad38d09d2481d77fb300dd1c7da5bc4}{align\+To\+Grid}} ()
 \begin{DoxyCompactList}\small\item\em Aligne la position de l\textquotesingle{}entité sur la grille. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_pacman_ad3a1939b946813600737dcf08812c31a}{lives}} = 2
+\begin{DoxyCompactList}\small\item\em Nombre de vies restantes. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsubsection*{Additional Inherited Members}
 \doxysubsection*{Static Public Attributes inherited from \mbox{\hyperlink{class_entity}{Entity}}}
 \begin{DoxyCompactItemize}
 \item 
-static constexpr int {\bfseries entity\+Size} = 32
+static constexpr int \mbox{\hyperlink{class_entity_a3ae73f0ab9972b909c86c7950a1dc86e}{entity\+Size}} = 32
 \begin{DoxyCompactList}\small\item\em Taille d\textquotesingle{}une entité dans la texture (32x32 pixels). \end{DoxyCompactList}\item 
-static constexpr float {\bfseries cell\+Size} = 16.\+0f
+static constexpr float \mbox{\hyperlink{class_entity_a4d0f338426d19d53d4bcc9744debac87}{cell\+Size}} = 16.\+0f
 \begin{DoxyCompactList}\small\item\em Taille d\textquotesingle{}une case de la grille (16x16 pixels). \end{DoxyCompactList}\item 
-static constexpr int {\bfseries eyes\+Size} = 16
+static constexpr int \mbox{\hyperlink{class_entity_aa7631a36543bc4eeae534fc7c3e63d96}{eyes\+Size}} = 16
 \begin{DoxyCompactList}\small\item\em Taille des yeux des fantômes (16x16 pixels). \end{DoxyCompactList}\item 
-static constexpr float {\bfseries animation\+Speed} = 0.\+1f
+static constexpr float \mbox{\hyperlink{class_entity_a4e5e7336a0b9cb78aa74d30e3578b776}{animation\+Speed}} = 0.\+1f
 \begin{DoxyCompactList}\small\item\em Durée d\textquotesingle{}affichage de chaque frame d\textquotesingle{}animation (en secondes). \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_entity}{Entity}}}
 \begin{DoxyCompactItemize}
 \item 
-sf\+::\+Vector2f {\bfseries position}
+sf\+::\+Vector2f \mbox{\hyperlink{class_entity_afc349ec89c2bffef70bf6a1d95603154}{position}}
 \begin{DoxyCompactList}\small\item\em Position actuelle de l\textquotesingle{}entité (coin haut-\/gauche). \end{DoxyCompactList}\item 
-sf\+::\+Vector2f {\bfseries direction}
+sf\+::\+Vector2f \mbox{\hyperlink{class_entity_a0d5a432f448230f9f04cea3597ecd39e}{direction}}
 \begin{DoxyCompactList}\small\item\em Direction actuelle du mouvement. \end{DoxyCompactList}\item 
-sf\+::\+Vector2f {\bfseries next\+Direction}
+sf\+::\+Vector2f \mbox{\hyperlink{class_entity_af45b89d52fa753fe3134d0eed2564d33}{next\+Direction}}
 \begin{DoxyCompactList}\small\item\em Prochaine direction demandée par l\textquotesingle{}utilisateur ou l\textquotesingle{}IA. \end{DoxyCompactList}\item 
-float {\bfseries speed}
+float \mbox{\hyperlink{class_entity_a1de3d8d9ab8088f61e6726069b26fa60}{speed}}
 \begin{DoxyCompactList}\small\item\em Vitesse de déplacement en pixels/seconde. \end{DoxyCompactList}\item 
-int {\bfseries current\+Frame}
+int \mbox{\hyperlink{class_entity_a1c826bef4907b26da47fb618726a39c9}{current\+Frame}}
 \begin{DoxyCompactList}\small\item\em Index de la frame d\textquotesingle{}animation actuelle. \end{DoxyCompactList}\item 
-float {\bfseries animation\+Timer}
+float \mbox{\hyperlink{class_entity_aad1dd7c59281ed552e7ca57f6e701cc6}{animation\+Timer}}
 \begin{DoxyCompactList}\small\item\em Timer accumulant le temps pour gérer le changement de frame. \end{DoxyCompactList}\item 
-int {\bfseries nb\+Frames}
+int \mbox{\hyperlink{class_entity_adbe193127b9f38b7498a8f3f7c1f6440}{nb\+Frames}}
 \begin{DoxyCompactList}\small\item\em Nombre total de frames dans l\textquotesingle{}animation. \end{DoxyCompactList}\item 
-sf\+::\+Texture {\bfseries texture}
+sf\+::\+Texture \mbox{\hyperlink{class_entity_ad64dd6d282432a68475f30f7c7bbdc88}{texture}}
 \begin{DoxyCompactList}\small\item\em Texture partagée ou spécifique de l\textquotesingle{}entité. \end{DoxyCompactList}\item 
-sf\+::\+Sprite {\bfseries sprite\+\_\+body}
+sf\+::\+Sprite \mbox{\hyperlink{class_entity_ae986d50a98c74603d7aff5d98dd1c419}{sprite\+\_\+body}}
 \begin{DoxyCompactList}\small\item\em Sprite principal représentant le corps de l\textquotesingle{}entité. \end{DoxyCompactList}\item 
-sf\+::\+Int\+Rect {\bfseries texture\+Rect}
+sf\+::\+Int\+Rect \mbox{\hyperlink{class_entity_a153a342a808a8ac6f3c0bd13596f7c4a}{texture\+Rect}}
 \begin{DoxyCompactList}\small\item\em Rectangle de texture définissant la zone à afficher. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -179,6 +182,26 @@ Récupère le nombre de vies restantes.
 \begin{DoxyReturn}{Returns}
 Le nombre de vies. 
 \end{DoxyReturn}
+\Hypertarget{class_pacman_aaf4bd44f1699782d0f6e665efc394f41}\index{Pacman@{Pacman}!removeLife@{removeLife}}
+\index{removeLife@{removeLife}!Pacman@{Pacman}}
+\doxysubsubsection{\texorpdfstring{removeLife()}{removeLife()}}
+{\footnotesize\ttfamily \label{class_pacman_aaf4bd44f1699782d0f6e665efc394f41} 
+void Pacman\+::remove\+Life (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Décrémente le nombre de vies de \doxylink{class_pacman}{Pacman}. 
+
+\Hypertarget{class_pacman_a6a130d8fe91d9cb155f43076c9eade00}\index{Pacman@{Pacman}!resetLives@{resetLives}}
+\index{resetLives@{resetLives}!Pacman@{Pacman}}
+\doxysubsubsection{\texorpdfstring{resetLives()}{resetLives()}}
+{\footnotesize\ttfamily \label{class_pacman_a6a130d8fe91d9cb155f43076c9eade00} 
+void Pacman\+::reset\+Lives (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Réinitialise le nombre de vies à sa valeur par défaut (2). 
+
 \Hypertarget{class_pacman_a15730815e4962dec039d916426e7185e}\index{Pacman@{Pacman}!setPosition@{setPosition}}
 \index{setPosition@{setPosition}!Pacman@{Pacman}}
 \doxysubsubsection{\texorpdfstring{setPosition()}{setPosition()}}
@@ -225,7 +248,22 @@ Reimplemented from \mbox{\hyperlink{class_entity_a484d8593928d4c4ad7f28d45ae4ac7
 
 
 
+\label{doc-variable-members}
+\Hypertarget{class_pacman_doc-variable-members}
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_pacman_ad3a1939b946813600737dcf08812c31a}\index{Pacman@{Pacman}!lives@{lives}}
+\index{lives@{lives}!Pacman@{Pacman}}
+\doxysubsubsection{\texorpdfstring{lives}{lives}}
+{\footnotesize\ttfamily \label{class_pacman_ad3a1939b946813600737dcf08812c31a} 
+int Pacman\+::lives = 2\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Nombre de vies restantes. 
+
+Initialisé à 2 (donc 3 vies au total avec la vie courante). 
+
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
 include/\mbox{\hyperlink{_pacman_8hpp}{Pacman.\+hpp}}\item 
-src/Pacman.\+cpp\end{DoxyCompactItemize}
+src/\mbox{\hyperlink{_pacman_8cpp}{Pacman.\+cpp}}\end{DoxyCompactItemize}

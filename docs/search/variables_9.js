@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['pacmansize_0',['pacmanSize',['../class_map.html#a486fa783f88b55da7bd0c9670f3c9236',1,'Map']]],
-  ['position_1',['position',['../class_entity.html#afc349ec89c2bffef70bf6a1d95603154',1,'Entity']]]
+  ['nbframes_0',['nbFrames',['../class_entity.html#adbe193127b9f38b7498a8f3f7c1f6440',1,'Entity']]],
+  ['nextdirection_1',['nextDirection',['../class_entity.html#af45b89d52fa753fe3134d0eed2564d33',1,'Entity']]]
 ];

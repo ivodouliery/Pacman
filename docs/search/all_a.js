@@ -1,8 +1,26 @@
 var searchData=
 [
-  ['main_2ecpp_0',['main.cpp',['../main_8cpp.html',1,'']]],
-  ['map_1',['Map',['../class_map.html',1,'Map'],['../class_map.html#a0f5ad0fd4563497b4214038cbca8b582',1,'Map::Map()']]],
-  ['map_2ehpp_2',['Map.hpp',['../_map_8hpp.html',1,'']]],
-  ['map_5fheight_3',['MAP_HEIGHT',['../class_map.html#aa72f1eb56e895ad10c94ba53e8058447',1,'Map']]],
-  ['map_5fwidth_4',['MAP_WIDTH',['../class_map.html#ac3ba9233ac86cd70e2bd6b556edbdb88',1,'Map']]]
+  ['m_5ffont_0',['m_font',['../class_map.html#ab10d41432161d46b0378ab2f89b06114',1,'Map']]],
+  ['m_5ffrightenedtimer_1',['m_frightenedTimer',['../class_map.html#ae37a8377f5e30c31171007258c41fec1',1,'Map']]],
+  ['m_5fghostsactive_2',['m_ghostsActive',['../class_map.html#a340bf2421ee19001e7135b0f2ade3609',1,'Map']]],
+  ['m_5fhighscore_3',['m_highScore',['../class_map.html#a062ed41ad957cfa2452374690239a2c3',1,'Map']]],
+  ['m_5flblhighscore_4',['m_lblHighScore',['../class_map.html#a5f3d69b1277137a77903e06ea64c1516',1,'Map']]],
+  ['m_5flblscore_5',['m_lblScore',['../class_map.html#a38440eb26b82620d843ea1fa37758add',1,'Map']]],
+  ['m_5flifesprite_6',['m_lifeSprite',['../class_map.html#a75906e11abbdc5cf88adce7194519000',1,'Map']]],
+  ['m_5fremainingdots_7',['m_remainingDots',['../class_map.html#a613757941f967be0eb813e258a6af9d7',1,'Map']]],
+  ['m_5fscore_8',['m_score',['../class_map.html#ad64a552cf9d1c2a8829613d289ab7835',1,'Map']]],
+  ['m_5ftxthighscore_9',['m_txtHighScore',['../class_map.html#a4ed936b0aa1d567817caa2d057fdd677',1,'Map']]],
+  ['m_5ftxtscore_10',['m_txtScore',['../class_map.html#a5776c5239f6868dc127f1e46a61198f2',1,'Map']]],
+  ['main_11',['main',['../main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main.cpp']]],
+  ['main_2ecpp_12',['main.cpp',['../main_8cpp.html',1,'']]],
+  ['map_13',['Map',['../class_map.html',1,'Map'],['../class_map.html#a0f5ad0fd4563497b4214038cbca8b582',1,'Map::Map()']]],
+  ['map_2ecpp_14',['Map.cpp',['../_map_8cpp.html',1,'']]],
+  ['map_2ehpp_15',['Map.hpp',['../_map_8hpp.html',1,'']]],
+  ['map_5fheight_16',['MAP_HEIGHT',['../class_map.html#aa72f1eb56e895ad10c94ba53e8058447',1,'Map']]],
+  ['map_5fwidth_17',['MAP_WIDTH',['../class_map.html#ac3ba9233ac86cd70e2bd6b556edbdb88',1,'Map']]],
+  ['mapgrid_18',['mapGrid',['../class_map.html#a788df8e276e154555accb4eef70f0f32',1,'Map']]],
+  ['mapsprite_19',['mapSprite',['../class_map.html#a0cacd27aeb8aa55fec23e5da2311a482',1,'Map']]],
+  ['mapstarttexture_20',['mapStartTexture',['../class_map.html#a65ff4d2b020fa34a065c1cb6e4ac960c',1,'Map']]],
+  ['maptexture_21',['mapTexture',['../class_map.html#a2c0260ce65c7398279a4281d1577df17',1,'Map']]],
+  ['mode_22',['mode',['../class_ghost.html#a1787d22c32b1973c9cd2d9e262c8e2a6',1,'Ghost']]]
 ];

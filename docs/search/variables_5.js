@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['ischasing_0',['isChasing',['../class_ghost.html#a5e064df5bf825be47649a389b39b2798',1,'Ghost']]],
-  ['itemsize_1',['itemSize',['../class_map.html#aea6de25f559ae346aba3a674fd1ab7db',1,'Map']]]
+  ['grid_0',['grid',['../class_game.html#a519a7d3a52198b7a0a1ad18f477b2729',1,'Game']]],
+  ['gridoriginx_1',['gridOriginX',['../class_map.html#a21ad605d428e3df9415d4b8be5b7ed49',1,'Map']]],
+  ['gridoriginy_2',['gridOriginY',['../class_map.html#a04ad0be1783ffe4d5c24d0cb42786ce2',1,'Map']]]
 ];

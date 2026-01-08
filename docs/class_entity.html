@@ -111,9 +111,8 @@ Inheritance diagram for Entity:</div>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a980f368aa07ce358583982821533a54a" id="r_a980f368aa07ce358583982821533a54a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a980f368aa07ce358583982821533a54a">Entity</a> ()</td></tr>
 <tr class="memdesc:a980f368aa07ce358583982821533a54a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur par défaut.  <br /></td></tr>
-<tr class="memitem:ac479d009ddde62dfb378ca0a70d81307" id="r_ac479d009ddde62dfb378ca0a70d81307"><td class="memItemLeft" align="right" valign="top"><a id="ac479d009ddde62dfb378ca0a70d81307" name="ac479d009ddde62dfb378ca0a70d81307"></a>
-virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~Entity</b> ()=default</td></tr>
-<tr class="memdesc:ac479d009ddde62dfb378ca0a70d81307"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructeur virtuel par défaut. <br /></td></tr>
+<tr class="memitem:ac479d009ddde62dfb378ca0a70d81307" id="r_ac479d009ddde62dfb378ca0a70d81307"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ac479d009ddde62dfb378ca0a70d81307">~Entity</a> ()=default</td></tr>
+<tr class="memdesc:ac479d009ddde62dfb378ca0a70d81307"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructeur virtuel par défaut.  <br /></td></tr>
 <tr class="memitem:a93306ecdce9446da37560f5f2b5307c0" id="r_a93306ecdce9446da37560f5f2b5307c0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a93306ecdce9446da37560f5f2b5307c0">setPosition</a> (float x, float y)</td></tr>
 <tr class="memdesc:a93306ecdce9446da37560f5f2b5307c0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Définit la position de l'entité.  <br /></td></tr>
 <tr class="memitem:a11d7f8fde1e714c76a20b69793fa157c" id="r_a11d7f8fde1e714c76a20b69793fa157c"><td class="memItemLeft" align="right" valign="top">sf::Vector2f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a11d7f8fde1e714c76a20b69793fa157c">getPosition</a> () const</td></tr>
@@ -141,51 +140,37 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><b>~Entity</b> ()=def
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pub-static-attribs" class="groupheader"><a id="pub-static-attribs" name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a3ae73f0ab9972b909c86c7950a1dc86e" id="r_a3ae73f0ab9972b909c86c7950a1dc86e"><td class="memItemLeft" align="right" valign="top"><a id="a3ae73f0ab9972b909c86c7950a1dc86e" name="a3ae73f0ab9972b909c86c7950a1dc86e"></a>
-static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>entitySize</b> = 32</td></tr>
-<tr class="memdesc:a3ae73f0ab9972b909c86c7950a1dc86e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Taille d'une entité dans la texture (32x32 pixels). <br /></td></tr>
-<tr class="memitem:a4d0f338426d19d53d4bcc9744debac87" id="r_a4d0f338426d19d53d4bcc9744debac87"><td class="memItemLeft" align="right" valign="top"><a id="a4d0f338426d19d53d4bcc9744debac87" name="a4d0f338426d19d53d4bcc9744debac87"></a>
-static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><b>cellSize</b> = 16.0f</td></tr>
-<tr class="memdesc:a4d0f338426d19d53d4bcc9744debac87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Taille d'une case de la grille (16x16 pixels). <br /></td></tr>
-<tr class="memitem:aa7631a36543bc4eeae534fc7c3e63d96" id="r_aa7631a36543bc4eeae534fc7c3e63d96"><td class="memItemLeft" align="right" valign="top"><a id="aa7631a36543bc4eeae534fc7c3e63d96" name="aa7631a36543bc4eeae534fc7c3e63d96"></a>
-static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><b>eyesSize</b> = 16</td></tr>
-<tr class="memdesc:aa7631a36543bc4eeae534fc7c3e63d96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Taille des yeux des fantômes (16x16 pixels). <br /></td></tr>
-<tr class="memitem:a4e5e7336a0b9cb78aa74d30e3578b776" id="r_a4e5e7336a0b9cb78aa74d30e3578b776"><td class="memItemLeft" align="right" valign="top"><a id="a4e5e7336a0b9cb78aa74d30e3578b776" name="a4e5e7336a0b9cb78aa74d30e3578b776"></a>
-static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><b>animationSpeed</b> = 0.1f</td></tr>
-<tr class="memdesc:a4e5e7336a0b9cb78aa74d30e3578b776"><td class="mdescLeft">&#160;</td><td class="mdescRight">Durée d'affichage de chaque frame d'animation (en secondes). <br /></td></tr>
+<tr class="memitem:a3ae73f0ab9972b909c86c7950a1dc86e" id="r_a3ae73f0ab9972b909c86c7950a1dc86e"><td class="memItemLeft" align="right" valign="top">static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a3ae73f0ab9972b909c86c7950a1dc86e">entitySize</a> = 32</td></tr>
+<tr class="memdesc:a3ae73f0ab9972b909c86c7950a1dc86e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Taille d'une entité dans la texture (32x32 pixels).  <br /></td></tr>
+<tr class="memitem:a4d0f338426d19d53d4bcc9744debac87" id="r_a4d0f338426d19d53d4bcc9744debac87"><td class="memItemLeft" align="right" valign="top">static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4d0f338426d19d53d4bcc9744debac87">cellSize</a> = 16.0f</td></tr>
+<tr class="memdesc:a4d0f338426d19d53d4bcc9744debac87"><td class="mdescLeft">&#160;</td><td class="mdescRight">Taille d'une case de la grille (16x16 pixels).  <br /></td></tr>
+<tr class="memitem:aa7631a36543bc4eeae534fc7c3e63d96" id="r_aa7631a36543bc4eeae534fc7c3e63d96"><td class="memItemLeft" align="right" valign="top">static constexpr int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aa7631a36543bc4eeae534fc7c3e63d96">eyesSize</a> = 16</td></tr>
+<tr class="memdesc:aa7631a36543bc4eeae534fc7c3e63d96"><td class="mdescLeft">&#160;</td><td class="mdescRight">Taille des yeux des fantômes (16x16 pixels).  <br /></td></tr>
+<tr class="memitem:a4e5e7336a0b9cb78aa74d30e3578b776" id="r_a4e5e7336a0b9cb78aa74d30e3578b776"><td class="memItemLeft" align="right" valign="top">static constexpr float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a4e5e7336a0b9cb78aa74d30e3578b776">animationSpeed</a> = 0.1f</td></tr>
+<tr class="memdesc:a4e5e7336a0b9cb78aa74d30e3578b776"><td class="mdescLeft">&#160;</td><td class="mdescRight">Durée d'affichage de chaque frame d'animation (en secondes).  <br /></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 id="header-pro-attribs" class="groupheader"><a id="pro-attribs" name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
-<tr class="memitem:afc349ec89c2bffef70bf6a1d95603154" id="r_afc349ec89c2bffef70bf6a1d95603154"><td class="memItemLeft" align="right" valign="top"><a id="afc349ec89c2bffef70bf6a1d95603154" name="afc349ec89c2bffef70bf6a1d95603154"></a>
-sf::Vector2f&#160;</td><td class="memItemRight" valign="bottom"><b>position</b></td></tr>
-<tr class="memdesc:afc349ec89c2bffef70bf6a1d95603154"><td class="mdescLeft">&#160;</td><td class="mdescRight">Position actuelle de l'entité (coin haut-gauche). <br /></td></tr>
-<tr class="memitem:a0d5a432f448230f9f04cea3597ecd39e" id="r_a0d5a432f448230f9f04cea3597ecd39e"><td class="memItemLeft" align="right" valign="top"><a id="a0d5a432f448230f9f04cea3597ecd39e" name="a0d5a432f448230f9f04cea3597ecd39e"></a>
-sf::Vector2f&#160;</td><td class="memItemRight" valign="bottom"><b>direction</b></td></tr>
-<tr class="memdesc:a0d5a432f448230f9f04cea3597ecd39e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Direction actuelle du mouvement. <br /></td></tr>
-<tr class="memitem:af45b89d52fa753fe3134d0eed2564d33" id="r_af45b89d52fa753fe3134d0eed2564d33"><td class="memItemLeft" align="right" valign="top"><a id="af45b89d52fa753fe3134d0eed2564d33" name="af45b89d52fa753fe3134d0eed2564d33"></a>
-sf::Vector2f&#160;</td><td class="memItemRight" valign="bottom"><b>nextDirection</b></td></tr>
-<tr class="memdesc:af45b89d52fa753fe3134d0eed2564d33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prochaine direction demandée par l'utilisateur ou l'IA. <br /></td></tr>
-<tr class="memitem:a1de3d8d9ab8088f61e6726069b26fa60" id="r_a1de3d8d9ab8088f61e6726069b26fa60"><td class="memItemLeft" align="right" valign="top"><a id="a1de3d8d9ab8088f61e6726069b26fa60" name="a1de3d8d9ab8088f61e6726069b26fa60"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>speed</b></td></tr>
-<tr class="memdesc:a1de3d8d9ab8088f61e6726069b26fa60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vitesse de déplacement en pixels/seconde. <br /></td></tr>
-<tr class="memitem:a1c826bef4907b26da47fb618726a39c9" id="r_a1c826bef4907b26da47fb618726a39c9"><td class="memItemLeft" align="right" valign="top"><a id="a1c826bef4907b26da47fb618726a39c9" name="a1c826bef4907b26da47fb618726a39c9"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>currentFrame</b></td></tr>
-<tr class="memdesc:a1c826bef4907b26da47fb618726a39c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Index de la frame d'animation actuelle. <br /></td></tr>
-<tr class="memitem:aad1dd7c59281ed552e7ca57f6e701cc6" id="r_aad1dd7c59281ed552e7ca57f6e701cc6"><td class="memItemLeft" align="right" valign="top"><a id="aad1dd7c59281ed552e7ca57f6e701cc6" name="aad1dd7c59281ed552e7ca57f6e701cc6"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>animationTimer</b></td></tr>
-<tr class="memdesc:aad1dd7c59281ed552e7ca57f6e701cc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer accumulant le temps pour gérer le changement de frame. <br /></td></tr>
-<tr class="memitem:adbe193127b9f38b7498a8f3f7c1f6440" id="r_adbe193127b9f38b7498a8f3f7c1f6440"><td class="memItemLeft" align="right" valign="top"><a id="adbe193127b9f38b7498a8f3f7c1f6440" name="adbe193127b9f38b7498a8f3f7c1f6440"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>nbFrames</b></td></tr>
-<tr class="memdesc:adbe193127b9f38b7498a8f3f7c1f6440"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre total de frames dans l'animation. <br /></td></tr>
-<tr class="memitem:ad64dd6d282432a68475f30f7c7bbdc88" id="r_ad64dd6d282432a68475f30f7c7bbdc88"><td class="memItemLeft" align="right" valign="top"><a id="ad64dd6d282432a68475f30f7c7bbdc88" name="ad64dd6d282432a68475f30f7c7bbdc88"></a>
-sf::Texture&#160;</td><td class="memItemRight" valign="bottom"><b>texture</b></td></tr>
-<tr class="memdesc:ad64dd6d282432a68475f30f7c7bbdc88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Texture partagée ou spécifique de l'entité. <br /></td></tr>
-<tr class="memitem:ae986d50a98c74603d7aff5d98dd1c419" id="r_ae986d50a98c74603d7aff5d98dd1c419"><td class="memItemLeft" align="right" valign="top"><a id="ae986d50a98c74603d7aff5d98dd1c419" name="ae986d50a98c74603d7aff5d98dd1c419"></a>
-sf::Sprite&#160;</td><td class="memItemRight" valign="bottom"><b>sprite_body</b></td></tr>
-<tr class="memdesc:ae986d50a98c74603d7aff5d98dd1c419"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sprite principal représentant le corps de l'entité. <br /></td></tr>
-<tr class="memitem:a153a342a808a8ac6f3c0bd13596f7c4a" id="r_a153a342a808a8ac6f3c0bd13596f7c4a"><td class="memItemLeft" align="right" valign="top"><a id="a153a342a808a8ac6f3c0bd13596f7c4a" name="a153a342a808a8ac6f3c0bd13596f7c4a"></a>
-sf::IntRect&#160;</td><td class="memItemRight" valign="bottom"><b>textureRect</b></td></tr>
-<tr class="memdesc:a153a342a808a8ac6f3c0bd13596f7c4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rectangle de texture définissant la zone à afficher. <br /></td></tr>
+<tr class="memitem:afc349ec89c2bffef70bf6a1d95603154" id="r_afc349ec89c2bffef70bf6a1d95603154"><td class="memItemLeft" align="right" valign="top">sf::Vector2f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#afc349ec89c2bffef70bf6a1d95603154">position</a></td></tr>
+<tr class="memdesc:afc349ec89c2bffef70bf6a1d95603154"><td class="mdescLeft">&#160;</td><td class="mdescRight">Position actuelle de l'entité (coin haut-gauche).  <br /></td></tr>
+<tr class="memitem:a0d5a432f448230f9f04cea3597ecd39e" id="r_a0d5a432f448230f9f04cea3597ecd39e"><td class="memItemLeft" align="right" valign="top">sf::Vector2f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a0d5a432f448230f9f04cea3597ecd39e">direction</a></td></tr>
+<tr class="memdesc:a0d5a432f448230f9f04cea3597ecd39e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Direction actuelle du mouvement.  <br /></td></tr>
+<tr class="memitem:af45b89d52fa753fe3134d0eed2564d33" id="r_af45b89d52fa753fe3134d0eed2564d33"><td class="memItemLeft" align="right" valign="top">sf::Vector2f&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#af45b89d52fa753fe3134d0eed2564d33">nextDirection</a></td></tr>
+<tr class="memdesc:af45b89d52fa753fe3134d0eed2564d33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prochaine direction demandée par l'utilisateur ou l'IA.  <br /></td></tr>
+<tr class="memitem:a1de3d8d9ab8088f61e6726069b26fa60" id="r_a1de3d8d9ab8088f61e6726069b26fa60"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1de3d8d9ab8088f61e6726069b26fa60">speed</a></td></tr>
+<tr class="memdesc:a1de3d8d9ab8088f61e6726069b26fa60"><td class="mdescLeft">&#160;</td><td class="mdescRight">Vitesse de déplacement en pixels/seconde.  <br /></td></tr>
+<tr class="memitem:a1c826bef4907b26da47fb618726a39c9" id="r_a1c826bef4907b26da47fb618726a39c9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1c826bef4907b26da47fb618726a39c9">currentFrame</a></td></tr>
+<tr class="memdesc:a1c826bef4907b26da47fb618726a39c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Index de la frame d'animation actuelle.  <br /></td></tr>
+<tr class="memitem:aad1dd7c59281ed552e7ca57f6e701cc6" id="r_aad1dd7c59281ed552e7ca57f6e701cc6"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#aad1dd7c59281ed552e7ca57f6e701cc6">animationTimer</a></td></tr>
+<tr class="memdesc:aad1dd7c59281ed552e7ca57f6e701cc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Timer accumulant le temps pour gérer le changement de frame.  <br /></td></tr>
+<tr class="memitem:adbe193127b9f38b7498a8f3f7c1f6440" id="r_adbe193127b9f38b7498a8f3f7c1f6440"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#adbe193127b9f38b7498a8f3f7c1f6440">nbFrames</a></td></tr>
+<tr class="memdesc:adbe193127b9f38b7498a8f3f7c1f6440"><td class="mdescLeft">&#160;</td><td class="mdescRight">Nombre total de frames dans l'animation.  <br /></td></tr>
+<tr class="memitem:ad64dd6d282432a68475f30f7c7bbdc88" id="r_ad64dd6d282432a68475f30f7c7bbdc88"><td class="memItemLeft" align="right" valign="top">sf::Texture&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad64dd6d282432a68475f30f7c7bbdc88">texture</a></td></tr>
+<tr class="memdesc:ad64dd6d282432a68475f30f7c7bbdc88"><td class="mdescLeft">&#160;</td><td class="mdescRight">Texture partagée ou spécifique de l'entité.  <br /></td></tr>
+<tr class="memitem:ae986d50a98c74603d7aff5d98dd1c419" id="r_ae986d50a98c74603d7aff5d98dd1c419"><td class="memItemLeft" align="right" valign="top">sf::Sprite&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae986d50a98c74603d7aff5d98dd1c419">sprite_body</a></td></tr>
+<tr class="memdesc:ae986d50a98c74603d7aff5d98dd1c419"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sprite principal représentant le corps de l'entité.  <br /></td></tr>
+<tr class="memitem:a153a342a808a8ac6f3c0bd13596f7c4a" id="r_a153a342a808a8ac6f3c0bd13596f7c4a"><td class="memItemLeft" align="right" valign="top">sf::IntRect&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a153a342a808a8ac6f3c0bd13596f7c4a">textureRect</a></td></tr>
+<tr class="memdesc:a153a342a808a8ac6f3c0bd13596f7c4a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rectangle de texture définissant la zone à afficher.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Classe de base abstraite pour toutes les entités mouvantes du jeu. </p>
@@ -208,6 +193,33 @@ sf::IntRect&#160;</td><td class="memItemRight" valign="bottom"><b>textureRect</b
 
 <p>Constructeur par défaut. </p>
 <p>Initialise les variables membres (position, vitesse, direction) à zéro. </p>
+
+</div>
+</div>
+<a id="ac479d009ddde62dfb378ca0a70d81307" name="ac479d009ddde62dfb378ca0a70d81307"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac479d009ddde62dfb378ca0a70d81307">&#9670;&#160;</a></span>~Entity()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual Entity::~Entity </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel virtual">virtual</span><span class="mlabel default">default</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Destructeur virtuel par défaut. </p>
 
 </div>
 </div>
@@ -549,9 +561,346 @@ sf::IntRect&#160;</td><td class="memItemRight" valign="bottom"><b>textureRect</b
 
 </div>
 </div>
+<a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
+<a id="a4e5e7336a0b9cb78aa74d30e3578b776" name="a4e5e7336a0b9cb78aa74d30e3578b776"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e5e7336a0b9cb78aa74d30e3578b776">&#9670;&#160;</a></span>animationSpeed</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Entity::animationSpeed = 0.1f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Durée d'affichage de chaque frame d'animation (en secondes). </p>
+
+</div>
+</div>
+<a id="aad1dd7c59281ed552e7ca57f6e701cc6" name="aad1dd7c59281ed552e7ca57f6e701cc6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad1dd7c59281ed552e7ca57f6e701cc6">&#9670;&#160;</a></span>animationTimer</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Entity::animationTimer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Timer accumulant le temps pour gérer le changement de frame. </p>
+
+</div>
+</div>
+<a id="a4d0f338426d19d53d4bcc9744debac87" name="a4d0f338426d19d53d4bcc9744debac87"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d0f338426d19d53d4bcc9744debac87">&#9670;&#160;</a></span>cellSize</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Entity::cellSize = 16.0f</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Taille d'une case de la grille (16x16 pixels). </p>
+
+</div>
+</div>
+<a id="a1c826bef4907b26da47fb618726a39c9" name="a1c826bef4907b26da47fb618726a39c9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1c826bef4907b26da47fb618726a39c9">&#9670;&#160;</a></span>currentFrame</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Entity::currentFrame</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Index de la frame d'animation actuelle. </p>
+
+</div>
+</div>
+<a id="a0d5a432f448230f9f04cea3597ecd39e" name="a0d5a432f448230f9f04cea3597ecd39e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0d5a432f448230f9f04cea3597ecd39e">&#9670;&#160;</a></span>direction</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sf::Vector2f Entity::direction</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Direction actuelle du mouvement. </p>
+
+</div>
+</div>
+<a id="a3ae73f0ab9972b909c86c7950a1dc86e" name="a3ae73f0ab9972b909c86c7950a1dc86e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ae73f0ab9972b909c86c7950a1dc86e">&#9670;&#160;</a></span>entitySize</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Entity::entitySize = 32</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Taille d'une entité dans la texture (32x32 pixels). </p>
+
+</div>
+</div>
+<a id="aa7631a36543bc4eeae534fc7c3e63d96" name="aa7631a36543bc4eeae534fc7c3e63d96"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa7631a36543bc4eeae534fc7c3e63d96">&#9670;&#160;</a></span>eyesSize</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Entity::eyesSize = 16</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel static">static</span><span class="mlabel constexpr">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Taille des yeux des fantômes (16x16 pixels). </p>
+
+</div>
+</div>
+<a id="adbe193127b9f38b7498a8f3f7c1f6440" name="adbe193127b9f38b7498a8f3f7c1f6440"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adbe193127b9f38b7498a8f3f7c1f6440">&#9670;&#160;</a></span>nbFrames</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Entity::nbFrames</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Nombre total de frames dans l'animation. </p>
+
+</div>
+</div>
+<a id="af45b89d52fa753fe3134d0eed2564d33" name="af45b89d52fa753fe3134d0eed2564d33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af45b89d52fa753fe3134d0eed2564d33">&#9670;&#160;</a></span>nextDirection</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sf::Vector2f Entity::nextDirection</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Prochaine direction demandée par l'utilisateur ou l'IA. </p>
+
+</div>
+</div>
+<a id="afc349ec89c2bffef70bf6a1d95603154" name="afc349ec89c2bffef70bf6a1d95603154"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afc349ec89c2bffef70bf6a1d95603154">&#9670;&#160;</a></span>position</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sf::Vector2f Entity::position</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Position actuelle de l'entité (coin haut-gauche). </p>
+
+</div>
+</div>
+<a id="a1de3d8d9ab8088f61e6726069b26fa60" name="a1de3d8d9ab8088f61e6726069b26fa60"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1de3d8d9ab8088f61e6726069b26fa60">&#9670;&#160;</a></span>speed</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Entity::speed</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Vitesse de déplacement en pixels/seconde. </p>
+
+</div>
+</div>
+<a id="ae986d50a98c74603d7aff5d98dd1c419" name="ae986d50a98c74603d7aff5d98dd1c419"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae986d50a98c74603d7aff5d98dd1c419">&#9670;&#160;</a></span>sprite_body</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sf::Sprite Entity::sprite_body</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Sprite principal représentant le corps de l'entité. </p>
+
+</div>
+</div>
+<a id="ad64dd6d282432a68475f30f7c7bbdc88" name="ad64dd6d282432a68475f30f7c7bbdc88"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad64dd6d282432a68475f30f7c7bbdc88">&#9670;&#160;</a></span>texture</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sf::Texture Entity::texture</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Texture partagée ou spécifique de l'entité. </p>
+
+</div>
+</div>
+<a id="a153a342a808a8ac6f3c0bd13596f7c4a" name="a153a342a808a8ac6f3c0bd13596f7c4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a153a342a808a8ac6f3c0bd13596f7c4a">&#9670;&#160;</a></span>textureRect</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sf::IntRect Entity::textureRect</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel protected">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Rectangle de texture définissant la zone à afficher. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>include/<a class="el" href="_entity_8hpp_source.html">Entity.hpp</a></li>
-<li>src/<b>Entity.cpp</b></li>
+<li>src/<a class="el" href="_entity_8cpp.html">Entity.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->

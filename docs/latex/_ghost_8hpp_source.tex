@@ -23,7 +23,7 @@
 \DoxyCodeLine{00033\ }
 \DoxyCodeLine{00041\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_ghost_a4864553d167e76985d36ec71c448b9ed}{Ghost}}\ :\ \textcolor{keyword}{public}\ \mbox{\hyperlink{class_entity_a980f368aa07ce358583982821533a54a}{Entity}}\ \{}
 \DoxyCodeLine{00042\ \textcolor{keyword}{public}:}
-\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{class_ghost_a4864553d167e76985d36ec71c448b9ed}{Ghost}}(\mbox{\hyperlink{_ghost_8hpp_a19c48855930abe71014f6f21514b3925}{GhostType}}\ type);}
+\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{class_ghost_a4864553d167e76985d36ec71c448b9ed}{Ghost}}(\mbox{\hyperlink{_ghost_8hpp_a19c48855930abe71014f6f21514b3925}{GhostType}}\ \mbox{\hyperlink{class_ghost_a13a4c3b065ee08ce849d19680718ee18}{type}});}
 \DoxyCodeLine{00049\ }
 \DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ghost_a03f280329a77e8fdbeb64720e8c43e79}{update}}(\textcolor{keywordtype}{float}\ dt,\ \textcolor{keyword}{const}\ std::vector<std::string>\&\ map,\ sf::Vector2f\ pacmanPos);}
 \DoxyCodeLine{00060\ }
@@ -33,9 +33,9 @@
 \DoxyCodeLine{00079\ }
 \DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ghost_a072a8bdb03554b34f12124a58c025adb}{setRotation}}(\textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_entity_a0d5a432f448230f9f04cea3597ecd39e}{direction}});}
 \DoxyCodeLine{00088\ }
-\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ghost_a37af899046bcf6c905bffe70289379d4}{setMode}}(\mbox{\hyperlink{_ghost_8hpp_ac1c5b6f654cc52ab515d251ff988f753}{GhostMode}}\ m)\ \{\ mode\ =\ m;\ \}}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_ghost_a37af899046bcf6c905bffe70289379d4}{setMode}}(\mbox{\hyperlink{_ghost_8hpp_ac1c5b6f654cc52ab515d251ff988f753}{GhostMode}}\ m)\ \{\ \mbox{\hyperlink{class_ghost_a1787d22c32b1973c9cd2d9e262c8e2a6}{mode}}\ =\ m;\ \}}
 \DoxyCodeLine{00094\ }
-\DoxyCodeLine{00099\ \ \ \ \ \mbox{\hyperlink{_ghost_8hpp_ac1c5b6f654cc52ab515d251ff988f753}{GhostMode}}\ \mbox{\hyperlink{class_ghost_ab795187572d16c031c2747616f54d248}{getMode}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ mode;\ \}}
+\DoxyCodeLine{00099\ \ \ \ \ \mbox{\hyperlink{_ghost_8hpp_ac1c5b6f654cc52ab515d251ff988f753}{GhostMode}}\ \mbox{\hyperlink{class_ghost_ab795187572d16c031c2747616f54d248}{getMode}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{class_ghost_a1787d22c32b1973c9cd2d9e262c8e2a6}{mode}};\ \}}
 \DoxyCodeLine{00100\ }
 \DoxyCodeLine{00104\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_ghost_aab87656929905e560c20f67b52fde2b5}{eyesOriginY}}\ =\ 10*\mbox{\hyperlink{class_entity_a3ae73f0ab9972b909c86c7950a1dc86e}{entitySize}};}
 \DoxyCodeLine{00105\ \ \ \ \ }
@@ -47,21 +47,21 @@
 \DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_ghost_a5e064df5bf825be47649a389b39b2798}{isChasing}}\ =\ \textcolor{keyword}{true};}
 \DoxyCodeLine{00121\ }
 \DoxyCodeLine{00122\ \textcolor{keyword}{private}:}
-\DoxyCodeLine{00126\ \ \ \ \ \mbox{\hyperlink{_ghost_8hpp_a19c48855930abe71014f6f21514b3925}{GhostType}}\ type;}
+\DoxyCodeLine{00126\ \ \ \ \ \mbox{\hyperlink{_ghost_8hpp_a19c48855930abe71014f6f21514b3925}{GhostType}}\ \mbox{\hyperlink{class_ghost_a13a4c3b065ee08ce849d19680718ee18}{type}};}
 \DoxyCodeLine{00127\ }
-\DoxyCodeLine{00131\ \ \ \ \ \mbox{\hyperlink{_ghost_8hpp_ac1c5b6f654cc52ab515d251ff988f753}{GhostMode}}\ mode;}
+\DoxyCodeLine{00131\ \ \ \ \ \mbox{\hyperlink{_ghost_8hpp_ac1c5b6f654cc52ab515d251ff988f753}{GhostMode}}\ \mbox{\hyperlink{class_ghost_a1787d22c32b1973c9cd2d9e262c8e2a6}{mode}};}
 \DoxyCodeLine{00132\ }
-\DoxyCodeLine{00136\ \ \ \ \ sf::Sprite\ sprite\_eyes;}
+\DoxyCodeLine{00136\ \ \ \ \ sf::Sprite\ \mbox{\hyperlink{class_ghost_a5bd50263bbf8f7a4783511b359817647}{sprite\_eyes}};}
 \DoxyCodeLine{00137\ }
-\DoxyCodeLine{00141\ \ \ \ \ sf::Sprite\ sprite\_eyes\_up;}
+\DoxyCodeLine{00141\ \ \ \ \ sf::Sprite\ \mbox{\hyperlink{class_ghost_a281490fa842a48520d9873396e4f7cf9}{sprite\_eyes\_up}};}
 \DoxyCodeLine{00142\ }
-\DoxyCodeLine{00146\ \ \ \ \ sf::Sprite\ sprite\_eyes\_down;\ \ \ }
+\DoxyCodeLine{00146\ \ \ \ \ sf::Sprite\ \mbox{\hyperlink{class_ghost_adea8284c27f06588b66db49c2bc35f73}{sprite\_eyes\_down}};\ \ \ }
 \DoxyCodeLine{00147\ }
-\DoxyCodeLine{00151\ \ \ \ \ sf::Sprite\ sprite\_eyes\_left\_right;}
+\DoxyCodeLine{00151\ \ \ \ \ sf::Sprite\ \mbox{\hyperlink{class_ghost_ad4766415e5d29489891c3a7ec0292c83}{sprite\_eyes\_left\_right}};}
 \DoxyCodeLine{00152\ }
-\DoxyCodeLine{00157\ \ \ \ \ sf::Sprite\ sprite\_body\_dead;}
+\DoxyCodeLine{00157\ \ \ \ \ sf::Sprite\ \mbox{\hyperlink{class_ghost_a6984e43b2a46b34360452f8a91b9a52f}{sprite\_body\_dead}};}
 \DoxyCodeLine{00158\ \ \ \ \ }
-\DoxyCodeLine{00169\ \ \ \ \ sf::Vector2f\ getBestDirectionForTarget(sf::Vector2f\ target,\ \textcolor{keyword}{const}\ std::vector<sf::Vector2f>\&\ possibleDirs,\ \textcolor{keyword}{const}\ std::vector<std::string>\&\ map);}
+\DoxyCodeLine{00169\ \ \ \ \ sf::Vector2f\ \mbox{\hyperlink{class_ghost_acfd42a1cdb2a827a3c647ae245a34558}{getBestDirectionForTarget}}(sf::Vector2f\ target,\ \textcolor{keyword}{const}\ std::vector<sf::Vector2f>\&\ possibleDirs,\ \textcolor{keyword}{const}\ std::vector<std::string>\&\ map);}
 \DoxyCodeLine{00170\ \};}
 
 \end{DoxyCode}

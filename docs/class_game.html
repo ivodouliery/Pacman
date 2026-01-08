@@ -103,11 +103,67 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ad59df6562a58a614fda24622d3715b65"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructeur de la classe <a class="el" href="class_game.html" title="Classe principale gérant le cycle de vie du jeu.">Game</a>.  <br /></td></tr>
 <tr class="memitem:a1ab78f5ed0d5ea879157357cf2fb2afa" id="r_a1ab78f5ed0d5ea879157357cf2fb2afa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a1ab78f5ed0d5ea879157357cf2fb2afa">run</a> ()</td></tr>
 <tr class="memdesc:a1ab78f5ed0d5ea879157357cf2fb2afa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Lance la boucle principale du jeu.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-types" class="groupheader"><a id="pri-types" name="pri-types"></a>
+Private Types</h2></td></tr>
+<tr class="memitem:a7f57a7a8408e554d0a72882c287e1d04" id="r_a7f57a7a8408e554d0a72882c287e1d04"><td class="memItemLeft" align="right" valign="top">enum class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a7f57a7a8408e554d0a72882c287e1d04">GameState</a> { <a class="el" href="#a7f57a7a8408e554d0a72882c287e1d04ab078ffd28db767c502ac367053f6e0ac">START</a>
+, <a class="el" href="#a7f57a7a8408e554d0a72882c287e1d04a50366a49630a416ab3ccaa004196027e">PLAYING</a>
+ }</td></tr>
+<tr class="memdesc:a7f57a7a8408e554d0a72882c287e1d04"><td class="mdescLeft">&#160;</td><td class="mdescRight">Énumération représentant les différents états possibles du jeu.  <a href="#a7f57a7a8408e554d0a72882c287e1d04">More...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-methods" class="groupheader"><a id="pri-methods" name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a79f698dda206dd7a9bed28b3f88bdc38" id="r_a79f698dda206dd7a9bed28b3f88bdc38"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a79f698dda206dd7a9bed28b3f88bdc38">processEvents</a> ()</td></tr>
+<tr class="memdesc:a79f698dda206dd7a9bed28b3f88bdc38"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gère les événements utilisateur.  <br /></td></tr>
+<tr class="memitem:a79df6376b332d63c9eca0dcee30305c3" id="r_a79df6376b332d63c9eca0dcee30305c3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a79df6376b332d63c9eca0dcee30305c3">update</a> ()</td></tr>
+<tr class="memdesc:a79df6376b332d63c9eca0dcee30305c3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Met à jour la logique du jeu.  <br /></td></tr>
+<tr class="memitem:a15ddd769261d923827a3cdf41499c843" id="r_a15ddd769261d923827a3cdf41499c843"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a15ddd769261d923827a3cdf41499c843">render</a> ()</td></tr>
+<tr class="memdesc:a15ddd769261d923827a3cdf41499c843"><td class="mdescLeft">&#160;</td><td class="mdescRight">Affiche les éléments du jeu à l'écran.  <br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-pri-attribs" class="groupheader"><a id="pri-attribs" name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a223de215aeb661cd423ac145756cc730" id="r_a223de215aeb661cd423ac145756cc730"><td class="memItemLeft" align="right" valign="top">sf::RenderWindow&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a223de215aeb661cd423ac145756cc730">window</a></td></tr>
+<tr class="memdesc:a223de215aeb661cd423ac145756cc730"><td class="mdescLeft">&#160;</td><td class="mdescRight">La fenêtre de rendu SFML.  <br /></td></tr>
+<tr class="memitem:ad9fc2a8710ee56916f79314b91112ed0" id="r_ad9fc2a8710ee56916f79314b91112ed0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="#a7f57a7a8408e554d0a72882c287e1d04">GameState</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ad9fc2a8710ee56916f79314b91112ed0">state</a> = <a class="el" href="#a7f57a7a8408e554d0a72882c287e1d04ab078ffd28db767c502ac367053f6e0ac">GameState::START</a></td></tr>
+<tr class="memdesc:ad9fc2a8710ee56916f79314b91112ed0"><td class="mdescLeft">&#160;</td><td class="mdescRight">État actuel du jeu.  <br /></td></tr>
+<tr class="memitem:a519a7d3a52198b7a0a1ad18f477b2729" id="r_a519a7d3a52198b7a0a1ad18f477b2729"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_map.html">Map</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a519a7d3a52198b7a0a1ad18f477b2729">grid</a></td></tr>
+<tr class="memdesc:a519a7d3a52198b7a0a1ad18f477b2729"><td class="mdescLeft">&#160;</td><td class="mdescRight">Instance de la carte du jeu.  <br /></td></tr>
 </table>
 <a name="details" id="details"></a><h2 id="header-details" class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Classe principale gérant le cycle de vie du jeu. </p>
 <p>La classe <a class="el" href="class_game.html" title="Classe principale gérant le cycle de vie du jeu.">Game</a> encapsule la fenêtre SFML, la boucle de jeu principale et délègue la logique spécifique à la carte (<a class="el" href="class_map.html" title="Classe principale gérant la logique et l&#39;affichage du niveau.">Map</a>) et aux entités. </p>
-</div><a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
+</div><a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Member Enumeration Documentation</h2>
+<a id="a7f57a7a8408e554d0a72882c287e1d04" name="a7f57a7a8408e554d0a72882c287e1d04"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f57a7a8408e554d0a72882c287e1d04">&#9670;&#160;</a></span>GameState</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">enum class <a class="el" href="#a7f57a7a8408e554d0a72882c287e1d04">Game::GameState</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel strong">strong</span><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Énumération représentant les différents états possibles du jeu. </p>
+<table class="fieldtable">
+<tr><th colspan="2">Enumerator</th></tr><tr><td class="fieldname"><a id="a7f57a7a8408e554d0a72882c287e1d04ab078ffd28db767c502ac367053f6e0ac" name="a7f57a7a8408e554d0a72882c287e1d04ab078ffd28db767c502ac367053f6e0ac"></a>START&#160;</td><td class="fielddoc"><p>Écran de démarrage ou état d'attente avant le début du jeu. </p>
+</td></tr>
+<tr><td class="fieldname"><a id="a7f57a7a8408e554d0a72882c287e1d04a50366a49630a416ab3ccaa004196027e" name="a7f57a7a8408e554d0a72882c287e1d04a50366a49630a416ab3ccaa004196027e"></a>PLAYING&#160;</td><td class="fielddoc"><p>Le jeu est en cours d'exécution. </p>
+</td></tr>
+</table>
+
+</div>
+</div>
+<a name="doc-constructors" id="doc-constructors"></a><h2 id="header-doc-constructors" class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ad59df6562a58a614fda24622d3715b65" name="ad59df6562a58a614fda24622d3715b65"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ad59df6562a58a614fda24622d3715b65">&#9670;&#160;</a></span>Game()</h2>
 
@@ -129,6 +185,62 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Member Function Documentation</h2>
+<a id="a79f698dda206dd7a9bed28b3f88bdc38" name="a79f698dda206dd7a9bed28b3f88bdc38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79f698dda206dd7a9bed28b3f88bdc38">&#9670;&#160;</a></span>processEvents()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Game::processEvents </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Gère les événements utilisateur. </p>
+<p>Traite les entrées clavier pour contrôler le jeu et les événements système comme la fermeture de la fenêtre. </p>
+
+</div>
+</div>
+<a id="a15ddd769261d923827a3cdf41499c843" name="a15ddd769261d923827a3cdf41499c843"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15ddd769261d923827a3cdf41499c843">&#9670;&#160;</a></span>render()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Game::render </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Affiche les éléments du jeu à l'écran. </p>
+<p>Efface la fenêtre, dessine la carte et ses entités, puis affiche le rendu. </p>
+
+</div>
+</div>
 <a id="a1ab78f5ed0d5ea879157357cf2fb2afa" name="a1ab78f5ed0d5ea879157357cf2fb2afa"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a1ab78f5ed0d5ea879157357cf2fb2afa">&#9670;&#160;</a></span>run()</h2>
 
@@ -145,13 +257,116 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Lance la boucle principale du jeu. </p>
-<p>Cette méthode contient la boucle while(window.isOpen()) qui appelle successivement processEvents(), update() et render() à chaque frame. </p>
+<p>Cette méthode contient la boucle while(window.isOpen()) qui appelle successivement <a class="el" href="#a79f698dda206dd7a9bed28b3f88bdc38" title="Gère les événements utilisateur.">processEvents()</a>, <a class="el" href="#a79df6376b332d63c9eca0dcee30305c3" title="Met à jour la logique du jeu.">update()</a> et <a class="el" href="#a15ddd769261d923827a3cdf41499c843" title="Affiche les éléments du jeu à l&#39;écran.">render()</a> à chaque frame. </p>
+
+</div>
+</div>
+<a id="a79df6376b332d63c9eca0dcee30305c3" name="a79df6376b332d63c9eca0dcee30305c3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79df6376b332d63c9eca0dcee30305c3">&#9670;&#160;</a></span>update()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Game::update </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Met à jour la logique du jeu. </p>
+<p>Appelle la méthode update de la carte (grid) si le jeu est en cours. </p>
+
+</div>
+</div>
+<a name="doc-variable-members" id="doc-variable-members"></a><h2 id="header-doc-variable-members" class="groupheader">Member Data Documentation</h2>
+<a id="a519a7d3a52198b7a0a1ad18f477b2729" name="a519a7d3a52198b7a0a1ad18f477b2729"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a519a7d3a52198b7a0a1ad18f477b2729">&#9670;&#160;</a></span>grid</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_map.html">Map</a> Game::grid</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Instance de la carte du jeu. </p>
+<p>Gère la grille, <a class="el" href="class_pacman.html" title="Classe représentant le personnage du joueur.">Pacman</a>, les fantômes et la logique de jeu associée. </p>
+
+</div>
+</div>
+<a id="ad9fc2a8710ee56916f79314b91112ed0" name="ad9fc2a8710ee56916f79314b91112ed0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad9fc2a8710ee56916f79314b91112ed0">&#9670;&#160;</a></span>state</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="#a7f57a7a8408e554d0a72882c287e1d04">GameState</a> Game::state = <a class="el" href="#a7f57a7a8408e554d0a72882c287e1d04ab078ffd28db767c502ac367053f6e0ac">GameState::START</a></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>État actuel du jeu. </p>
+<p>Initialisé à <a class="el" href="#a7f57a7a8408e554d0a72882c287e1d04ab078ffd28db767c502ac367053f6e0ac">GameState::START</a>. </p>
+
+</div>
+</div>
+<a id="a223de215aeb661cd423ac145756cc730" name="a223de215aeb661cd423ac145756cc730"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a223de215aeb661cd423ac145756cc730">&#9670;&#160;</a></span>window</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">sf::RenderWindow Game::window</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel private">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>La fenêtre de rendu SFML. </p>
 
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>include/<a class="el" href="_game_8hpp_source.html">Game.hpp</a></li>
-<li>src/<b>Game.cpp</b></li>
+<li>src/<a class="el" href="_game_8cpp.html">Game.cpp</a></li>
 </ul>
 </div><!-- contents -->
 </div><!-- doc-content -->
